@@ -139,8 +139,8 @@ class Client
         return $this;
     }
 
-    public function __toString() 
-     {
+    public function __toString()
+    {
         return $this->societe;
     }
 
@@ -185,10 +185,6 @@ class Client
 
         return $this;
     }
-
-
-
-
 
 
 }

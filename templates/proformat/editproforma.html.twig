@@ -2,7 +2,7 @@
 {% form_theme formf 'bootstrap_4_layout.html.twig' %}
 {% block title %}Hello ProformatController!{% endblock %}
 {% block stylesheets %}
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
 
 {% endblock %}
  {% block content %}
@@ -10,15 +10,15 @@
          <div class="page-title">
 
              <div class="pull-left">
-                 <h1 class="title">Edit Une Profroma</h1>                            </div>
+                 <h1 class="title">Edit Une Profroma</h1></div>
 
              <div class="pull-right hidden-xs">
                  <ol class="breadcrumb">
                      <li>
-                         <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                         <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                      </li>
                      <li>
-                         <a href="{{path('show_proformat')}}">Proformas</a>
+                         <a href="{{ path('show_proformat') }}">Proformas</a>
                      </li>
                      <li class="active">
                          <strong>Edit Proforma</strong>
@@ -57,13 +57,13 @@
                      </div>
 
 
-
                      {{ form_end(formf) }}
                  </div>
 
 
              </div>
-         </section></div>
+         </section>
+     </div>
 
 
 
@@ -71,7 +71,7 @@
      {% block javascripts %}
          <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
          <script>
-             $(function(){
+             $(function () {
                  $('.select-tags').select2();
              })
          </script>

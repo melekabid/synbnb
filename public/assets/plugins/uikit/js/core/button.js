@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function($, UI) {
+(function ($, UI) {
 
     "use strict";
 
@@ -9,16 +9,16 @@
             "target": ".@-button"
         },
 
-        boot: function() {
+        boot: function () {
 
             // init code
-            UI.$html.on("click.buttonradio.uikit", "[data-@-button-radio]", function(e) {
+            UI.$html.on("click.buttonradio.uikit", "[data-@-button-radio]", function (e) {
 
                 var ele = UI.$(this);
 
                 if (!ele.data("buttonRadio")) {
 
-                    var obj    = UI.buttonRadio(ele, UI.Utils.options(ele.attr("data-@-button-radio"))),
+                    var obj = UI.buttonRadio(ele, UI.Utils.options(ele.attr("data-@-button-radio"))),
                         target = UI.$(e.target);
 
                     if (target.is(obj.options.target)) {
@@ -28,11 +28,11 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.on("click", this.options.target, function(e) {
+            this.on("click", this.options.target, function (e) {
 
                 var ele = UI.$(this);
 
@@ -44,7 +44,7 @@
 
         },
 
-        getSelected: function() {
+        getSelected: function () {
             return this.find(".@-active");
         }
     });
@@ -55,14 +55,14 @@
             "target": ".@-button"
         },
 
-        boot: function() {
+        boot: function () {
 
-            UI.$html.on("click.buttoncheckbox.uikit", "[data-@-button-checkbox]", function(e) {
+            UI.$html.on("click.buttoncheckbox.uikit", "[data-@-button-checkbox]", function (e) {
                 var ele = UI.$(this);
 
                 if (!ele.data("buttonCheckbox")) {
 
-                    var obj    = UI.buttonCheckbox(ele, UI.Utils.options(ele.attr("data-@-button-checkbox"))),
+                    var obj = UI.buttonCheckbox(ele, UI.Utils.options(ele.attr("data-@-button-checkbox"))),
                         target = UI.$(e.target);
 
                     if (target.is(obj.options.target)) {
@@ -72,11 +72,11 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.on("click", this.options.target, function(e) {
+            this.on("click", this.options.target, function (e) {
 
                 if ($(this).is('a[href="#"]')) e.preventDefault();
 
@@ -85,7 +85,7 @@
 
         },
 
-        getSelected: function() {
+        getSelected: function () {
             return this.find(".@-active");
         }
     });
@@ -95,9 +95,9 @@
 
         defaults: {},
 
-        boot: function() {
+        boot: function () {
 
-            UI.$html.on("click.button.uikit", "[data-@-button]", function(e) {
+            UI.$html.on("click.button.uikit", "[data-@-button]", function (e) {
                 var ele = UI.$(this);
 
                 if (!ele.data("button")) {
@@ -108,11 +108,11 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.on("click", function(e) {
+            this.on("click", function (e) {
 
                 if ($this.element.is('a[href="#"]')) e.preventDefault();
 
@@ -122,7 +122,7 @@
 
         },
 
-        toggle: function() {
+        toggle: function () {
             this.element.toggleClass("@-active");
         }
     });

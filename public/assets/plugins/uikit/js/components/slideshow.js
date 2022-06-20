@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function(addon) {
+(function (addon) {
 
     var component;
 
@@ -8,12 +8,12 @@
     }
 
     if (typeof define == "function" && define.amd) {
-        define("uikit-slideshow", ["uikit"], function() {
+        define("uikit-slideshow", ["uikit"], function () {
             return component || addon(jQuery, UIkit);
         });
     }
 
-})(function($, UI) {
+})(function ($, UI) {
 
     "use strict";
 
@@ -22,28 +22,28 @@
     UI.component('slideshow', {
 
         defaults: {
-            animation        : "fade",
-            duration         : 500,
-            height           : "auto",
-            start            : 0,
-            autoplay         : false,
-            autoplayInterval : 7000,
-            videoautoplay    : true,
-            videomute        : true,
-            kenburns         : false,
-            slices           : 15
+            animation: "fade",
+            duration: 500,
+            height: "auto",
+            start: 0,
+            autoplay: false,
+            autoplayInterval: 7000,
+            videoautoplay: true,
+            videomute: true,
+            kenburns: false,
+            slices: 15
         },
 
-        current  : false,
-        interval : null,
-        hovering : false,
+        current: false,
+        interval: null,
+        hovering: false,
 
-        boot: function() {
+        boot: function () {
 
             // init code
-            UI.ready(function(context) {
+            UI.ready(function (context) {
 
-                UI.$('[data-@-slideshow]', context).each(function() {
+                UI.$('[data-@-slideshow]', context).each(function () {
 
                     var slideshow = UI.$(this);
 
@@ -54,19 +54,19 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this, canvas;
 
-            this.container     = this.element.hasClass('@-slideshow') ? this.element : UI.$(this.find('.@-slideshow'));
-            this.slides        = this.container.children();
-            this.slidesCount   = this.slides.length;
-            this.current       = this.options.start;
-            this.animating     = false;
-            this.triggers      = this.find('[data-@-slideshow-item]');
+            this.container = this.element.hasClass('@-slideshow') ? this.element : UI.$(this.find('.@-slideshow'));
+            this.slides = this.container.children();
+            this.slidesCount = this.slides.length;
+            this.current = this.options.start;
+            this.animating = false;
+            this.triggers = this.find('[data-@-slideshow-item]');
             this.fixFullscreen = navigator.userAgent.match(/(iPad|iPhone|iPod)/g) && this.container.hasClass(UI.prefix('@-slideshow-fullscreen')); // viewport unit fix for height:100vh - should be fixed in iOS 8
 
-            this.slides.each(function(index) {
+            this.slides.each(function (index) {
 
                 var slide = $(this),
                     media = slide.children('img,video,iframe').eq(0);
@@ -78,12 +78,12 @@
 
                     var placeholder;
 
-                    switch(media[0].nodeName) {
+                    switch (media[0].nodeName) {
                         case 'IMG':
 
-                            var cover = UI.$('<div class="@-cover-background @-position-cover"></div>').css({'background-image':'url('+ media.attr('src') + ')'});
+                            var cover = UI.$('<div class="@-cover-background @-position-cover"></div>').css({'background-image': 'url(' + media.attr('src') + ')'});
 
-                            media.css({'width': '100%','height': 'auto'});
+                            media.css({'width': '100%', 'height': 'auto'});
                             slide.prepend(cover).data('cover', cover);
                             break;
                         case 'IFRAME':
@@ -91,25 +91,25 @@
                             var src = media[0].src;
 
                             media
-                                .attr('src', '').on('load', function(){
+                                .attr('src', '').on('load', function () {
 
-                                    if (index !== $this.current || (index == $this.current && !$this.options.videoautoplay)) {
-                                        $this.pausemedia(media);
-                                    }
+                                if (index !== $this.current || (index == $this.current && !$this.options.videoautoplay)) {
+                                    $this.pausemedia(media);
+                                }
 
-                                    if ($this.options.videomute) {
+                                if ($this.options.videomute) {
+                                    $this.mutemedia(media);
+                                    setTimeout(function () {
                                         $this.mutemedia(media);
-                                        setTimeout(function() {
-                                            $this.mutemedia(media);
-                                        }, 1000);
-                                    }
+                                    }, 1000);
+                                }
 
-                                })
-                                .attr('src', [src, (src.indexOf('?') > -1 ? '&':'?'), 'enablejsapi=1&api=1'].join(''))
+                            })
+                                .attr('src', [src, (src.indexOf('?') > -1 ? '&' : '?'), 'enablejsapi=1&api=1'].join(''))
                                 .addClass(UI.prefix('@-position-top'));
 
-                                // disable pointer events
-                                if(!UI.support.touch) media.css('pointer-events', 'none');
+                            // disable pointer events
+                            if (!UI.support.touch) media.css('pointer-events', 'none');
 
                             placeholder = true;
 
@@ -128,7 +128,7 @@
 
                     if (placeholder) {
 
-                        canvas  = UI.$('<canvas></canvas>').attr({'width': media[0].width, 'height': media[0].height});
+                        canvas = UI.$('<canvas></canvas>').attr({'width': media[0].width, 'height': media[0].height});
                         var img = UI.$('<img style="width:100%;height:auto;">').attr('src', canvas[0].toDataURL());
 
                         slide.prepend(img);
@@ -140,18 +140,18 @@
                 }
             });
 
-            this.on("click", '[data-@-slideshow-item]', function(e) {
+            this.on("click", '[data-@-slideshow-item]', function (e) {
 
                 e.preventDefault();
 
-                var slide = UI.$(this).data(UI._prefix+'SlideshowItem');
+                var slide = UI.$(this).data(UI._prefix + 'SlideshowItem');
 
                 if ($this.current == slide) return;
 
-                switch(slide) {
+                switch (slide) {
                     case 'next':
                     case 'previous':
-                        $this[slide=='next' ? 'next':'previous']();
+                        $this[slide == 'next' ? 'next' : 'previous']();
                         break;
                     default:
                         $this.show(slide);
@@ -162,9 +162,9 @@
 
             // Set start slide
             this.slides.eq(this.current).addClass(UI.prefix('@-active'));
-            this.triggers.filter(UI.prefix('[data-@-slideshow-item="'+this.current+'"]')).addClass(UI.prefix('@-active'));
+            this.triggers.filter(UI.prefix('[data-@-slideshow-item="' + this.current + '"]')).addClass(UI.prefix('@-active'));
 
-            UI.$win.on("resize load", UI.Utils.debounce(function() {
+            UI.$win.on("resize load", UI.Utils.debounce(function () {
                 $this.resize();
 
                 if ($this.fixFullscreen) {
@@ -189,15 +189,19 @@
             }
 
             this.container.on({
-                mouseenter: function() { $this.hovering = true;  },
-                mouseleave: function() { $this.hovering = false; }
+                mouseenter: function () {
+                    $this.hovering = true;
+                },
+                mouseleave: function () {
+                    $this.hovering = false;
+                }
             });
 
-            this.on('swipeRight swipeLeft', function(e) {
-                $this[e.type=='swipeLeft' ? 'next' : 'previous']();
+            this.on('swipeRight swipeLeft', function (e) {
+                $this[e.type == 'swipeLeft' ? 'next' : 'previous']();
             });
 
-            this.on('display.@.check', function(){
+            this.on('display.@.check', function () {
                 if ($this.element.is(":visible")) {
 
                     $this.resize();
@@ -211,7 +215,7 @@
         },
 
 
-        resize: function() {
+        resize: function () {
 
             if (this.container.hasClass('@-slideshow-fullscreen')) return;
 
@@ -221,7 +225,7 @@
 
                 height = 0;
 
-                this.slides.css('height', '').each(function() {
+                this.slides.css('height', '').each(function () {
                     height = Math.max(height, $(this).height());
                 });
             }
@@ -230,20 +234,20 @@
             this.slides.css('height', height);
         },
 
-        show: function(index, direction) {
+        show: function (index, direction) {
 
             if (this.animating) return;
 
             this.animating = true;
 
-            var $this        = this,
-                current      = this.slides.eq(this.current),
-                next         = this.slides.eq(index),
-                dir          = direction ? direction : this.current < index ? -1 : 1,
+            var $this = this,
+                current = this.slides.eq(this.current),
+                next = this.slides.eq(index),
+                dir = direction ? direction : this.current < index ? -1 : 1,
                 currentmedia = current.data('media'),
-                animation    = Animations[this.options.animation] ? this.options.animation : 'fade',
-                nextmedia    = next.data('media'),
-                finalize     = function() {
+                animation = Animations[this.options.animation] ? this.options.animation : 'fade',
+                nextmedia = next.data('media'),
+                finalize = function () {
 
                     if (!$this.animating) return;
 
@@ -259,7 +263,7 @@
                     current.removeClass("@-active");
 
                     $this.animating = false;
-                    $this.current   = index;
+                    $this.current = index;
 
                     UI.Utils.checkDisplay(next, UI.prefix('[class*="@-animation-"]:not(.@-cover-background.@-position-cover)'));
 
@@ -274,15 +278,15 @@
             }
 
             current = UI.$(current);
-            next    = UI.$(next);
+            next = UI.$(next);
 
             Animations[animation].apply(this, [current, next, dir]).then(finalize);
 
             $this.triggers.removeClass(UI.prefix('@-active'));
-            $this.triggers.filter(UI.prefix('[data-@-slideshow-item="'+index+'"]')).addClass(UI.prefix('@-active'));
+            $this.triggers.filter(UI.prefix('[data-@-slideshow-item="' + index + '"]')).addClass(UI.prefix('@-active'));
         },
 
-        applyKenBurns: function(slide) {
+        applyKenBurns: function (slide) {
 
             if (!this.hasKenBurns(slide)) {
                 return;
@@ -302,43 +306,43 @@
             slide.data('cover').attr('class', '@-cover-background @-position-cover').width();
             slide.data('cover').addClass(['@-animation-scale', '@-animation-reverse', '@-animation-15', animations[index]].join(' '));
 
-            this.kbindex = animations[index + 1] ? (index+1):0;
+            this.kbindex = animations[index + 1] ? (index + 1) : 0;
         },
 
-        hasKenBurns: function(slide) {
+        hasKenBurns: function (slide) {
             return (this.options.kenburns && slide.data('cover'));
         },
 
-        next: function() {
+        next: function () {
             this.show(this.slides[this.current + 1] ? (this.current + 1) : 0);
         },
 
-        previous: function() {
+        previous: function () {
             this.show(this.slides[this.current - 1] ? (this.current - 1) : (this.slides.length - 1));
         },
 
-        start: function() {
+        start: function () {
 
             this.stop();
 
             var $this = this;
 
-            this.interval = setInterval(function() {
+            this.interval = setInterval(function () {
                 if (!$this.hovering) $this.show($this.options.start, $this.next());
             }, this.options.autoplayInterval);
 
         },
 
-        stop: function() {
+        stop: function () {
             if (this.interval) clearInterval(this.interval);
         },
 
-        playmedia: function(media) {
+        playmedia: function (media) {
 
             if (!(media && media[0])) return;
 
 
-            switch(media[0].nodeName) {
+            switch (media[0].nodeName) {
                 case 'VIDEO':
                     media[0].play();
                     break;
@@ -348,9 +352,9 @@
             }
         },
 
-        pausemedia: function(media) {
+        pausemedia: function (media) {
 
-            switch(media[0].nodeName) {
+            switch (media[0].nodeName) {
                 case 'VIDEO':
                     media[0].pause();
                     break;
@@ -360,9 +364,9 @@
             }
         },
 
-        mutemedia: function(media) {
+        mutemedia: function (media) {
 
-            switch(media[0].nodeName) {
+            switch (media[0].nodeName) {
                 case 'VIDEO':
                     media[0].muted = true;
                     break;
@@ -375,21 +379,21 @@
 
     Animations = {
 
-        'none': function() {
+        'none': function () {
 
             var d = $.Deferred();
             d.resolve();
             return d.promise();
         },
 
-        'scroll': function(current, next, dir) {
+        'scroll': function (current, next, dir) {
 
             var d = $.Deferred();
 
-            current.css('animation-duration', this.options.duration+'ms');
-            next.css('animation-duration', this.options.duration+'ms');
+            current.css('animation-duration', this.options.duration + 'ms');
+            next.css('animation-duration', this.options.duration + 'ms');
 
-            next.css('opacity', 1).one(UI.support.animation.end, function() {
+            next.css('opacity', 1).one(UI.support.animation.end, function () {
 
                 current.removeClass(dir === 1 ? '@-slideshow-scroll-backward-out' : '@-slideshow-scroll-forward-out');
                 next.css('opacity', '').removeClass(dir === 1 ? '@-slideshow-scroll-backward-in' : '@-slideshow-scroll-forward-in');
@@ -404,14 +408,14 @@
             return d.promise();
         },
 
-        'swipe': function(current, next, dir) {
+        'swipe': function (current, next, dir) {
 
             var d = $.Deferred();
 
-            current.css('animation-duration', this.options.duration+'ms');
-            next.css('animation-duration', this.options.duration+'ms');
+            current.css('animation-duration', this.options.duration + 'ms');
+            next.css('animation-duration', this.options.duration + 'ms');
 
-            next.css('opacity', 1).one(UI.support.animation.end, function() {
+            next.css('opacity', 1).one(UI.support.animation.end, function () {
 
                 current.removeClass(dir === 1 ? '@-slideshow-swipe-backward-out' : '@-slideshow-swipe-forward-out');
                 next.css('opacity', '').removeClass(dir === 1 ? '@-slideshow-swipe-backward-in' : '@-slideshow-swipe-forward-in');
@@ -426,16 +430,16 @@
             return d.promise();
         },
 
-        'scale': function(current, next, dir) {
+        'scale': function (current, next, dir) {
 
             var d = $.Deferred();
 
-            current.css('animation-duration', this.options.duration+'ms');
-            next.css('animation-duration', this.options.duration+'ms');
+            current.css('animation-duration', this.options.duration + 'ms');
+            next.css('animation-duration', this.options.duration + 'ms');
 
             next.css('opacity', 1);
 
-            current.one(UI.support.animation.end, function() {
+            current.one(UI.support.animation.end, function () {
 
                 current.removeClass('@-slideshow-scale-out');
                 next.css('opacity', '');
@@ -449,16 +453,16 @@
             return d.promise();
         },
 
-        'fade': function(current, next, dir) {
+        'fade': function (current, next, dir) {
 
             var d = $.Deferred();
 
-            current.css('animation-duration', this.options.duration+'ms');
-            next.css('animation-duration', this.options.duration+'ms');
+            current.css('animation-duration', this.options.duration + 'ms');
+            next.css('animation-duration', this.options.duration + 'ms');
 
             next.css('opacity', 1);
 
-            current.one(UI.support.animation.end, function() {
+            current.one(UI.support.animation.end, function () {
 
                 current.removeClass('@-slideshow-fade-out');
                 next.css('opacity', '');

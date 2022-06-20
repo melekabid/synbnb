@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function($, UI) {
+(function ($, UI) {
 
     "use strict";
 
@@ -11,12 +11,12 @@
             'cls': '@-margin-small-top'
         },
 
-        boot: function() {
+        boot: function () {
 
             // init code
-            UI.ready(function(context) {
+            UI.ready(function (context) {
 
-                UI.$("[data-@-margin]", context).each(function() {
+                UI.$("[data-@-margin]", context).each(function () {
 
                     var ele = UI.$(this), obj;
 
@@ -27,7 +27,7 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
@@ -35,13 +35,13 @@
 
             if (!this.columns.length) return;
 
-            UI.$win.on('resize orientationchange', (function() {
+            UI.$win.on('resize orientationchange', (function () {
 
-                var fn = function() {
+                var fn = function () {
                     $this.process();
                 };
 
-                $(function() {
+                $(function () {
                     fn();
                     UI.$win.on("load", fn);
                 });
@@ -49,12 +49,12 @@
                 return UI.Utils.debounce(fn, 20);
             })());
 
-            UI.$html.on("changed.uk.dom", function(e) {
-                $this.columns  = $this.element.children();
+            UI.$html.on("changed.uk.dom", function (e) {
+                $this.columns = $this.element.children();
                 $this.process();
             });
 
-            this.on("display.uk.check", function(e) {
+            this.on("display.uk.check", function (e) {
                 $this.columns = $this.element.children();
                 if (this.element.is(":visible")) this.process();
             }.bind(this));
@@ -62,7 +62,7 @@
             stacks.push(this);
         },
 
-        process: function() {
+        process: function () {
 
             var $this = this;
 
@@ -71,24 +71,24 @@
             return this;
         },
 
-        revert: function() {
+        revert: function () {
             this.columns.removeClass(this.options.cls);
             return this;
         }
     });
 
     // responsive iframes
-    UI.ready((function(){
+    UI.ready((function () {
 
-        var iframes = [], check = function() {
+        var iframes = [], check = function () {
 
-            iframes.forEach(function(iframe){
+            iframes.forEach(function (iframe) {
 
                 if (!iframe.is(':visible')) return;
 
-                var width  = iframe.parent().width(),
+                var width = iframe.parent().width(),
                     iwidth = iframe.data('width'),
-                    ratio  = (width / iwidth),
+                    ratio = (width / iwidth),
                     height = Math.floor(ratio * iframe.data('height'));
 
                 iframe.css({'height': (width < iwidth) ? height : iframe.data('height')});
@@ -97,16 +97,16 @@
 
         UI.$win.on('resize', UI.Utils.debounce(check, 15));
 
-        return function(context){
+        return function (context) {
 
-            UI.$('iframe.@-responsive-width', context).each(function(){
+            UI.$('iframe.@-responsive-width', context).each(function () {
 
                 var iframe = $(this);
 
                 if (!iframe.data('responsive') && iframe.attr('width') && iframe.attr('height')) {
 
-                    iframe.data('width'     , iframe.attr('width'));
-                    iframe.data('height'    , iframe.attr('height'));
+                    iframe.data('width', iframe.attr('width'));
+                    iframe.data('height', iframe.attr('height'));
                     iframe.data('responsive', true);
                     iframes.push(iframe);
                 }
@@ -120,7 +120,7 @@
 
     // helper
 
-    UI.Utils.stackMargin = function(elements, options) {
+    UI.Utils.stackMargin = function (elements, options) {
 
         options = $.extend({
             'cls': '@-margin-small-top'
@@ -130,13 +130,13 @@
 
         elements = $(elements).removeClass(options.cls);
 
-        var skip         = false,
+        var skip = false,
             firstvisible = elements.filter(":visible:first"),
-            offset       = firstvisible.length ? (firstvisible.position().top + firstvisible.outerHeight()) - 1 : false; // (-1): weird firefox bug when parent container is display:flex
+            offset = firstvisible.length ? (firstvisible.position().top + firstvisible.outerHeight()) - 1 : false; // (-1): weird firefox bug when parent container is display:flex
 
         if (offset === false) return;
 
-        elements.each(function() {
+        elements.each(function () {
 
             var column = UI.$(this);
 

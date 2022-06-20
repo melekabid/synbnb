@@ -7,18 +7,18 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Ajouter Une fiche fournisseur</h1>                            </div>
+                <h1 class="title">Ajouter Une fiche fournisseur</h1></div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                     </li>
                     <li>
-                        <a href="{{path('app_techniquemachine')}}">Fiches Technique Machines</a>
+                        <a href="{{ path('app_techniquemachine') }}">Fiches Technique Machines</a>
                     </li>
                     <li class="active">
-                        <strong>Ajouter  Un fournisseur</strong>
+                        <strong>Ajouter Un fournisseur</strong>
                     </li>
                 </ol>
             </div>
@@ -38,20 +38,20 @@
             </header>
             <div class="content-body">
                 <div class="row">
-                    {{ form_start(formtech)}}
+                    {{ form_start(formtech) }}
                     <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
                         <div class="form-group">
                             <label class="form-label" for="field-1">Nom Du Machine </label>
                             <span class="desc"></span>
                             <div class="controls">
-                                {{form_widget(formtech.nommachine, {'attr': {'placeholder': "La reference De La Machine", 'type':"text",'class':"form-control", 'id':"field-1" }})}}
+                                {{ form_widget(formtech.nommachine, {'attr': {'placeholder': "La reference De La Machine", 'type':"text",'class':"form-control", 'id':"field-1" }}) }}
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="form-label" for="field-1"> Fiche Du machine</label>
                             <span class="desc"></span>
                             <div class="controls">
-                                {{form_widget(formtech.fichemachine, {'attr': {'placeholder': "L'image De La Machine", 'type':"file",'class':"form-control", 'id':"field-1" }})}}
+                                {{ form_widget(formtech.fichemachine, {'attr': {'placeholder': "L'image De La Machine", 'type':"file",'class':"form-control", 'id':"field-1" }}) }}
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    {{ form_end(formtech)}}
+                    {{ form_end(formtech) }}
                 </div>
             </div>
 

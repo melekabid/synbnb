@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,14 +14,11 @@ jQuery(function($) {
     /*--------------------------------
         Chart Js Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartJS = function() {
-
-
-
+    ULTRA_SETTINGS.chartJS = function () {
 
 
         /*Bar Chart*/
-        var randomScalingFactor = function() {
+        var randomScalingFactor = function () {
             return Math.round(Math.random() * 100)
         };
 
@@ -51,7 +48,7 @@ jQuery(function($) {
 
         /*Line Chart*/
 
-        var randomScalingFactor = function() {
+        var randomScalingFactor = function () {
             return Math.round(Math.random() * 100)
         };
         var lineChartData = {
@@ -84,32 +81,30 @@ jQuery(function($) {
         });
 
 
-
-
         /*PIE Chart*/
 
 
         var pieData = [{
-                value: 300,
-                color: "rgba(250,133,100,1.0)",
-                highlight: "rgba(250,133,100,0.8)",
-                label: "Orange"
-            }, {
-                value: 150,
-                color: "rgba(31,181,172,1)",
-                highlight: "rgba(31,181,172,0.8)",
-                label: "Primary"
-            }, {
-                value: 50,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            }, {
-                value: 120,
-                color: "rgba(153,114,181,1.0)",
-                highlight: "rgba(153,114,181,0.8)",
-                label: "Purple"
-            }
+            value: 300,
+            color: "rgba(250,133,100,1.0)",
+            highlight: "rgba(250,133,100,0.8)",
+            label: "Orange"
+        }, {
+            value: 150,
+            color: "rgba(31,181,172,1)",
+            highlight: "rgba(31,181,172,0.8)",
+            label: "Primary"
+        }, {
+            value: 50,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "Yellow"
+        }, {
+            value: 120,
+            color: "rgba(153,114,181,1.0)",
+            highlight: "rgba(153,114,181,0.8)",
+            label: "Purple"
+        }
 
         ];
 
@@ -117,31 +112,29 @@ jQuery(function($) {
         window.myPie = new Chart(ctx).Pie(pieData);
 
 
-
-
         /* Donut Chart*/
 
         var doughnutData = [{
-                value: 300,
-                color: "rgba(250,133,100,1.0)",
-                highlight: "rgba(250,133,100,0.8)",
-                label: "Orange"
-            }, {
-                value: 150,
-                color: "rgba(31,181,172,1)",
-                highlight: "rgba(31,181,172,0.8)",
-                label: "Primary"
-            }, {
-                value: 50,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            }, {
-                value: 120,
-                color: "rgba(153,114,181,1.0)",
-                highlight: "rgba(153,114,181,0.8)",
-                label: "Purple"
-            }
+            value: 300,
+            color: "rgba(250,133,100,1.0)",
+            highlight: "rgba(250,133,100,0.8)",
+            label: "Orange"
+        }, {
+            value: 150,
+            color: "rgba(31,181,172,1)",
+            highlight: "rgba(31,181,172,0.8)",
+            label: "Primary"
+        }, {
+            value: 50,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "Yellow"
+        }, {
+            value: 120,
+            color: "rgba(153,114,181,1.0)",
+            highlight: "rgba(153,114,181,0.8)",
+            label: "Purple"
+        }
 
         ];
 
@@ -151,32 +144,29 @@ jQuery(function($) {
         });
 
 
-
-
-
         /*Polar Chart*/
 
         var polarData = [{
-                value: 300,
-                color: "rgba(250,133,100,1.0)",
-                highlight: "rgba(250,133,100,0.8)",
-                label: "Orange"
-            }, {
-                value: 150,
-                color: "rgba(31,181,172,1)",
-                highlight: "rgba(31,181,172,0.8)",
-                label: "Primary"
-            }, {
-                value: 50,
-                color: "#FDB45C",
-                highlight: "#FFC870",
-                label: "Yellow"
-            }, {
-                value: 120,
-                color: "rgba(153,114,181,1.0)",
-                highlight: "rgba(153,114,181,0.8)",
-                label: "Purple"
-            }
+            value: 300,
+            color: "rgba(250,133,100,1.0)",
+            highlight: "rgba(250,133,100,0.8)",
+            label: "Orange"
+        }, {
+            value: 150,
+            color: "rgba(31,181,172,1)",
+            highlight: "rgba(31,181,172,0.8)",
+            label: "Primary"
+        }, {
+            value: 50,
+            color: "#FDB45C",
+            highlight: "#FFC870",
+            label: "Yellow"
+        }, {
+            value: 120,
+            color: "rgba(153,114,181,1.0)",
+            highlight: "rgba(153,114,181,0.8)",
+            label: "Purple"
+        }
 
         ];
 
@@ -184,13 +174,6 @@ jQuery(function($) {
         window.myPolarArea = new Chart(ctxp).PolarArea(polarData, {
             responsive: true
         });
-
-
-
-
-
-
-
 
 
         /*Radar Chart*/
@@ -225,18 +208,16 @@ jQuery(function($) {
     };
 
 
-
-
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {});
+    $(document).ready(function () {
+    });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {
+    $(window).load(function () {
         ULTRA_SETTINGS.chartJS();
     });
 

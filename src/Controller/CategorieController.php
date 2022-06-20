@@ -19,13 +19,10 @@ class CategorieController extends AbstractController
     /**
      * @Route("/categorie", name="app_categorie")
      */
-    public function index( ): Response
+    public function index(): Response
     {
-        $repo=$this->getDoctrine()->getRepository(Categorie::class);
-        $categorie=$repo->findAll();
-
-
-
+        $repo = $this->getDoctrine()->getRepository(Categorie::class);
+        $categorie = $repo->findAll();
 
 
         return $this->render('categorie/categorie.html.twig', [
@@ -37,41 +34,41 @@ class CategorieController extends AbstractController
      * @Route("/categorienouveau", name="categorie_create")
      * @Route("/categorie{id}", name="categorie_edit")
      */
-    public function form(Request $request,Categorie $categorie = null,\Doctrine\Persistence\ManagerRegistry $managerRegistry) {
+    public function form(Request $request, Categorie $categorie = null, \Doctrine\Persistence\ManagerRegistry $managerRegistry)
+    {
 
-        if(!$categorie)
-        {
-          $categorie = new Categorie();
+        if (!$categorie) {
+            $categorie = new Categorie();
         }
-        $form = $this->createForm(CategorieType::class,$categorie);
+        $form = $this->createForm(CategorieType::class, $categorie);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             $manager = $managerRegistry->getManager();
             $manager->persist($categorie);
             $manager->flush();
-            return $this->redirectToRoute('app_categorie',['categories'=> $categorie]);
+            return $this->redirectToRoute('app_categorie', ['categories' => $categorie]);
 
 
         }
 
-        return $this-> render('categorie/create.html.twig',
+        return $this->render('categorie/create.html.twig',
             ['formCategorie' => $form->createView()]);
     }
+
     /**
-
-
-     *@Route("/RemCategorie{id}",name="RemCategorie")
+     * @Route("/RemCategorie{id}",name="RemCategorie")
      */
 
-    public function remove(Categorie $categorie){
+    public function remove(Categorie $categorie)
+    {
 
-        $manager=$this->getDoctrine()->getManager();
+        $manager = $this->getDoctrine()->getManager();
         $manager->remove($categorie);
         $manager->flush();
-        $repo=$this->getDoctrine()->getRepository(Client::class);
-        $categorie=$repo->findAll();
-        return $this->redirectToRoute('app_categorie',['categories'=> $categorie]);
+        $repo = $this->getDoctrine()->getRepository(Client::class);
+        $categorie = $repo->findAll();
+        return $this->redirectToRoute('app_categorie', ['categories' => $categorie]);
 
     }
 }

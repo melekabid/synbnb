@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
 
     if ($.isFunction($.fn.validate)) {
@@ -21,32 +21,32 @@ $(document).ready(function() {
                 }
             },
 
-            invalidHandler: function(event, validator) {
+            invalidHandler: function (event, validator) {
                 //display error alert on form submit    
             },
 
-            errorPlacement: function(label, element) { // render error placement for each input type   
+            errorPlacement: function (label, element) { // render error placement for each input type
                 console.log(label);
                 $('<span class="error"></span>').insertAfter(element).append(label)
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            unhighlight: function(element) { // revert the change done by hightlight
+            unhighlight: function (element) { // revert the change done by hightlight
 
             },
 
-            success: function(label, element) {
+            success: function (label, element) {
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-error').addClass('has-success');
             },
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
             }
         });
@@ -72,34 +72,34 @@ $(document).ready(function() {
                 }
             },
 
-            invalidHandler: function(event, validator) {
+            invalidHandler: function (event, validator) {
                 //display error alert on form submit    
             },
 
-            errorPlacement: function(error, element) { // render error placement for each input type
+            errorPlacement: function (error, element) { // render error placement for each input type
                 var icon = $(element).parent().parent('.form-group').find('i');
                 var parent = $(element).parent().parent('.form-group');
                 icon.removeClass('fa fa-check').addClass('fa fa-times');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            unhighlight: function(element) { // revert the change done by hightlight
+            unhighlight: function (element) { // revert the change done by hightlight
 
             },
 
-            success: function(label, element) {
+            success: function (label, element) {
                 var icon = $(element).parent().parent('.form-group').find('i');
                 var parent = $(element).parent().parent('.form-group');
                 icon.removeClass("fa fa-times").addClass('fa fa-check');
                 parent.removeClass('has-error').addClass('has-success');
             },
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
             }
         });
@@ -155,41 +155,35 @@ $(document).ready(function() {
 
             },
 
-            invalidHandler: function(event, validator) {
+            invalidHandler: function (event, validator) {
                 //display error alert on form submit    
             },
 
-            errorPlacement: function(label, element) { // render error placement for each input type   
+            errorPlacement: function (label, element) { // render error placement for each input type
                 console.log(label);
                 $('<span class="error"></span>').insertAfter(element).append(label)
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            highlight: function(element) { // hightlight error inputs
+            highlight: function (element) { // hightlight error inputs
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-success').addClass('has-error');
             },
 
-            unhighlight: function(element) { // revert the change done by hightlight
+            unhighlight: function (element) { // revert the change done by hightlight
 
             },
 
-            success: function(label, element) {
+            success: function (label, element) {
                 var parent = $(element).parent().parent('.form-group');
                 parent.removeClass('has-error').addClass('has-success');
             },
 
-            submitHandler: function(form) {
+            submitHandler: function (form) {
 
             }
         });
-
-
-
-
-
-
 
 
         //Form Wizard Validations
@@ -208,7 +202,7 @@ $(document).ready(function() {
                     required: true,
                 }
             },
-            errorPlacement: function(label, element) {
+            errorPlacement: function (label, element) {
                 $('<span class="arrow"></span>').insertBefore(element);
                 $('<span class="error"></span>').insertAfter(element).append(label)
             }
@@ -218,16 +212,15 @@ $(document).ready(function() {
     }
 
 
-
     if ($.isFunction($.fn.bootstrapWizard)) {
 
         $('#pills').bootstrapWizard({
             'tabClass': 'nav nav-pills',
             'debug': false,
-            onShow: function(tab, navigation, index) {
+            onShow: function (tab, navigation, index) {
                 console.log('onShow');
             },
-            onNext: function(tab, navigation, index) {
+            onNext: function (tab, navigation, index) {
                 console.log('onNext');
                 if ($.isFunction($.fn.validate)) {
                     var $valid = $("#commentForm").valid();
@@ -240,17 +233,17 @@ $(document).ready(function() {
                     }
                 }
             },
-            onPrevious: function(tab, navigation, index) {
+            onPrevious: function (tab, navigation, index) {
                 console.log('onPrevious');
             },
-            onLast: function(tab, navigation, index) {
+            onLast: function (tab, navigation, index) {
                 console.log('onLast');
             },
-            onTabClick: function(tab, navigation, index) {
+            onTabClick: function (tab, navigation, index) {
                 console.log('onTabClick');
                 //alert('on tab click disabled');
             },
-            onTabShow: function(tab, navigation, index) {
+            onTabShow: function (tab, navigation, index) {
                 console.log('onTabShow');
                 var $total = navigation.find('li').length;
                 var $current = index + 1;
@@ -261,20 +254,13 @@ $(document).ready(function() {
             }
         });
 
-        $('#pills .finish').click(function() {
+        $('#pills .finish').click(function () {
             alert('Finished!, Starting over!');
             $('#pills').find("a[href*='tab1']").trigger('click');
         });
 
 
-
-
-
-
-
     }
-
-
 
 
 });

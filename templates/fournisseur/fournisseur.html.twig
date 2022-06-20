@@ -9,15 +9,15 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Fournisseurs</h1>                            </div>
+                <h1 class="title">Fournisseurs</h1></div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                     </li>
                     <li>
-                        <a href="{{path('app_fournisseur')}}">  fournisseurs</a>
+                        <a href="{{ path('app_fournisseur') }}"> fournisseurs</a>
                     </li>
                     <li class="active">
                         <strong>Tous Les Fournisseurs</strong>
@@ -44,50 +44,50 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
 
                         <!-- ******************************************** -->
-                        <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                        <table id="example" class="display table table-hover table-condensed" cellspacing="0"
+                               width="100%">
 
                             <thead>
                             <tr>
 
                                 <th>nom du fournisseur</th>
                                 <th>fiche du fournisseur</th>
-                                <th> Action </th>                   </tr>
+                                <th> Action</th>
+                            </tr>
                             </thead>
 
-                                <tbody>
-                                {% for fournisseur in fournisseurs %}
-                                <tr>
+                            <tbody>
+                            {% for fournisseur in fournisseurs %}
+                            <tr>
 
 
-                                    <td>
-                                        {{fournisseur.nomfornisseur}}
-                                    </td>
-                                    <td>
-                                        <a href="uploadsfile/{{fournisseur.fichefournisseur}}"><i class="fa fa-file-pdf-o"></i></a>
+                                <td>
+                                    {{ fournisseur.nomfornisseur }}
+                                </td>
+                                <td>
+                                    <a href="uploadsfile/{{ fournisseur.fichefournisseur }}"><i
+                                                class="fa fa-file-pdf-o"></i></a>
 
-                                    </td>
+                                </td>
 
-                                    <td>
-                                        <a href="{{path('edit_fournisseur',{'id': fournisseur.id})}}"><i class="fa fa-pencil-square-o"></i></a>
-                                    </td>
-
-
-
+                                <td>
+                                    <a href="{{ path('edit_fournisseur',{'id': fournisseur.id}) }}"><i
+                                                class="fa fa-pencil-square-o"></i></a>
+                                </td>
 
 
-                                    {% endfor %}
-                                </tbody>
+                                {% endfor %}
+                            </tbody>
 
                         </table>
                         <!-- ******************************************** -->
 
 
-
-
                     </div>
                 </div>
             </div>
-        </section></div>
+        </section>
+    </div>
 
 
 

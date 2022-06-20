@@ -88,7 +88,6 @@ class Produit
     private $tauxdechange;
 
 
-
     /**
      * Constructor
      */
@@ -214,6 +213,7 @@ class Produit
 
         return $this;
     }
+
     public function __toString()
     {
         return $this->reference;
@@ -230,12 +230,6 @@ class Produit
 
         return $this;
     }
-
-
-
-
-
-
 
 
     /**

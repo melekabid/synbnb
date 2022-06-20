@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function($, UI) {
+(function ($, UI) {
 
     "use strict";
 
@@ -8,21 +8,21 @@
     UI.component('dropdown', {
 
         defaults: {
-           'mode'       : 'hover',
-           'remaintime' : 800,
-           'justify'    : false,
-           'boundary'   : UI.$win,
-           'delay'      : 0
+            'mode': 'hover',
+            'remaintime': 800,
+            'justify': false,
+            'boundary': UI.$win,
+            'delay': 0
         },
 
         remainIdle: false,
 
-        boot: function() {
+        boot: function () {
 
             var triggerevent = UI.support.touch ? "click" : "mouseenter";
 
             // init code
-            UI.$html.on(triggerevent+".dropdown.uikit", "[data-@-dropdown]", function(e) {
+            UI.$html.on(triggerevent + ".dropdown.uikit", "[data-@-dropdown]", function (e) {
 
                 var ele = UI.$(this);
 
@@ -30,28 +30,28 @@
 
                     var dropdown = UI.dropdown(ele, UI.Utils.options(ele.attr("data-@-dropdown")));
 
-                    if (triggerevent=="click" || (triggerevent=="mouseenter" && dropdown.options.mode=="hover")) {
+                    if (triggerevent == "click" || (triggerevent == "mouseenter" && dropdown.options.mode == "hover")) {
                         dropdown.element.trigger(triggerevent);
                     }
 
-                    if(dropdown.element.find('.@-dropdown').length) {
+                    if (dropdown.element.find('.@-dropdown').length) {
                         e.preventDefault();
                     }
                 }
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.dropdown  = this.find('.@-dropdown');
+            this.dropdown = this.find('.@-dropdown');
 
-            this.centered  = this.dropdown.hasClass('@-dropdown-center');
+            this.centered = this.dropdown.hasClass('@-dropdown-center');
             this.justified = this.options.justify ? UI.$(this.options.justify) : false;
 
-            this.boundary  = UI.$(this.options.boundary);
-            this.flipped   = this.dropdown.hasClass('@-dropdown-flip');
+            this.boundary = UI.$(this.options.boundary);
+            this.flipped = this.dropdown.hasClass('@-dropdown-flip');
 
             if (!this.boundary.length) {
                 this.boundary = UI.$win;
@@ -59,13 +59,13 @@
 
             if (this.options.mode == "click" || UI.support.touch) {
 
-                this.on("click", function(e) {
+                this.on("click", function (e) {
 
                     var $target = UI.$(e.target);
 
                     if (!$target.parents(".@-dropdown").length) {
 
-                        if ($target.is("a[href='#']") || $target.parent().is("a[href='#']") || ($this.dropdown.length && !$this.dropdown.is(":visible")) ){
+                        if ($target.is("a[href='#']") || $target.parent().is("a[href='#']") || ($this.dropdown.length && !$this.dropdown.is(":visible"))) {
                             e.preventDefault();
                         }
 
@@ -86,7 +86,7 @@
 
             } else {
 
-                this.on("mouseenter", function(e) {
+                this.on("mouseenter", function (e) {
 
                     if ($this.remainIdle) {
                         clearTimeout($this.remainIdle);
@@ -98,17 +98,17 @@
 
                     hoverIdle = setTimeout($this.show.bind($this), $this.options.delay);
 
-                }).on("mouseleave", function() {
+                }).on("mouseleave", function () {
 
                     if (hoverIdle) {
                         clearTimeout(hoverIdle);
                     }
 
-                    $this.remainIdle = setTimeout(function() {
+                    $this.remainIdle = setTimeout(function () {
                         $this.hide();
                     }, $this.options.remaintime);
 
-                }).on("click", function(e){
+                }).on("click", function (e) {
 
                     var $target = $(e.target);
 
@@ -116,7 +116,7 @@
                         clearTimeout($this.remainIdle);
                     }
 
-                    if ($target.is("a[href='#']") || $target.parent().is("a[href='#']")){
+                    if ($target.is("a[href='#']") || $target.parent().is("a[href='#']")) {
                         e.preventDefault();
                     }
 
@@ -125,7 +125,7 @@
             }
         },
 
-        show: function(){
+        show: function () {
 
             UI.$html.off("click.outer.dropdown");
 
@@ -147,22 +147,22 @@
             this.registerOuterClick();
         },
 
-        hide: function() {
+        hide: function () {
             this.element.removeClass('@-open');
             this.remainIdle = false;
 
             if (active && active[0] == this.element[0]) active = false;
         },
 
-        registerOuterClick: function(){
+        registerOuterClick: function () {
 
             var $this = this;
 
             UI.$html.off("click.outer.dropdown");
 
-            setTimeout(function() {
+            setTimeout(function () {
 
-                UI.$html.on("click.outer.dropdown", function(e) {
+                UI.$html.on("click.outer.dropdown", function (e) {
 
                     if (hoverIdle) {
                         clearTimeout(hoverIdle);
@@ -178,7 +178,7 @@
             }, 10);
         },
 
-        checkDimensions: function() {
+        checkDimensions: function () {
 
             if (!this.dropdown.length) return;
 
@@ -186,12 +186,12 @@
                 this.dropdown.css("min-width", "");
             }
 
-            var $this     = this,
-                dropdown  = this.dropdown.css("margin-" + UI.langdirection, ""),
-                offset    = dropdown.show().offset(),
-                width     = dropdown.outerWidth(),
-                boundarywidth  = this.boundary.width(),
-                boundaryoffset = this.boundary.offset() ? this.boundary.offset().left:0;
+            var $this = this,
+                dropdown = this.dropdown.css("margin-" + UI.langdirection, ""),
+                offset = dropdown.show().offset(),
+                width = dropdown.outerWidth(),
+                boundarywidth = this.boundary.width(),
+                boundaryoffset = this.boundary.offset() ? this.boundary.offset().left : 0;
 
             // centered dropdown
             if (this.centered) {
@@ -214,8 +214,8 @@
 
                 if (UI.langdirection == 'right') {
 
-                    var right1   = boundarywidth - (this.justified.offset().left + jwidth),
-                        right2   = boundarywidth - (dropdown.offset().left + dropdown.outerWidth());
+                    var right1 = boundarywidth - (this.justified.offset().left + jwidth),
+                        right2 = boundarywidth - (dropdown.offset().left + dropdown.outerWidth());
 
                     dropdown.css("margin-right", right1 - right2);
 
@@ -227,12 +227,12 @@
 
             }
 
-            if ((width + (offset.left-boundaryoffset)) > boundarywidth) {
+            if ((width + (offset.left - boundaryoffset)) > boundarywidth) {
                 dropdown.addClass('@-dropdown-flip');
                 offset = dropdown.offset();
             }
 
-            if ((offset.left-boundaryoffset) < 0) {
+            if ((offset.left - boundaryoffset) < 0) {
 
                 dropdown.addClass("@-dropdown-stack");
 
@@ -244,9 +244,9 @@
                         dropdown.addClass('@-dropdown-flip');
                     }
 
-                    setTimeout(function(){
+                    setTimeout(function () {
 
-                        if ((dropdown.offset().left-boundaryoffset) < 0 || !$this.flipped && (dropdown.outerWidth() + (offset.left-boundaryoffset)) < boundarywidth) {
+                        if ((dropdown.offset().left - boundaryoffset) < 0 || !$this.flipped && (dropdown.outerWidth() + (offset.left - boundaryoffset)) < boundarywidth) {
                             dropdown.removeClass('@-dropdown-flip');
                         }
                     }, 0);

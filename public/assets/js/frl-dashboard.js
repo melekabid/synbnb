@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,11 +14,11 @@ jQuery(function($) {
     /*--------------------------------
         Sparkline Chart
      --------------------------------*/
-    ULTRA_SETTINGS.dbSparklineChart = function() {
+    ULTRA_SETTINGS.dbSparklineChart = function () {
 
         if ($.isFunction($.fn.sparkline)) {
 
-            $('.db_dynamicbar').sparkline([8.4, 9, 8.8, 8, 9.5, 8.8, 8, 9.5, 9.2, 9.9, 9, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9,8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
+            $('.db_dynamicbar').sparkline([8.4, 9, 8.8, 8, 9.5, 8.8, 8, 9.5, 9.2, 9.9, 9, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9, 8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
                 type: 'bar',
                 barColor: '#1fb5ac',
                 height: '140',
@@ -62,18 +62,15 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
 
 
-
-
     /*--------------------------------
         Easy PIE
      --------------------------------*/
-    ULTRA_SETTINGS.dbEasyPieChart = function() {
+    ULTRA_SETTINGS.dbEasyPieChart = function () {
 
         if ($.isFunction($.fn.easyPieChart)) {
 
@@ -85,7 +82,7 @@ jQuery(function($) {
                 lineWidth: 6,
                 size: 120,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
@@ -94,12 +91,10 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
         Morris 
      --------------------------------*/
-    ULTRA_SETTINGS.dbMorrisChart = function() {
+    ULTRA_SETTINGS.dbMorrisChart = function () {
 
 
         /*Area Graph*/
@@ -140,17 +135,16 @@ jQuery(function($) {
             resize: true,
             redraw: true,
             xkey: 'x',
-            ykeys: ['y', 'z','a'],
-            labels: ['Buyers', 'Projects','Sellers'],
-            lineColors: ['#9972b5', '#1fb5ac','#fa8564'],
+            ykeys: ['y', 'z', 'a'],
+            labels: ['Buyers', 'Projects', 'Sellers'],
+            lineColors: ['#9972b5', '#1fb5ac', '#fa8564'],
             pointFillColors: ['#fa8564']
-        }).on('click', function(i, row) {
+        }).on('click', function (i, row) {
             console.log(i, row);
         });
 
 
-
-        $('.r1_maingraph .switch .fa').on('click', function() {
+        $('.r1_maingraph .switch .fa').on('click', function () {
 
             $('.r1_maingraph .switch .fa').removeClass("icon-default").addClass("icon-secondary");
 
@@ -167,21 +161,20 @@ jQuery(function($) {
     };
 
 
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.dbSparklineChart();
         //ULTRA_SETTINGS.dbEasyPieChart();
         ULTRA_SETTINGS.dbMorrisChart();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         ULTRA_SETTINGS.dbSparklineChart();
     });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

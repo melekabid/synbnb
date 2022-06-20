@@ -9,16 +9,16 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Maintenances</h1>                            </div>
+                <h1 class="title">Maintenances</h1></div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                     </li>
 
                     <li>
-                        <a href="{{path('app_maintenacemachine')}}">Maintenances  Machines</a>
+                        <a href="{{ path('app_maintenacemachine') }}">Maintenances Machines</a>
                     </li>
                     <li class="active">
                         <strong>Tous Les Maintenances</strong>
@@ -45,7 +45,8 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
 
                         <!-- ******************************************** -->
-                        <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                        <table id="example" class="display table table-hover table-condensed" cellspacing="0"
+                               width="100%">
 
                             <thead>
                             <tr>
@@ -53,9 +54,10 @@
                                 <th>Société</th>
                                 <th>Machine</th>
                                 <th>Nom De L'interventaire</th>
-                                <th> date </th>
-                                <th> intervention </th>
-                                <th> Action </th> </tr>
+                                <th> date</th>
+                                <th> intervention</th>
+                                <th> Action</th>
+                            </tr>
                             </thead>
 
                             <tbody>
@@ -64,28 +66,26 @@
 
 
                                 <td>
-                                    {{maintenance.idclient.societe}}
+                                    {{ maintenance.idclient.societe }}
                                 </td>
                                 <td>
-                                    {{maintenance.idproduit.reference}}
+                                    {{ maintenance.idproduit.reference }}
                                 </td>
                                 <td>
-                                    {{maintenance.nominterventaire}}
+                                    {{ maintenance.nominterventaire }}
                                 </td>
                                 <td>
-                                    {{maintenance.date|date('d/m/y')}}
+                                    {{ maintenance.date|date('d/m/y') }}
                                 </td>
                                 <td>
-                                    {{maintenance.action}}
+                                    {{ maintenance.action }}
                                 </td>
 
 
                                 <td>
-                                    <a href="{{path('edit_maintenacemachine',{'id': maintenance.id})}}"><i class="fa fa-pencil-square-o"></i></a>
+                                    <a href="{{ path('edit_maintenacemachine',{'id': maintenance.id}) }}"><i
+                                                class="fa fa-pencil-square-o"></i></a>
                                 </td>
-
-
-
 
 
                                 {% endfor %}
@@ -95,12 +95,11 @@
                         <!-- ******************************************** -->
 
 
-
-
                     </div>
                 </div>
             </div>
-        </section></div>
+        </section>
+    </div>
 
 
 

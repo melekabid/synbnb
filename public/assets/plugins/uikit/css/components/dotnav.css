@@ -7,12 +7,13 @@
  * 2. Remove whitespace between child elements when using `inline-block`
  */
 .uk-dotnav {
-  /* 1 */
-  padding: 0;
-  list-style: none;
-  /* 2 */
-  font-size: 0.001px;
+    /* 1 */
+    padding: 0;
+    list-style: none;
+    /* 2 */
+    font-size: 0.001px;
 }
+
 /* Items
  ========================================================================== */
 /*
@@ -20,35 +21,38 @@
  * 2. Remove the gap at the bottom of it container
  */
 .uk-dotnav > li {
-  display: inline-block;
-  /* 1 */
-  font-size: 1rem;
-  /* 2 */
-  vertical-align: top;
+    display: inline-block;
+    /* 1 */
+    font-size: 1rem;
+    /* 2 */
+    vertical-align: top;
 }
+
 .uk-dotnav > li:nth-child(n+2) {
-  margin-left: 15px;
+    margin-left: 15px;
 }
+
 /*
  * Items
  * 1. Remove the gap at the bottom of it container
  * 2. Hide text if present
  */
 .uk-dotnav > li > a {
-  display: inline-block;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-  background: rgba(50, 50, 50, 0.1);
-  /* 1 */
-  vertical-align: top;
-  /* 2 */
-  text-indent: 100%;
-  overflow: hidden;
-  white-space: nowrap;
+    display: inline-block;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(50, 50, 50, 0.1);
+    /* 1 */
+    vertical-align: top;
+    /* 2 */
+    text-indent: 100%;
+    overflow: hidden;
+    white-space: nowrap;
 }
+
 /*
  * Hover
  * 1. Apply hover style also to focus state
@@ -56,45 +60,53 @@
  */
 .uk-dotnav > li > a:hover,
 .uk-dotnav > li > a:focus {
-  background: rgba(50, 50, 50, 0.4);
-  /* 2 */
-  outline: none;
+    background: rgba(50, 50, 50, 0.4);
+    /* 2 */
+    outline: none;
 }
+
 /* OnClick */
 .uk-dotnav > li > a:active {
-  background: rgba(50, 50, 50, 0.6);
+    background: rgba(50, 50, 50, 0.6);
 }
+
 /* Active */
 .uk-dotnav > li.uk-active > a {
-  background: rgba(50, 50, 50, 0.4);
+    background: rgba(50, 50, 50, 0.4);
 }
+
 /* Modifier: `uk-dotnav-contrast`
  ========================================================================== */
 .uk-dotnav-contrast > li > a {
-  background: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.4);
 }
+
 /*
  * Hover
  * 1. Apply hover style also to focus state
  */
 .uk-dotnav-contrast > li > a:hover,
 .uk-dotnav-contrast > li > a:focus {
-  background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.7);
 }
+
 /* OnClick */
 .uk-dotnav-contrast > li > a:active {
-  background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
 }
+
 /* Active */
 .uk-dotnav-contrast > li.uk-active > a {
-  background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.9);
 }
+
 /* Modifier: 'uk-dotnav-vertical'
  ========================================================================== */
 .uk-dotnav-vertical > li {
-  display: block;
+    display: block;
 }
+
 .uk-dotnav-vertical > li:nth-child(n+2) {
-  margin-left: 0;
-  margin-top: 15px;
+    margin-left: 0;
+    margin-top: 15px;
 }

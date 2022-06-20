@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function($, UI) {
+(function ($, UI) {
 
     "use strict";
 
@@ -17,20 +17,20 @@
         scrollable: false,
         transition: false,
 
-        init: function() {
+        init: function () {
 
             if (!body) body = $('body');
 
             var $this = this;
 
             this.transition = UI.support.transition;
-            this.paddingdir = "padding-" + (UI.langdirection == 'left' ? "right":"left");
-            this.dialog     = this.find(".@-modal-dialog");
+            this.paddingdir = "padding-" + (UI.langdirection == 'left' ? "right" : "left");
+            this.dialog = this.find(".@-modal-dialog");
 
-            this.on("click", ".@-modal-close", function(e) {
+            this.on("click", ".@-modal-close", function (e) {
                 e.preventDefault();
                 $this.hide();
-            }).on("click", function(e) {
+            }).on("click", function (e) {
 
                 var target = $(e.target);
 
@@ -40,11 +40,11 @@
             });
         },
 
-        toggle: function() {
+        toggle: function () {
             return this[this.isActive() ? "hide" : "show"]();
         },
 
-        show: function() {
+        show: function () {
 
             var $this = this;
 
@@ -64,7 +64,7 @@
             return this;
         },
 
-        hide: function(force) {
+        hide: function (force) {
 
             if (!this.isActive()) return;
 
@@ -72,7 +72,7 @@
 
                 var $this = this;
 
-                this.one(UI.support.transition.end, function() {
+                this.one(UI.support.transition.end, function () {
                     $this._hide();
                 }).removeClass("@-open");
 
@@ -84,9 +84,9 @@
             return this;
         },
 
-        resize: function() {
+        resize: function () {
 
-            var bodywidth  = body.width();
+            var bodywidth = body.width();
 
             this.scrollbarwidth = window.innerWidth - bodywidth;
 
@@ -96,18 +96,18 @@
 
             if (!this.updateScrollable() && this.options.center) {
 
-                var dh  = this.dialog.outerHeight(),
-                pad = parseInt(this.dialog.css('margin-top'), 10) + parseInt(this.dialog.css('margin-bottom'), 10);
+                var dh = this.dialog.outerHeight(),
+                    pad = parseInt(this.dialog.css('margin-top'), 10) + parseInt(this.dialog.css('margin-bottom'), 10);
 
                 if ((dh + pad) < window.innerHeight) {
-                    this.dialog.css({'top': (window.innerHeight/2 - dh/2) - pad });
+                    this.dialog.css({'top': (window.innerHeight / 2 - dh / 2) - pad});
                 } else {
                     this.dialog.css({'top': ''});
                 }
             }
         },
 
-        updateScrollable: function() {
+        updateScrollable: function () {
 
             // has scrollable?
             var scrollable = this.dialog.find('.@-overflow-container:visible:first');
@@ -117,11 +117,11 @@
                 scrollable.css("height", 0);
 
                 var offset = Math.abs(parseInt(this.dialog.css("margin-top"), 10)),
-                dh     = this.dialog.outerHeight(),
-                wh     = window.innerHeight,
-                h      = wh - 2*(offset < 20 ? 20:offset) - dh;
+                    dh = this.dialog.outerHeight(),
+                    wh = window.innerHeight,
+                    h = wh - 2 * (offset < 20 ? 20 : offset) - dh;
 
-                scrollable.css("height", h < this.options.minScrollHeight ? "":h);
+                scrollable.css("height", h < this.options.minScrollHeight ? "" : h);
 
                 return true;
             }
@@ -129,7 +129,7 @@
             return false;
         },
 
-        _hide: function() {
+        _hide: function () {
 
             this.element.hide().removeClass("@-open");
 
@@ -137,12 +137,12 @@
 
             body.css(this.paddingdir, "");
 
-            if(active===this) active = false;
+            if (active === this) active = false;
 
             this.trigger("hide.uk.modal");
         },
 
-        isActive: function() {
+        isActive: function () {
             return (active == this);
         }
 
@@ -150,10 +150,10 @@
 
     UI.component('modalTrigger', {
 
-        boot: function() {
+        boot: function () {
 
             // init code
-            UI.$html.on("click.modal.uikit", "[data-@-modal]", function(e) {
+            UI.$html.on("click.modal.uikit", "[data-@-modal]", function (e) {
 
                 var ele = UI.$(this);
 
@@ -177,12 +177,12 @@
                 }
             });
 
-            UI.$win.on("resize orientationchange", UI.Utils.debounce(function(){
+            UI.$win.on("resize orientationchange", UI.Utils.debounce(function () {
                 if (active) active.resize();
             }, 150));
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
@@ -192,7 +192,7 @@
 
             this.modal = UI.modal(this.options.target, this.options);
 
-            this.on("click", function(e) {
+            this.on("click", function (e) {
                 e.preventDefault();
                 $this.show();
             });
@@ -202,11 +202,11 @@
         }
     });
 
-    UI.modal.dialog = function(content, options) {
+    UI.modal.dialog = function (content, options) {
 
         var modal = UI.modal(UI.$(UI.modal.dialog.template).appendTo("body"), options);
 
-        modal.on("hide.uk.modal", function(){
+        modal.on("hide.uk.modal", function () {
             if (modal.persist) {
                 modal.persist.appendTo(modal.persist.data("modalPersistParent"));
                 modal.persist = false;
@@ -221,24 +221,28 @@
 
     UI.modal.dialog.template = '<div class="@-modal"><div class="@-modal-dialog"></div></div>';
 
-    UI.modal.alert = function(content, options) {
+    UI.modal.alert = function (content, options) {
 
         UI.modal.dialog(([
-            '<div class="@-margin @-modal-content">'+String(content)+'</div>',
+            '<div class="@-margin @-modal-content">' + String(content) + '</div>',
             '<div class="@-modal-buttons"><button class="@-button @-button-primary @-modal-close">Ok</button></div>'
-        ]).join("").replace(/@-/g, UI._prefix+'-').replace(/@-/g, UI._prefix+'-'), $.extend({bgclose:false, keyboard:false}, options)).show();
+        ]).join("").replace(/@-/g, UI._prefix + '-').replace(/@-/g, UI._prefix + '-'), $.extend({
+            bgclose: false,
+            keyboard: false
+        }, options)).show();
     };
 
-    UI.modal.confirm = function(content, onconfirm, options) {
+    UI.modal.confirm = function (content, onconfirm, options) {
 
-        onconfirm = $.isFunction(onconfirm) ? onconfirm : function(){};
+        onconfirm = $.isFunction(onconfirm) ? onconfirm : function () {
+        };
 
         var modal = UI.modal.dialog(([
-            '<div class="@-margin @-modal-content">'+String(content)+'</div>',
+            '<div class="@-margin @-modal-content">' + String(content) + '</div>',
             '<div class="@-modal-buttons"><button class="@-button @-button-primary js-modal-confirm">Ok</button> <button class="@-button @-modal-close">Cancel</button></div>'
-        ]).join("").replace(/@-/g, UI._prefix+'-'), $.extend({bgclose:false, keyboard:false}, options));
+        ]).join("").replace(/@-/g, UI._prefix + '-'), $.extend({bgclose: false, keyboard: false}, options));
 
-        modal.element.find(".js-modal-confirm").on("click", function(){
+        modal.element.find(".js-modal-confirm").on("click", function () {
             onconfirm();
             modal.hide();
         });
@@ -248,25 +252,25 @@
 
 
     // helper functions
-    function setContent(content, modal){
+    function setContent(content, modal) {
 
-        if(!modal) return;
+        if (!modal) return;
 
         if (typeof content === 'object') {
 
             // convert DOM object to a jQuery object
             content = content instanceof jQuery ? content : UI.$(content);
 
-            if(content.parent().length) {
+            if (content.parent().length) {
                 modal.persist = content;
                 modal.persist.data("modalPersistParent", content.parent());
             }
-        }else if (typeof content === 'string' || typeof content === 'number') {
-                // just insert the data as innerHTML
-                content = $('<div></div>').html(content);
-        }else {
-                // unsupported data type!
-                content = $('<div></div>').html('UIkit.modal Error: Unsupported data type: ' + typeof content);
+        } else if (typeof content === 'string' || typeof content === 'number') {
+            // just insert the data as innerHTML
+            content = $('<div></div>').html(content);
+        } else {
+            // unsupported data type!
+            content = $('<div></div>').html('UIkit.modal Error: Unsupported data type: ' + typeof content);
         }
 
         content.appendTo(modal.element.find('.@-modal-dialog'));

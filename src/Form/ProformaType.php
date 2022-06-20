@@ -18,20 +18,20 @@ class ProformaType extends AbstractType
     {
         $builder
             ->add('idclient')
-            ->add('products',EntityType::class, [
+            ->add('products', EntityType::class, [
                 'class' => Produit::class,
                 'multiple' => true,
                 'choice_label' => 'reference',
-                'query_builder' => function(EntityRepository $er){
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('t')
-                        ->orderBy('t.reference','ASC');
+                        ->orderBy('t.reference', 'ASC');
                 },
                 'by_reference' => false,
                 'attr' => [
-                    'class' =>'select-tags'
+                    'class' => 'select-tags'
                 ]
             ])
-            ->add('choix',ChoiceType::class, [
+            ->add('choix', ChoiceType::class, [
                 'choices' => [
                     'prix HT TND' => '1',
                     'prix TTC TND' => '2',
@@ -45,8 +45,8 @@ class ProformaType extends AbstractType
             ->add('modalite')
             ->add('validite')
             ->add('titre')
-            ->add('Enregistrer',SubmitType::class) ;
-        
+            ->add('Enregistrer', SubmitType::class);
+
     }
 
     public function configureOptions(OptionsResolver $resolver): void

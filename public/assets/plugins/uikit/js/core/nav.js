@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function($, UI) {
+(function ($, UI) {
 
     "use strict";
 
@@ -11,12 +11,12 @@
             "multiple": false
         },
 
-        boot: function() {
+        boot: function () {
 
             // init code
-            UI.ready(function(context) {
+            UI.ready(function (context) {
 
-                UI.$("[data-@-nav]", context).each(function() {
+                UI.$("[data-@-nav]", context).each(function () {
                     var nav = UI.$(this);
 
                     if (!nav.data("nav")) {
@@ -26,18 +26,18 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.on("click", this.options.toggle, function(e) {
+            this.on("click", this.options.toggle, function (e) {
                 e.preventDefault();
                 var ele = UI.$(this);
                 $this.open(ele.parent()[0] == $this.element[0] ? ele : ele.parent("li"));
             });
 
-            this.find(this.options.lists).each(function() {
-                var $ele   = UI.$(this),
+            this.find(this.options.lists).each(function () {
+                var $ele = UI.$(this),
                     parent = $ele.parent(),
                     active = parent.hasClass("@-active");
 
@@ -49,18 +49,18 @@
 
         },
 
-        open: function(li, noanimation) {
+        open: function (li, noanimation) {
 
             var $this = this, element = this.element, $li = UI.$(li);
 
             if (!this.options.multiple) {
 
-                element.children(".@-open").not(li).each(function() {
+                element.children(".@-open").not(li).each(function () {
 
                     var ele = UI.$(this);
 
                     if (ele.data("list-container")) {
-                        ele.data("list-container").stop().animate({height: 0}, function() {
+                        ele.data("list-container").stop().animate({height: 0}, function () {
                             UI.$(this).parent().removeClass("@-open");
                         });
                     }
@@ -77,7 +77,7 @@
                 } else {
                     $li.data('list-container').stop().animate({
                         height: ($li.hasClass("@-open") ? getHeight($li.data('list-container').find('ul:first')) : 0)
-                    }, function() {
+                    }, function () {
                         $this.trigger("display.uk.check");
                     });
                 }

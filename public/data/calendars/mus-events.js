@@ -1,5 +1,4 @@
-
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -9,7 +8,7 @@ jQuery(function($) {
     /*--------------------------------
          Full Calendar
      --------------------------------*/
-    ULTRA_SETTINGS.dataCalendar = function() {
+    ULTRA_SETTINGS.dataCalendar = function () {
 
 
         if ($.isFunction($.fn.fullCalendar)) {
@@ -17,7 +16,7 @@ jQuery(function($) {
             /* initialize the external events
                  -----------------------------------------------------------------*/
 
-            $('#external-events .fc-event').each(function() {
+            $('#external-events .fc-event').each(function () {
 
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
@@ -55,7 +54,7 @@ jQuery(function($) {
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 droppable: true, // this allows things to be dropped onto the calendar !!!
-                drop: function(date, allDay) { // this function is called when something is dropped
+                drop: function (date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -113,13 +112,10 @@ jQuery(function($) {
             });
 
 
-
-
-
             /*Add new event*/
             // Form to add new event
 
-            $("#add_event_form").on('submit', function(ev) {
+            $("#add_event_form").on('submit', function (ev) {
                 ev.preventDefault();
 
                 var $event = $(this).find('.new-event-form'),
@@ -156,23 +152,22 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
 
 
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.dataCalendar();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
     });
 
-    $(window).load(function() {
+    $(window).load(function () {
     });
 
 });

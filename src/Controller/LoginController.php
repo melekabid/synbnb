@@ -19,17 +19,17 @@ class LoginController extends AbstractController
         $form = $this->createForm(UserType::class);
         $form->handleRequest($request);
 
-        if($form->isSubmitted() && $form->isValid()) {
-            $username= $form->get('username')->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $username = $form->get('username')->getData();
             $password = $form->get('password')->getData();
-           if($username =='ste.sacoges@gmail.com' && $password=='Sacoges123') {
-               return $this->redirectToRoute('app_index');
-           }
+            if ($username == 'ste.sacoges@gmail.com' && $password == 'Sacoges123') {
+                return $this->redirectToRoute('app_index');
+            }
 
 
         }
         return $this->render('login/index.html.twig', [
-            'controller_name' => 'LoginController','formuser' => $form->createView()
+            'controller_name' => 'LoginController', 'formuser' => $form->createView()
         ]);
     }
 }

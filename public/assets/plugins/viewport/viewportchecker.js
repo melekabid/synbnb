@@ -15,16 +15,17 @@
     copies or substantial portions of the Software.
 */
 
-(function($){
-    $.fn.viewportChecker = function(useroptions){
+(function ($) {
+    $.fn.viewportChecker = function (useroptions) {
         // Define options and extend with user
         var options = {
             classToAdd: 'visible',
-            classToRemove : 'invisible',
+            classToRemove: 'invisible',
             offset: 100,
             repeat: false,
             invertBottomOffset: true,
-            callbackFunction: function(elem, action){},
+            callbackFunction: function (elem, action) {
+            },
             scrollHorizontal: false
         };
         $.extend(options, useroptions);
@@ -37,21 +38,20 @@
         /*
          * Main method that checks the elements and adds or removes the class(es)
          */
-        this.checkElements = function(){
+        this.checkElements = function () {
             var viewportStart, viewportEnd;
 
             // Set some vars to check with
-            if(!options.scrollHorizontal){
+            if (!options.scrollHorizontal) {
                 viewportStart = $(scrollElem).scrollTop();
                 viewportEnd = (viewportStart + windowSize.height);
-            }
-            else{
+            } else {
                 viewportStart = $(scrollElem).scrollLeft();
                 viewportEnd = (viewportStart + windowSize.width);
             }
 
             // Loop through all given dom elements
-            $elem.each(function(){
+            $elem.each(function () {
                 var $obj = $(this),
                     objOptions = {},
                     attrOptions = {};
@@ -75,23 +75,23 @@
                 $.extend(objOptions, attrOptions);
 
                 // If class already exists; quit
-                if ($obj.hasClass(objOptions.classToAdd) && !objOptions.repeat){
+                if ($obj.hasClass(objOptions.classToAdd) && !objOptions.repeat) {
                     return;
                 }
 
                 // Check if the offset is percentage based
-                if(String(objOptions.offset).indexOf("%") > 0)
+                if (String(objOptions.offset).indexOf("%") > 0)
                     objOptions.offset = (parseInt(objOptions.offset) / 100) * windowSize.height;
 
                 // define the top position of the element and include the offset which makes is appear earlier or later
-                var elemStart = (!objOptions.scrollHorizontal) ? Math.round( $obj.offset().top ) + objOptions.offset : Math.round( $obj.offset().left ) + objOptions.offset,
+                var elemStart = (!objOptions.scrollHorizontal) ? Math.round($obj.offset().top) + objOptions.offset : Math.round($obj.offset().left) + objOptions.offset,
                     elemEnd = (!objOptions.scrollHorizontal) ? elemStart + $obj.height() : elemStart + $obj.width();
 
-                if(objOptions.invertBottomOffset)
-                	elemEnd -= (objOptions.offset * 2);
+                if (objOptions.invertBottomOffset)
+                    elemEnd -= (objOptions.offset * 2);
 
                 // Add class if in viewport
-                if ((elemStart < viewportEnd) && (elemEnd > viewportStart)){
+                if ((elemStart < viewportEnd) && (elemEnd > viewportStart)) {
 
                     // remove class
                     $obj.removeClass(objOptions.classToRemove);
@@ -101,8 +101,8 @@
                     // Do the callback function. Callback wil send the jQuery object as parameter
                     objOptions.callbackFunction($obj, "add");
 
-                // Remove class if not in viewport and repeat is true
-                } else if ($obj.hasClass(objOptions.classToAdd) && (objOptions.repeat)){
+                    // Remove class if not in viewport and repeat is true
+                } else if ($obj.hasClass(objOptions.classToAdd) && (objOptions.repeat)) {
                     $obj.removeClass(objOptions.classToAdd);
 
                     // Do the callback function.
@@ -113,11 +113,10 @@
         };
 
         // Select the correct events
-        if( !!('ontouchstart' in window) ){
+        if (!!('ontouchstart' in window)) {
             // Touchscreen
             $(document).bind("touchmove MSPointerMove pointermove", this.checkElements);
-        }
-        else{
+        } else {
             // No touchscreen
             $(window).bind("scroll", this.checkElements);
         }
@@ -126,7 +125,7 @@
         $(window).bind("load", this.checkElements);
 
         // On resize change the height var
-        $(window).resize(function(e){
+        $(window).resize(function (e) {
             windowSize = {height: $(window).height(), width: $(window).width()};
             $elem.checkElements();
         });

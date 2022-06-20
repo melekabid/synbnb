@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,7 +14,7 @@ jQuery(function($) {
     /*--------------------------------
         Morris Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartMorris = function() {
+    ULTRA_SETTINGS.chartMorris = function () {
 
 
         /*Area Graph*/
@@ -53,7 +53,7 @@ jQuery(function($) {
             labels: ['Y', 'Z'],
             lineColors: ['#9972b5', '#1fb5ac'],
             pointFillColors: ['#fa8564']
-        }).on('click', function(i, row) {
+        }).on('click', function (i, row) {
             console.log(i, row);
         });
 
@@ -88,10 +88,9 @@ jQuery(function($) {
             ykeys: ['y', 'z', 'a'],
             labels: ['Y', 'Z', 'A'],
             barColors: ['#9972b5', '#1fb5ac', '#fa8564']
-        }).on('click', function(i, row) {
+        }).on('click', function (i, row) {
             console.log(i, row);
         });
-
 
 
         /*Line Graph*/
@@ -150,7 +149,6 @@ jQuery(function($) {
         });
 
 
-
         /*Donut Graph*/
         Morris.Donut({
             element: 'morris_donut_graph',
@@ -177,11 +175,10 @@ jQuery(function($) {
                 '#1fb5ac',
                 '#ffcc00'
             ],
-            formatter: function(x) {
+            formatter: function (x) {
                 return x + "%"
             }
         });
-
 
 
         /*Negative Line Graph*/
@@ -330,13 +327,12 @@ jQuery(function($) {
             labels: ['Licensed', 'SORN', 'Other'],
             lineColors: ['#9972b5', '#1fb5ac'],
             /* custom label formatting with `xLabelFormat` */
-            xLabelFormat: function(d) {
+            xLabelFormat: function (d) {
                 return (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear();
             },
             /* setting `xLabels` is recommended when using xLabelFormat */
             xLabels: 'day'
         });
-
 
 
         /* Stacked Bar Graph*/
@@ -376,19 +372,17 @@ jQuery(function($) {
     };
 
 
-
-
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.chartMorris();
     });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

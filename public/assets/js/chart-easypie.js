@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,9 +14,7 @@ jQuery(function($) {
     /*--------------------------------
         Easypie Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartEasypie = function() {
-
-
+    ULTRA_SETTINGS.chartEasypie = function () {
 
 
         if ($.isFunction($.fn.easyPieChart)) {
@@ -30,7 +28,7 @@ jQuery(function($) {
                 lineWidth: 10,
                 size: 200,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
@@ -44,11 +42,10 @@ jQuery(function($) {
                 lineWidth: 20,
                 size: 200,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
-
 
 
             $('.easypiechart3').easyPieChart({
@@ -60,7 +57,7 @@ jQuery(function($) {
                 lineWidth: 30,
                 size: 200,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
@@ -75,30 +72,27 @@ jQuery(function($) {
                 lineWidth: 40,
                 size: 200,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
         }
 
 
-
     };
 
 
-
-
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.chartEasypie();
     });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

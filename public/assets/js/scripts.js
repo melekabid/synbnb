@@ -5,20 +5,17 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
     var ULTRA_SETTINGS = window.ULTRA_SETTINGS || {};
 
 
-
-
-
     /*--------------------------------
          Window Based Layout
      --------------------------------*/
-    ULTRA_SETTINGS.windowBasedLayout = function() {
+    ULTRA_SETTINGS.windowBasedLayout = function () {
         var width = window.innerWidth;
         //console.log(width);
 
@@ -52,22 +49,22 @@ jQuery(function($) {
     /*--------------------------------
          Window Based Layout
      --------------------------------*/
-    ULTRA_SETTINGS.onLoadTopBar = function() {
-        
-            $(".page-topbar .message-toggle-wrapper").addClass("showopacity");
-            $(".page-topbar .notify-toggle-wrapper").addClass("showopacity");
-            $(".page-topbar .searchform").addClass("showopacity");
-            $(".page-topbar li.profile").addClass("showopacity");
+    ULTRA_SETTINGS.onLoadTopBar = function () {
+
+        $(".page-topbar .message-toggle-wrapper").addClass("showopacity");
+        $(".page-topbar .notify-toggle-wrapper").addClass("showopacity");
+        $(".page-topbar .searchform").addClass("showopacity");
+        $(".page-topbar li.profile").addClass("showopacity");
     }
 
 
     /*--------------------------------
          CHAT API
      --------------------------------*/
-    ULTRA_SETTINGS.chatAPI = function() {
+    ULTRA_SETTINGS.chatAPI = function () {
 
 
-        $('.page-topbar .toggle_chat').on('click', function() {
+        $('.page-topbar .toggle_chat').on('click', function () {
             var chatarea = $(".page-chatapi");
             var chatwindow = $(".chatapi-windows");
             var topbar = $(".page-topbar");
@@ -92,7 +89,7 @@ jQuery(function($) {
             }
         });
 
-        $('.page-topbar .sidebar_toggle').on('click', function() {
+        $('.page-topbar .sidebar_toggle').on('click', function () {
             var chatarea = $(".page-chatapi");
             var chatwindow = $(".chatapi-windows");
             var topbar = $(".page-topbar");
@@ -120,7 +117,7 @@ jQuery(function($) {
     /*--------------------------------
          CHAT API Scroll
      --------------------------------*/
-    ULTRA_SETTINGS.chatApiScroll = function() {
+    ULTRA_SETTINGS.chatApiScroll = function () {
 
         var topsearch = $(".page-chatapi .search-bar").height();
         var height = window.innerHeight - topsearch;
@@ -133,11 +130,11 @@ jQuery(function($) {
     /*--------------------------------
          CHAT API window
      --------------------------------*/
-    ULTRA_SETTINGS.chatApiWindow = function() {
+    ULTRA_SETTINGS.chatApiWindow = function () {
 
         var chatarea = $(".page-chatapi");
 
-        $('.page-chatapi .user-row').on('click', function() {
+        $('.page-chatapi .user-row').on('click', function () {
 
             var name = $(this).find(".user-info h4 a").html();
             var img = $(this).find(".user-img a img").attr("src");
@@ -170,13 +167,13 @@ jQuery(function($) {
 
         });
 
-        $(document).on('click', ".chatapi-windows .user-window .controlbar .closeit", function(e) {
+        $(document).on('click', ".chatapi-windows .user-window .controlbar .closeit", function (e) {
             var id = $(this).attr("data-user-id");
             $(".chatapi-windows #user-window" + id).hide();
             $(".page-chatapi .user-row#chat_user_" + id).removeClass("active");
         });
 
-        $(document).on('click', ".chatapi-windows .user-window .controlbar img, .chatapi-windows .user-window .controlbar .minimizeit", function(e) {
+        $(document).on('click', ".chatapi-windows .user-window .controlbar img, .chatapi-windows .user-window .controlbar .minimizeit", function (e) {
             var id = $(this).attr("data-user-id");
 
             if (!$(".chatapi-windows #user-window" + id).hasClass("minimizeit")) {
@@ -188,7 +185,7 @@ jQuery(function($) {
 
         });
 
-        $(document).on('keypress', ".chatapi-windows .user-window .typearea input", function(e) {
+        $(document).on('keypress', ".chatapi-windows .user-window .typearea input", function (e) {
             if (e.keyCode == 13) {
                 var id = $(this).attr("data-user-id");
                 var msg = $(this).val();
@@ -215,7 +212,7 @@ jQuery(function($) {
     /*--------------------------------
          Login Page
      --------------------------------*/
-    ULTRA_SETTINGS.loginPage = function() {
+    ULTRA_SETTINGS.loginPage = function () {
 
         var height = window.innerHeight;
         var formheight = $("#login").height();
@@ -231,11 +228,10 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
          Search Page
      --------------------------------*/
-    ULTRA_SETTINGS.searchPage = function() {
+    ULTRA_SETTINGS.searchPage = function () {
 
         $('.search_data .tab-pane').perfectScrollbar({
             suppressScrollX: true
@@ -250,12 +246,12 @@ jQuery(function($) {
     /*--------------------------------
         Viewport Checker
      --------------------------------*/
-    ULTRA_SETTINGS.viewportElement = function() {
+    ULTRA_SETTINGS.viewportElement = function () {
 
         if ($.isFunction($.fn.viewportChecker)) {
 
             $('.inviewport').viewportChecker({
-                callbackFunction: function(elem, action) {
+                callbackFunction: function (elem, action) {
                     //setTimeout(function(){
                     //elem.html((action == "add") ? 'Callback with 500ms timeout: added class' : 'Callback with 500ms timeout: removed class');
                     //},500);
@@ -266,7 +262,7 @@ jQuery(function($) {
             $('.number_counter').viewportChecker({
                 classToAdd: 'start_timer',
                 offset: 10,
-                callbackFunction: function(elem) {
+                callbackFunction: function (elem) {
                     $('.start_timer:not(.counted)').each(count);
                     //$(elem).removeClass('number_counter');
                 }
@@ -283,11 +279,10 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
         Sortable / Draggable Panels
      --------------------------------*/
-    ULTRA_SETTINGS.draggablePanels = function() {
+    ULTRA_SETTINGS.draggablePanels = function () {
 
         if ($.isFunction($.fn.sortable)) {
             $(".sort_panel").sortable({
@@ -300,31 +295,27 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
          Breadcrumb autoHidden
      --------------------------------*/
-    ULTRA_SETTINGS.breadcrumbAutoHidden = function() {
+    ULTRA_SETTINGS.breadcrumbAutoHidden = function () {
 
-        $('.breadcrumb.auto-hidden a').on('mouseover', function() {
+        $('.breadcrumb.auto-hidden a').on('mouseover', function () {
             $(this).removeClass("collapsed");
         });
-        $('.breadcrumb.auto-hidden a').on('mouseout', function() {
+        $('.breadcrumb.auto-hidden a').on('mouseout', function () {
             $(this).addClass("collapsed");
         });
 
     };
 
 
-
-
-
     /*--------------------------------
          Section Box Actions
      --------------------------------*/
-    ULTRA_SETTINGS.sectionBoxActions = function() {
+    ULTRA_SETTINGS.sectionBoxActions = function () {
 
-        $('section.box .actions .box_toggle').on('click', function() {
+        $('section.box .actions .box_toggle').on('click', function () {
 
             var content = $(this).parent().parent().parent().find(".content-body");
             if (content.hasClass("collapsed")) {
@@ -337,23 +328,18 @@ jQuery(function($) {
 
         });
 
-        $('section.box .actions .box_close').on('click', function() {
+        $('section.box .actions .box_close').on('click', function () {
             content = $(this).parent().parent().parent().remove();
         });
-
 
 
     };
 
 
-
-
-
-
     /*--------------------------------
          Main Menu Scroll
      --------------------------------*/
-    ULTRA_SETTINGS.mainmenuScroll = function() {
+    ULTRA_SETTINGS.mainmenuScroll = function () {
 
         //console.log("expand scroll menu");
 
@@ -379,7 +365,7 @@ jQuery(function($) {
     /*--------------------------------
          Collapsed Main Menu
      --------------------------------*/
-    ULTRA_SETTINGS.mainmenuCollapsed = function() {
+    ULTRA_SETTINGS.mainmenuCollapsed = function () {
 
         if ($(".page-sidebar.chat_shift #main-menu-wrapper").length > 0 || $(".page-sidebar.collapseit #main-menu-wrapper").length > 0) {
             //console.log("collapse menu");
@@ -406,13 +392,11 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
          Main Menu
      --------------------------------*/
-    ULTRA_SETTINGS.mainMenu = function() {
-        $('#main-menu-wrapper li a').click(function(e) {
+    ULTRA_SETTINGS.mainMenu = function () {
+        $('#main-menu-wrapper li a').click(function (e) {
 
             if ($(this).next().hasClass('sub-menu') === false) {
                 return;
@@ -436,31 +420,30 @@ jQuery(function($) {
 
         });
 
-        $("body").click(function(e) {
-            $(".page-sidebar.collapseit .wraplist li.open .sub-menu").attr("style","");
+        $("body").click(function (e) {
+            $(".page-sidebar.collapseit .wraplist li.open .sub-menu").attr("style", "");
             $(".page-sidebar.collapseit .wraplist li.open").removeClass("open");
-            $(".page-sidebar.chat_shift .wraplist li.open .sub-menu").attr("style","");
+            $(".page-sidebar.chat_shift .wraplist li.open .sub-menu").attr("style", "");
             $(".page-sidebar.chat_shift .wraplist li.open").removeClass("open");
         });
 
     };
 
 
-
     /*--------------------------------
          Mailbox
      --------------------------------*/
-    ULTRA_SETTINGS.mailboxInbox = function() {
+    ULTRA_SETTINGS.mailboxInbox = function () {
 
-        $('.mail_list table .star i').click(function(e) {
+        $('.mail_list table .star i').click(function (e) {
             $(this).toggleClass("fa-star fa-star-o");
         });
 
-        $('.mail_list .open-view').click(function(e) {
+        $('.mail_list .open-view').click(function (e) {
             window.location = 'mail-view.html';
         });
 
-        $('.mail_view_info .labels .cc').click(function(e) {
+        $('.mail_view_info .labels .cc').click(function (e) {
             var ele = $(".mail_compose_cc");
             if (ele.is(":visible")) {
                 ele.hide();
@@ -469,7 +452,7 @@ jQuery(function($) {
             }
         });
 
-        $('.mail_view_info .labels .bcc').click(function(e) {
+        $('.mail_view_info .labels .bcc').click(function (e) {
             var ele = $(".mail_compose_bcc");
             if (ele.is(":visible")) {
                 ele.hide();
@@ -481,13 +464,11 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
          Top Bar
      --------------------------------*/
-    ULTRA_SETTINGS.pageTopBar = function() {
-        $('.page-topbar li.searchform .input-group-addon').click(function(e) {
+    ULTRA_SETTINGS.pageTopBar = function () {
+        $('.page-topbar li.searchform .input-group-addon').click(function (e) {
             $(this).parent().parent().toggleClass("focus");
             $(this).parent().find("input").focus();
         });
@@ -502,15 +483,15 @@ jQuery(function($) {
     /*--------------------------------
          Extra form settings
      --------------------------------*/
-    ULTRA_SETTINGS.extraFormSettings = function() {
+    ULTRA_SETTINGS.extraFormSettings = function () {
 
         // transparent input group focus/blur
-        $('.input-group .form-control').focus(function(e) {
+        $('.input-group .form-control').focus(function (e) {
             $(this).parent().find(".input-group-addon").addClass("input-focus");
             $(this).parent().find(".input-group-btn").addClass("input-focus");
         });
 
-        $('.input-group .form-control').blur(function(e) {
+        $('.input-group .form-control').blur(function (e) {
             $(this).parent().find(".input-group-addon").removeClass("input-focus");
             $(this).parent().find(".input-group-btn").removeClass("input-focus");
         });
@@ -518,21 +499,20 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
          js tree
      --------------------------------*/
-    ULTRA_SETTINGS.jsTreeINIT = function() {
+    ULTRA_SETTINGS.jsTreeINIT = function () {
 
 
         if ($.isFunction($.fn.jstree)) {
-            $(function() {
+            $(function () {
                 var to = false;
-                $('#treedata_q').keyup(function() {
+                $('#treedata_q').keyup(function () {
                     if (to) {
                         clearTimeout(to);
                     }
-                    to = setTimeout(function() {
+                    to = setTimeout(function () {
                         var v = $('#treedata_q').val();
                         $('#jstree_treedata').jstree(true).search(v);
                     }, 250);
@@ -547,10 +527,10 @@ jQuery(function($) {
                                 "stripes": true
                             },
                             'data': {
-                                'url': function(node) {
+                                'url': function (node) {
                                     return node.id === '#' ? 'data/ajax_demo_roots_jstree.json' : 'data/ajax_demo_children_jstree.json';
                                 },
-                                'data': function(node) {
+                                'data': function (node) {
                                     return {
                                         'id': node.id
                                     };
@@ -586,17 +566,16 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
          Vector maps
      --------------------------------*/
-    ULTRA_SETTINGS.jvectorMaps = function() {
+    ULTRA_SETTINGS.jvectorMaps = function () {
 
         if ($.isFunction($.fn.vectorMap)) {
 
             if ($("#world-map-markers").length) {
                 //@code_start
-                $(function() {
+                $(function () {
                     $('#world-map-markers').vectorMap({
                         map: 'world_mill_en',
                         scaleColors: ['#1fb5ac', '#1fb5ac'],
@@ -607,16 +586,16 @@ jQuery(function($) {
                         markersSelectable: true,
                         markersSelectableOne: true,
 
-                        onRegionOver: function(event, code) {
+                        onRegionOver: function (event, code) {
                             //console.log('region-over', code);
                         },
-                        onRegionOut: function(event, code) {
+                        onRegionOut: function (event, code) {
                             //console.log('region-out', code);
                         },
-                        onRegionClick: function(event, code) {
+                        onRegionClick: function (event, code) {
                             //console.log('region-click', code);
                         },
-                        onRegionSelected: function(event, code, isSelected, selectedRegions) {
+                        onRegionSelected: function (event, code, isSelected, selectedRegions) {
                             //console.log('region-select', code, isSelected, selectedRegions);
                             if (window.localStorage) {
                                 window.localStorage.setItem(
@@ -654,7 +633,6 @@ jQuery(function($) {
                             },
                             selectedHover: {}
                         },
-
 
 
                         markerStyle: {
@@ -1553,7 +1531,7 @@ jQuery(function($) {
     /*--------------------------------
          DataTables
      --------------------------------*/
-    ULTRA_SETTINGS.dataTablesInit = function() {
+    ULTRA_SETTINGS.dataTablesInit = function () {
 
         if ($.isFunction($.fn.dataTable)) {
 
@@ -1576,7 +1554,6 @@ jQuery(function($) {
             /*--- end ---*/
 
 
-
             /* Set the defaults for DataTables initialisation */
             $.extend(true, $.fn.dataTable.defaults, {
                 "sDom": "<'row'<'col-md-6'l><'col-md-6'f>r>t<'row'<'col-md-12'p i>>",
@@ -1594,7 +1571,7 @@ jQuery(function($) {
 
 
             /* API method to get paging information */
-            $.fn.dataTableExt.oApi.fnPagingInfo = function(oSettings) {
+            $.fn.dataTableExt.oApi.fnPagingInfo = function (oSettings) {
                 return {
                     "iStart": oSettings._iDisplayStart,
                     "iEnd": oSettings.fnDisplayEnd(),
@@ -1612,9 +1589,9 @@ jQuery(function($) {
             /* Bootstrap style pagination control */
             $.extend($.fn.dataTableExt.oPagination, {
                 "bootstrap": {
-                    "fnInit": function(oSettings, nPaging, fnDraw) {
+                    "fnInit": function (oSettings, nPaging, fnDraw) {
                         var oLang = oSettings.oLanguage.oPaginate;
-                        var fnClickHandler = function(e) {
+                        var fnClickHandler = function (e) {
                             e.preventDefault();
                             if (oSettings.oApi._fnPageChange(oSettings, e.data.action)) {
                                 fnDraw(oSettings);
@@ -1636,7 +1613,7 @@ jQuery(function($) {
                         }, fnClickHandler);
                     },
 
-                    "fnUpdate": function(oSettings, fnDraw) {
+                    "fnUpdate": function (oSettings, fnDraw) {
                         var iListLength = 5;
                         var oPaging = oSettings.oInstance.fnPagingInfo();
                         var an = oSettings.aanFeatures.p;
@@ -1665,7 +1642,7 @@ jQuery(function($) {
                                 sClass = (j == oPaging.iPage + 1) ? 'class="active"' : '';
                                 $('<li ' + sClass + '><a href="#">' + j + '</a></li>')
                                     .insertBefore($('li:last', an[i])[0])
-                                    .bind('click', function(e) {
+                                    .bind('click', function (e) {
                                         e.preventDefault();
                                         oSettings._iDisplayStart = (parseInt($('a', this).text(), 10) - 1) * oPaging.iLength;
                                         fnDraw(oSettings);
@@ -1728,7 +1705,7 @@ jQuery(function($) {
 
 
             /* Table initialisation */
-            $(document).ready(function() {
+            $(document).ready(function () {
                 var responsiveHelper = undefined;
                 var breakpointDefinition = {
                     tablet: 1024,
@@ -1758,16 +1735,16 @@ jQuery(function($) {
                         "sInfo": "Showing _START_ to _END_ of _TOTAL_ entries"
                     },
                     bAutoWidth: false,
-                    fnPreDrawCallback: function() {
+                    fnPreDrawCallback: function () {
                         // Initialize the responsive datatables helper once.
                         if (!responsiveHelper) {
                             //responsiveHelper = new ResponsiveDatatablesHelper(tableElement, breakpointDefinition);
                         }
                     },
-                    fnRowCallback: function(nRow) {
+                    fnRowCallback: function (nRow) {
                         //responsiveHelper.createExpandIcon(nRow);
                     },
-                    fnDrawCallback: function(oSettings) {
+                    fnDrawCallback: function (oSettings) {
                         //responsiveHelper.respond();
                     }
                 });
@@ -1776,8 +1753,7 @@ jQuery(function($) {
                 $('#example_wrapper .dataTables_length select').addClass("select2-wrapper col-md-12"); // modify table per page dropdown
 
 
-
-                $('#example input').click(function() {
+                $('#example input').click(function () {
                     $(this).parent().parent().parent().toggleClass('row_selected');
                 });
 
@@ -1790,11 +1766,11 @@ jQuery(function($) {
                 nCloneTd.innerHTML = '<i class="fa fa-plus-circle"></i>';
                 nCloneTd.className = "center";
 
-                $('#example2 thead tr').each(function() {
+                $('#example2 thead tr').each(function () {
                     this.insertBefore(nCloneTh, this.childNodes[0]);
                 });
 
-                $('#example2 tbody tr').each(function() {
+                $('#example2 tbody tr').each(function () {
                     this.insertBefore(nCloneTd.cloneNode(true), this.childNodes[0]);
                 });
 
@@ -1821,7 +1797,7 @@ jQuery(function($) {
                  * Note that the indicator for showing which row is open is not controlled by DataTables,
                  * rather it is done here
                  */
-                $('#example2 tbody td i').on('click', function() {
+                $('#example2 tbody td i').on('click', function () {
                     var nTr = $(this).parents('tr')[0];
                     if (oTable.fnIsOpen(nTr)) {
                         /* This row is already open - close it */
@@ -1853,18 +1829,14 @@ jQuery(function($) {
             });
 
 
-
-
-
         }
     };
-
 
 
     /*--------------------------------
          Pretty Photo
      --------------------------------*/
-    ULTRA_SETTINGS.loadPrettyPhoto = function() {
+    ULTRA_SETTINGS.loadPrettyPhoto = function () {
 
         if ($.isFunction($.fn.prettyPhoto)) {
             //Pretty Photo
@@ -1875,12 +1847,10 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
          Gallery
      --------------------------------*/
-    ULTRA_SETTINGS.isotopeGallery = function() {
+    ULTRA_SETTINGS.isotopeGallery = function () {
         if ($.isFunction($.fn.isotope)) {
 
             var $portfolio_selectors = $('.portfolio-filter >li>a');
@@ -1890,7 +1860,7 @@ jQuery(function($) {
                 layoutMode: 'sloppyMasonry'
             });
 
-            $portfolio_selectors.on('click', function() {
+            $portfolio_selectors.on('click', function () {
                 $portfolio_selectors.removeClass('active');
                 $(this).addClass('active');
                 var selector = $(this).attr('data-filter');
@@ -1908,7 +1878,7 @@ jQuery(function($) {
     /*--------------------------------
          Tocify
      --------------------------------*/
-    ULTRA_SETTINGS.tocifyScrollMenu = function() {
+    ULTRA_SETTINGS.tocifyScrollMenu = function () {
         if ($.isFunction($.fn.tocify)) {
             var toc = $("#toc").tocify({
                 selectors: "h2,h3,h4,h5",
@@ -1919,11 +1889,10 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
          Full Calendar
      --------------------------------*/
-    ULTRA_SETTINGS.uiCalendar = function() {
+    ULTRA_SETTINGS.uiCalendar = function () {
 
 
         if ($.isFunction($.fn.fullCalendar)) {
@@ -1931,7 +1900,7 @@ jQuery(function($) {
             /* initialize the external events
                  -----------------------------------------------------------------*/
 
-            $('#external-events .fc-event').each(function() {
+            $('#external-events .fc-event').each(function () {
 
                 // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
                 // it doesn't need to have a start or end
@@ -1969,7 +1938,7 @@ jQuery(function($) {
                 editable: true,
                 eventLimit: true, // allow "more" link when too many events
                 droppable: true, // this allows things to be dropped onto the calendar !!!
-                drop: function(date, allDay) { // this function is called when something is dropped
+                drop: function (date, allDay) { // this function is called when something is dropped
 
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -2032,13 +2001,10 @@ jQuery(function($) {
             });
 
 
-
-
-
             /*Add new event*/
             // Form to add new event
 
-            $("#add_event_form").on('submit', function(ev) {
+            $("#add_event_form").on('submit', function (ev) {
                 ev.preventDefault();
 
                 var $event = $(this).find('.new-event-form'),
@@ -2075,19 +2041,17 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
 
 
-
     /*--------------------------------
          Sortable (Nestable) List
      --------------------------------*/
-    ULTRA_SETTINGS.nestableList = function() {
+    ULTRA_SETTINGS.nestableList = function () {
 
-        $("#nestableList-1").on('stop.uk.nestable', function(ev) {
+        $("#nestableList-1").on('stop.uk.nestable', function (ev) {
             var serialized = $(this).data('nestable').serialize(),
                 str = '';
 
@@ -2105,7 +2069,7 @@ jQuery(function($) {
 
             //console.log(items);
 
-            jQuery.each(items, function(i, obj) {
+            jQuery.each(items, function (i, obj) {
                 str += '[ID: ' + obj.itemId + ']\t' + nestableRepeat('—', depth + 1) + ' ' + obj.item;
                 str += '\n';
 
@@ -2127,19 +2091,12 @@ jQuery(function($) {
     };
 
 
-
-
-
-
-
-
-
     /*--------------------------------
          Tooltips & Popovers
      --------------------------------*/
-    ULTRA_SETTINGS.tooltipsPopovers = function() {
+    ULTRA_SETTINGS.tooltipsPopovers = function () {
 
-        $('[rel="tooltip"]').each(function() {
+        $('[rel="tooltip"]').each(function () {
             var animate = $(this).attr("data-animate");
             var colorclass = $(this).attr("data-color-class");
             $(this).tooltip({
@@ -2147,7 +2104,7 @@ jQuery(function($) {
             });
         });
 
-        $('[rel="popover"]').each(function() {
+        $('[rel="popover"]').each(function () {
             var animate = $(this).attr("data-animate");
             var colorclass = $(this).attr("data-color-class");
             $(this).popover({
@@ -2158,14 +2115,10 @@ jQuery(function($) {
     };
 
 
-
-
-
     /*--------------------------------
          iCheck
      --------------------------------*/
-    ULTRA_SETTINGS.iCheck = function() {
-
+    ULTRA_SETTINGS.iCheck = function () {
 
 
         if ($.isFunction($.fn.iCheck)) {
@@ -2179,7 +2132,7 @@ jQuery(function($) {
 
 
             var x;
-            var colors = ["-green", "-red", "-yellow", "-blue", "-aero", "-orange", "-grey", "-pink", "-purple","-white"];
+            var colors = ["-green", "-red", "-yellow", "-blue", "-aero", "-orange", "-grey", "-pink", "-purple", "-white"];
 
             for (x = 0; x < colors.length; x++) {
 
@@ -2202,7 +2155,7 @@ jQuery(function($) {
                     });
 
 
-                    $('input.skin-line').each(function() {
+                    $('input.skin-line').each(function () {
                         var self = $(this),
                             label = self.next(),
                             label_text = label.text();
@@ -2237,7 +2190,7 @@ jQuery(function($) {
                 });
 
 
-                $('input.skin-line' + colors[x]).each(function() {
+                $('input.skin-line' + colors[x]).each(function () {
                     var self = $(this),
                         label = self.next(),
                         label_text = label.text();
@@ -2257,12 +2210,10 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
          Form Editors
      --------------------------------*/
-    ULTRA_SETTINGS.formEditors = function() {
+    ULTRA_SETTINGS.formEditors = function () {
 
         if ($.isFunction($.fn.wysihtml5)) {
             $('.bootstrap-wysihtml5-textarea').wysihtml5({
@@ -2303,7 +2254,7 @@ jQuery(function($) {
             // require less features.
 
             // The "instanceCreated" event is fired for every editor instance created.
-            CKEDITOR.on('instanceCreated', function(event) {
+            CKEDITOR.on('instanceCreated', function (event) {
                 var editor = event.editor,
                     element = editor.element;
 
@@ -2314,7 +2265,7 @@ jQuery(function($) {
                     // which is fired after the configuration file loading and
                     // execution. This makes it possible to change the
                     // configurations before the editor initialization takes place.
-                    editor.on('configLoaded', function() {
+                    editor.on('configLoaded', function () {
 
                         // Remove unnecessary plugins to make the editor simpler.
                         editor.config.removePlugins = 'colorbutton,find,flash,font,' +
@@ -2343,8 +2294,7 @@ jQuery(function($) {
     /*--------------------------------
          Custom Dropzone
      --------------------------------*/
-    ULTRA_SETTINGS.customDropZone = function() {
-
+    ULTRA_SETTINGS.customDropZone = function () {
 
 
         if ($.isFunction($.fn.dropzone)) {
@@ -2355,7 +2305,7 @@ jQuery(function($) {
                     url: 'data/upload-file.php',
 
                     // Events
-                    addedfile: function(file) {
+                    addedfile: function (file) {
                         if (i == 1) {
                             $custom_droplist.find('tbody').html('');
                         }
@@ -2375,18 +2325,18 @@ jQuery(function($) {
                         file.progressBar = $el.find('.progress-bar');
                     },
 
-                    uploadprogress: function(file, progress, bytesSent) {
+                    uploadprogress: function (file, progress, bytesSent) {
                         file.progressBar.width(progress + '%');
                         $('.custom-dropzone .drop-table').perfectScrollbar({
                             suppressScrollX: true
                         });
                     },
 
-                    success: function(file) {
+                    success: function (file) {
                         file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-success');
                     },
 
-                    error: function(file) {
+                    error: function (file) {
                         file.progressBar.removeClass('progress-bar-warning').addClass('progress-bar-red');
                     }
                 });
@@ -2399,8 +2349,7 @@ jQuery(function($) {
     /*--------------------------------
          Other Form component Scripts
      --------------------------------*/
-    ULTRA_SETTINGS.otherScripts = function() {
-
+    ULTRA_SETTINGS.otherScripts = function () {
 
 
         /*--------------------------------*/
@@ -2413,11 +2362,9 @@ jQuery(function($) {
         /*--------------------------------*/
 
 
-
-
         // Input Mask
         if ($.isFunction($.fn.inputmask)) {
-            $("[data-mask]").each(function(i, el) {
+            $("[data-mask]").each(function (i, el) {
                 var $this = $(el),
                     mask = $this.data('mask').toString(),
                     opts = {
@@ -2455,7 +2402,8 @@ jQuery(function($) {
 
                 if (mask.toLowerCase() == "currency" || mask.toLowerCase() == "rcurrency") {
 
-                    var sign = getValue($this, 'sign', '$');;
+                    var sign = getValue($this, 'sign', '$');
+                    ;
 
                     mask = "999,999,999.99";
                     if (mask.toLowerCase() == 'rcurrency') {
@@ -2491,7 +2439,7 @@ jQuery(function($) {
 
         // Slider
         if ($.isFunction($.fn.slider)) {
-            $(".slider").each(function(i, el) {
+            $(".slider").each(function (i, el) {
                 var $this = $(el),
                     $label_1 = $('<span class="ui-label"></span>'),
                     $label_2 = $label_1.clone(),
@@ -2525,7 +2473,7 @@ jQuery(function($) {
                         max: max,
                         values: [min_val, max_val],
                         step: step,
-                        slide: function(e, ui) {
+                        slide: function (e, ui) {
                             var min_val = (prefix ? prefix : '') + ui.values[0] + (postfix ? postfix : ''),
                                 max_val = (prefix ? prefix : '') + ui.values[1] + (postfix ? postfix : '');
 
@@ -2537,7 +2485,7 @@ jQuery(function($) {
 
                             reps++;
                         },
-                        change: function(ev, ui) {
+                        change: function (ev, ui) {
                             if (reps == 1) {
                                 var min_val = (prefix ? prefix : '') + ui.values[0] + (postfix ? postfix : ''),
                                     max_val = (prefix ? prefix : '') + ui.values[1] + (postfix ? postfix : '');
@@ -2571,7 +2519,7 @@ jQuery(function($) {
                         max: max,
                         value: value,
                         step: step,
-                        slide: function(ev, ui) {
+                        slide: function (ev, ui) {
                             var val = (prefix ? prefix : '') + ui.value + (postfix ? postfix : '');
 
                             $label_1.html(val);
@@ -2582,7 +2530,7 @@ jQuery(function($) {
 
                             reps++;
                         },
-                        change: function(ev, ui) {
+                        change: function (ev, ui) {
                             if (reps == 1) {
                                 var val = (prefix ? prefix : '') + ui.value + (postfix ? postfix : '');
 
@@ -2611,7 +2559,6 @@ jQuery(function($) {
         }
 
 
-
         /*------------- Color Slider widget---------------*/
 
         function hexFromRGB(r, g, b) {
@@ -2620,7 +2567,7 @@ jQuery(function($) {
                 g.toString(16),
                 b.toString(16)
             ];
-            $.each(hex, function(nr, val) {
+            $.each(hex, function (nr, val) {
                 if (val.length === 1) {
                     hex[nr] = "0" + val;
                 }
@@ -2639,7 +2586,7 @@ jQuery(function($) {
 
         if ($.isFunction($.fn.slider)) {
 
-            $(function() {
+            $(function () {
                 $("#slider-red, #slider-green, #slider-blue").slider({
                     orientation: "horizontal",
                     range: "min",
@@ -2655,7 +2602,6 @@ jQuery(function($) {
         }
 
 
-
         /*-------------------------------------*/
 
         /*--------------------------------*/
@@ -2664,29 +2610,29 @@ jQuery(function($) {
         // Spinner
         if ($.isFunction($.fn.spinner)) {
 
-                $( "#spinner" ).spinner();
+            $("#spinner").spinner();
 
-                $( "#spinner2" ).spinner({
-                    min: 5,
-                    max: 2500,
-                    step: 25,
-                    start: 1000,
-                    numberFormat: "C"
-                });
+            $("#spinner2").spinner({
+                min: 5,
+                max: 2500,
+                step: 25,
+                start: 1000,
+                numberFormat: "C"
+            });
 
 
-                $( "#spinner3" ).spinner({
-                    spin: function( event, ui ) {
-                        if ( ui.value > 10 ) {
-                            $( this ).spinner( "value", -10 );
-                            return false;
-                        } else if ( ui.value < -10 ) {
-                            $( this ).spinner( "value", 10 );
-                            return false;
-                        }
+            $("#spinner3").spinner({
+                spin: function (event, ui) {
+                    if (ui.value > 10) {
+                        $(this).spinner("value", -10);
+                        return false;
+                    } else if (ui.value < -10) {
+                        $(this).spinner("value", 10);
+                        return false;
                     }
-                });
-}
+                }
+            });
+        }
         /*------------------------------------*/
 
         // tagsinput
@@ -2699,7 +2645,7 @@ jQuery(function($) {
             colors = shuffleArray(colors);
 
             $("#tagsinput-2").tagsinput({
-                tagClass: function() {
+                tagClass: function () {
                     i++;
                     return "label label-" + colors[i % colors.length];
                 }
@@ -2707,7 +2653,7 @@ jQuery(function($) {
 
 
             $(".mail_compose_to").tagsinput({
-                tagClass: function() {
+                tagClass: function () {
                     i++;
                     return "label label-" + colors[i % colors.length];
                 }
@@ -2732,7 +2678,7 @@ jQuery(function($) {
 
         // datepicker
         if ($.isFunction($.fn.datepicker)) {
-            $(".datepicker").each(function(i, e) {
+            $(".datepicker").each(function (i, e) {
                 var $this = $(e),
                     options = {
                         minViewMode: getValue($this, 'minViewMode', 0),
@@ -2749,14 +2695,14 @@ jQuery(function($) {
                 $this.datepicker(options);
 
                 if ($nxt.is('.input-group-addon') && $nxt.has('a')) {
-                    $nxt.on('click', function(ev) {
+                    $nxt.on('click', function (ev) {
                         ev.preventDefault();
                         $this.datepicker('show');
                     });
                 }
 
                 if ($prv.is('.input-group-addon') && $prv.has('a')) {
-                    $prv.on('click', function(ev) {
+                    $prv.on('click', function (ev) {
                         ev.preventDefault();
 
                         $this.datepicker('show');
@@ -2766,14 +2712,12 @@ jQuery(function($) {
         }
 
 
-
         /*-------------------------------------------*/
-
 
 
         // Date Range Picker
         if ($.isFunction($.fn.daterangepicker)) {
-            $(".daterange").each(function(i, e) {
+            $(".daterange").each(function (i, e) {
                 // Change the range as you desire
                 var ranges = {
                     'Today': [moment(), moment()],
@@ -2817,7 +2761,7 @@ jQuery(function($) {
                 }
 
 
-                $this.daterangepicker(options, function(start, end) {
+                $this.daterangepicker(options, function (start, end) {
                     var drp = $this.data('daterangepicker');
 
                     if ($this.hasClass('daterange-text')) {
@@ -2833,14 +2777,12 @@ jQuery(function($) {
         }
 
 
-
-
         /*-------------------------------------*/
 
 
         // Timepicker
         if ($.isFunction($.fn.timepicker)) {
-            $(".timepicker").each(function(i, e) {
+            $(".timepicker").each(function (i, e) {
                 var $this = $(e),
                     options = {
                         template: getValue($this, 'template', false),
@@ -2856,7 +2798,7 @@ jQuery(function($) {
                 $this.timepicker(options);
 
                 if ($nxt.is('.input-group-addon') && $nxt.has('a')) {
-                    $nxt.on('click', function(ev) {
+                    $nxt.on('click', function (ev) {
                         ev.preventDefault();
 
                         $this.timepicker('showWidget');
@@ -2864,7 +2806,7 @@ jQuery(function($) {
                 }
 
                 if ($prv.is('.input-group-addon') && $prv.has('a')) {
-                    $prv.on('click', function(ev) {
+                    $prv.on('click', function (ev) {
                         ev.preventDefault();
 
                         $this.timepicker('showWidget');
@@ -2872,7 +2814,6 @@ jQuery(function($) {
                 }
             });
         }
-
 
 
         /*-------------------------------------*/
@@ -2946,12 +2887,9 @@ jQuery(function($) {
         /*-------------------------------------*/
 
 
-
-
-
         // Colorpicker
         if ($.isFunction($.fn.colorpicker)) {
-            $(".colorpicker").each(function(i, e) {
+            $(".colorpicker").each(function (i, e) {
                 var $this = $(e),
                     options = {},
                     $nxt = $this.next(),
@@ -2961,7 +2899,7 @@ jQuery(function($) {
                 $this.colorpicker(options);
 
                 if ($nxt.is('.input-group-addon') && $nxt.has('a')) {
-                    $nxt.on('click', function(ev) {
+                    $nxt.on('click', function (ev) {
                         ev.preventDefault();
 
                         $this.colorpicker('show');
@@ -2969,7 +2907,7 @@ jQuery(function($) {
                 }
 
                 if ($prv.is('.input-group-addon') && $prv.has('a')) {
-                    $prv.on('click', function(ev) {
+                    $prv.on('click', function (ev) {
                         ev.preventDefault();
 
                         $this.colorpicker('show');
@@ -2977,7 +2915,7 @@ jQuery(function($) {
                 }
 
                 if ($view.length) {
-                    $this.on('changeColor', function(ev) {
+                    $this.on('changeColor', function (ev) {
 
                         $view.css('background-color', ev.color.toHex());
                     });
@@ -2999,7 +2937,7 @@ jQuery(function($) {
             $("#s2example-1").select2({
                 placeholder: 'Select your country...',
                 allowClear: true
-            }).on('select2-open', function() {
+            }).on('select2-open', function () {
                 // Adding Custom Scrollbar
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
@@ -3008,7 +2946,7 @@ jQuery(function($) {
             $("#s2example-2").select2({
                 placeholder: 'Choose your favorite US Countries',
                 allowClear: true
-            }).on('select2-open', function() {
+            }).on('select2-open', function () {
                 // Adding Custom Scrollbar
                 $(this).data('select2').results.addClass('overflow-hidden').perfectScrollbar();
             });
@@ -3021,30 +2959,28 @@ jQuery(function($) {
                     url: "data/select2-remote-data.php",
                     dataType: 'json',
                     quietMillis: 100,
-                    data: function(term, page) {
+                    data: function (term, page) {
                         return {
                             limit: -1,
                             q: term
                         };
                     },
-                    results: function(data, page) {
+                    results: function (data, page) {
                         return {
                             results: data
                         }
                     }
                 },
-                formatResult: function(student) {
+                formatResult: function (student) {
                     return "<div class='select2-user-result'>" + student.name + "</div>";
                 },
-                formatSelection: function(student) {
+                formatSelection: function (student) {
                     return student.name;
                 }
 
             });
         }
         /*------------------------------------*/
-
-
 
 
         //multiselect start
@@ -3059,7 +2995,7 @@ jQuery(function($) {
             $('#my_multi_select3').multiSelect({
                 selectableHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
                 selectionHeader: "<input type='text' class='form-control search-input' autocomplete='off' placeholder='search...'>",
-                afterInit: function(ms) {
+                afterInit: function (ms) {
                     var that = this,
                         $selectableSearch = that.$selectableUl.prev(),
                         $selectionSearch = that.$selectionUl.prev(),
@@ -3067,7 +3003,7 @@ jQuery(function($) {
                         selectionSearchString = '#' + that.$container.attr('id') + ' .ms-elem-selection.ms-selected';
 
                     that.qs1 = $selectableSearch.quicksearch(selectableSearchString)
-                        .on('keydown', function(e) {
+                        .on('keydown', function (e) {
                             if (e.which === 40) {
                                 that.$selectableUl.focus();
                                 return false;
@@ -3075,18 +3011,18 @@ jQuery(function($) {
                         });
 
                     that.qs2 = $selectionSearch.quicksearch(selectionSearchString)
-                        .on('keydown', function(e) {
+                        .on('keydown', function (e) {
                             if (e.which == 40) {
                                 that.$selectionUl.focus();
                                 return false;
                             }
                         });
                 },
-                afterSelect: function() {
+                afterSelect: function () {
                     this.qs1.cache();
                     this.qs2.cache();
                 },
-                afterDeselect: function() {
+                afterDeselect: function () {
                     this.qs1.cache();
                     this.qs2.cache();
                 }
@@ -3096,13 +3032,6 @@ jQuery(function($) {
         //multiselect end
 
 
-
-
-
-
-
-
-
         /*---------------------------------------*/
 
 
@@ -3110,7 +3039,7 @@ jQuery(function($) {
 
             // basic typeahead
 
-            var substringMatcher = function(strs) {
+            var substringMatcher = function (strs) {
                 return function findMatches(q, cb) {
                     var matches, substrRegex;
 
@@ -3122,7 +3051,7 @@ jQuery(function($) {
 
                     // iterate through the pool of strings and for any string that
                     // contains the substring `q`, add it to the `matches` array
-                    $.each(strs, function(i, str) {
+                    $.each(strs, function (i, str) {
                         if (substrRegex.test(str)) {
                             // the typeahead jQuery plugin expects suggestions to a
                             // JavaScript object, refer to typeahead docs for more info
@@ -3158,7 +3087,6 @@ jQuery(function($) {
             });
 
 
-
             // prefetch typeahead
 
             var names = new Bloodhound({
@@ -3167,8 +3095,8 @@ jQuery(function($) {
                 limit: 10,
                 prefetch: {
                     url: 'data/names.json',
-                    filter: function(list) {
-                        return $.map(list, function(name) {
+                    filter: function (list) {
+                        return $.map(list, function (name) {
                             return {
                                 name: name
                             };
@@ -3220,22 +3148,22 @@ jQuery(function($) {
             oscar_movies.initialize();
 
             $('#typeahead-4').typeahead(null, {
-                    name: 'oscar-movies',
-                    displayKey: 'value',
-                    source: oscar_movies.ttAdapter(),
-                    templates: {
-                        empty: [
-                            '<div class="empty-message">',
-                            'We cannot find this movie title',
-                            '</div>'
-                        ].join('\n'),
-                        suggestion: Handlebars.compile('<div class="clearfix" style="width:100%;display:inline-block;min-height:60px;height:auto;"><img src="data/{{cover}}" class="img-responsive pull-left" width="30" style="margin-right:10px;" /><strong>{{value}}</strong> &mdash; {{year}}<br /><span style="display:inline-block; height: 22px; overflow: hidden; white-space:nowrap; text-overflow:ellipsis; max-width: 400px;"></span></div>')
-                    }
-                })
-                .bind('typeahead:opened', function() {
+                name: 'oscar-movies',
+                displayKey: 'value',
+                source: oscar_movies.ttAdapter(),
+                templates: {
+                    empty: [
+                        '<div class="empty-message">',
+                        'We cannot find this movie title',
+                        '</div>'
+                    ].join('\n'),
+                    suggestion: Handlebars.compile('<div class="clearfix" style="width:100%;display:inline-block;min-height:60px;height:auto;"><img src="data/{{cover}}" class="img-responsive pull-left" width="30" style="margin-right:10px;" /><strong>{{value}}</strong> &mdash; {{year}}<br /><span style="display:inline-block; height: 22px; overflow: hidden; white-space:nowrap; text-overflow:ellipsis; max-width: 400px;"></span></div>')
+                }
+            })
+                .bind('typeahead:opened', function () {
                     $(this).data('ttTypeahead').dropdown.$menu.addClass('overflow-hidden').perfectScrollbar();
                 })
-                .on('keyup', function() {
+                .on('keyup', function () {
                     $(this).data('ttTypeahead').dropdown.$menu.perfectScrollbar('update');
                 });
 
@@ -3243,17 +3171,15 @@ jQuery(function($) {
         /*------------------------------------*/
 
 
-
         /*------------------------------------------*/
 
     };
 
 
-
     /*--------------------------------
         Widgets
      --------------------------------*/
-    ULTRA_SETTINGS.ultraWidgets = function() {
+    ULTRA_SETTINGS.ultraWidgets = function () {
 
         /*notification widget*/
         var notif_widget = $(".notification-widget").height();
@@ -3264,11 +3190,10 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
         weather widget
      --------------------------------*/
-    ULTRA_SETTINGS.ultraWidgetWeather = function() {
+    ULTRA_SETTINGS.ultraWidgetWeather = function () {
 
         /*notification widget*/
         /*var wid = $(".wid-weather");
@@ -3297,19 +3222,16 @@ jQuery(function($) {
     };
 
 
-
-
-
     /*--------------------------------
         To Do Task Widget
      --------------------------------*/
-    ULTRA_SETTINGS.ultraToDoWidget = function() {
+    ULTRA_SETTINGS.ultraToDoWidget = function () {
 
         /*todo task widget*/
-        $(".icheck-minimal-white.todo-task").on('ifChecked', function(event) {
+        $(".icheck-minimal-white.todo-task").on('ifChecked', function (event) {
             $(this).parent().parent().addClass("checked");
         });
-        $(".icheck-minimal-white.todo-task").on('ifUnchecked', function(event) {
+        $(".icheck-minimal-white.todo-task").on('ifUnchecked', function (event) {
             $(this).parent().parent().removeClass("checked");
         });
 
@@ -3320,13 +3242,12 @@ jQuery(function($) {
     };
 
 
-
     /*--------------------------------
         To Do Add Task Widget
      --------------------------------*/
-    ULTRA_SETTINGS.ultraToDoAddTaskWidget = function() {
+    ULTRA_SETTINGS.ultraToDoAddTaskWidget = function () {
 
-        $(".wid-add-task input").on('keypress', function(e) {
+        $(".wid-add-task input").on('keypress', function (e) {
             if (e.keyCode == 13) {
                 var i = Math.random().toString(36).substring(7);
                 var msg = $(this).val();
@@ -3343,19 +3264,14 @@ jQuery(function($) {
     };
 
 
-
-
-
-
-
     /*--------------------------------
          Vector maps
      --------------------------------*/
-    ULTRA_SETTINGS.dbjvectorMap = function() {
+    ULTRA_SETTINGS.dbjvectorMap = function () {
 
         if ($.isFunction($.fn.vectorMap)) {
             //@code_start
-            $(function() {
+            $(function () {
                 $('#db-world-map-markers').vectorMap({
                     map: 'world_mill_en',
                     scaleColors: ['#1fb5ac', '#1fb5ac'],
@@ -3366,16 +3282,16 @@ jQuery(function($) {
                     markersSelectable: true,
                     markersSelectableOne: true,
                     updateSize: true,
-                    onRegionOver: function(event, code) {
+                    onRegionOver: function (event, code) {
                         //console.log('region-over', code);
                     },
-                    onRegionOut: function(event, code) {
+                    onRegionOut: function (event, code) {
                         //console.log('region-out', code);
                     },
-                    onRegionClick: function(event, code) {
+                    onRegionClick: function (event, code) {
                         //console.log('region-click', code);
                     },
-                    onRegionSelected: function(event, code, isSelected, selectedRegions) {
+                    onRegionSelected: function (event, code, isSelected, selectedRegions) {
                         //console.log('region-select', code, isSelected, selectedRegions);
                         if (window.localStorage) {
                             window.localStorage.setItem(
@@ -3413,7 +3329,6 @@ jQuery(function($) {
                         },
                         selectedHover: {}
                     },
-
 
 
                     markerStyle: {
@@ -3520,12 +3435,10 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
         Sparkline Chart - Widgets
      --------------------------------*/
-    ULTRA_SETTINGS.widgetSparklineChart = function() {
+    ULTRA_SETTINGS.widgetSparklineChart = function () {
 
         if ($.isFunction($.fn.sparkline)) {
 
@@ -3573,16 +3486,9 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
-
-
-
-
-
-
 
 
     // Element Attribute Helper
@@ -3596,9 +3502,9 @@ jQuery(function($) {
 
 
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.windowBasedLayout();
         ULTRA_SETTINGS.mainmenuScroll();
         ULTRA_SETTINGS.mainMenu();
@@ -3635,7 +3541,7 @@ jQuery(function($) {
         ULTRA_SETTINGS.onLoadTopBar();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         ULTRA_SETTINGS.windowBasedLayout();
         //ULTRA_SETTINGS.mainmenuScroll();
         //ULTRA_SETTINGS.ultraWidgetWeather();
@@ -3644,7 +3550,7 @@ jQuery(function($) {
         ULTRA_SETTINGS.widgetSparklineChart();
     });
 
-    $(window).load(function() {
+    $(window).load(function () {
         ULTRA_SETTINGS.isotopeGallery();
         ULTRA_SETTINGS.loginPage();
     });

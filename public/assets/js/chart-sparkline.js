@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,8 +14,7 @@ jQuery(function($) {
     /*--------------------------------
         Sparkline Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartSparkline = function() {
-
+    ULTRA_SETTINGS.chartSparkline = function () {
 
 
         if ($.isFunction($.fn.sparkline)) {
@@ -306,9 +305,6 @@ jQuery(function($) {
             });
 
 
-
-
-
             $(".sparkboxplot").sparkline([4, 27, 34, 52, 54, 59, 61, 68, 78, 82, 85, 87, 91, 93, 100], {
                 type: 'box',
                 width: '100%',
@@ -328,19 +324,17 @@ jQuery(function($) {
     };
 
 
-
-
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.chartSparkline();
     });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

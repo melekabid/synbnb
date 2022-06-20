@@ -1,127 +1,132 @@
 {% extends 'base.html.twig' %}
 
-{% block content %} 
+{% block content %}
 
-                <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                        <div class="page-title">
+    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+        <div class="page-title">
 
-                            <div class="pull-left">
-                                <h1 class="title">Ajouter Client </h1>                            </div>
+            <div class="pull-left">
+                <h1 class="title">Ajouter Client </h1></div>
 
-                            <div class="pull-right hidden-xs">
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{path('app_client')}}">Clients</a>
-                                    </li>
-                                    <li class="active">
-                                        <strong>Ajouter Client</strong>
-                                    </li>
-                                </ol>
+            <div class="pull-right hidden-xs">
+                <ol class="breadcrumb">
+                    <li>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('app_client') }}">Clients</a>
+                    </li>
+                    <li class="active">
+                        <strong>Ajouter Client</strong>
+                    </li>
+                </ol>
+            </div>
+
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Ajouter Client</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle fa fa-chevron-down"></i>
+                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
+                    <i class="box_close fa fa-times"></i>
+                </div>
+            </header>
+            <div class="content-body">
+                <div class="row">
+
+                    <form action="#" method="post">
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
+
+
+                            <div class="form-group">
+
+                                <label class="form-label" for="field-1">Sociéte</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="text" name="societe" value="{{ client.societe }}" class="form-control"
+                                           id="field-1">
+
+                                </div>
                             </div>
+                            <div class="form-group">
+
+                                <label class="form-label" for="field-1">Code Matricule \ CIN </label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="text" name="societe" value="{{ client.codematricule }}"
+                                           class="form-control" id="field-1">
+
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Email</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="email" name="email" value="{{ client.Mail }}" class="form-control"
+                                           id="field-1">
+
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label" for="field-2">Telephone</label>
+                                <span class="desc">e.g. "(+216) 26438890 "</span>
+                                <div class="controls">
+                                    <input type="text" name="gsm" value=" {{ client.Gsm }}" class="form-control"
+                                           id="field-2" data-mask="phone" placeholder="(999) 99-999999"
+                                           pattern="(+[0-9]{3})[0-9]{2}-[0-9]{6}"
+                                           required>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="field-1">Taux de bénéfice</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <input type="number" name="pourcentagebenifice"
+                                           value="{{ client.Pourcentagebenifice }}" class="form-control" id="field-1">
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="field-6">Addresse</label>
+                                <span class="desc"></span>
+                                <div class="controls">
+                                    <textarea class="form-control autogrow" name="adresse" cols="5"
+                                              id="field-6">{{ client.Adresse }}</textarea>
+
+                                </div>
+                            </div>
+
 
                         </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                        <section class="box ">
-                            <header class="panel_header">
-                                <h2 class="title pull-left">Ajouter Client</h2>
-                                <div class="actions panel_actions pull-right">
-                                    <i class="box_toggle fa fa-chevron-down"></i>
-                                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
-                                    <i class="box_close fa fa-times"></i>
-                                </div>
-                            </header>
-                            <div class="content-body">
-                                <div class="row">
-                                
-                                    <form action ="#" method="post">
-                                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
 
-                                           
-                                           
-                                            <div class="form-group">
-                                                
-                                                <label class="form-label" for="field-1">Sociéte</label>
-                                                <span class="desc"></span>
-                                                <div class="controls">
-                                                <input type="text" name= "societe" value="{{client.societe}}" class="form-control" id="field-1">   
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-
-                                                <label class="form-label" for="field-1">Code Matricule \ CIN </label>
-                                                <span class="desc"></span>
-                                                <div class="controls">
-                                                    <input type="text" name= "societe" value="{{client.codematricule}}" class="form-control" id="field-1">
-
-                                                </div>
-                                            </div>
-
-
-                                       
-                                            <div class="form-group">
-                                                <label class="form-label" for="field-1">Email</label>
-                                                <span class="desc"></span>
-                                                <div class="controls">
-                                                <input type="email" name= "email" value="{{client.Mail}}" class="form-control" id="field-1">
-                                                   
-                                                </div>
-                                            </div>
-                                      
-                                            <div class="form-group">
-                                                <label class="form-label" for="field-2">Telephone</label>
-                                                <span class="desc">e.g. "(+216) 26438890 "</span>
-                                                <div class="controls">
-                                                <input type="text" name= "gsm" value=" {{ client.Gsm }}" class="form-control" id="field-2" data-mask="phone"  placeholder="(999) 99-999999"  pattern="(+[0-9]{3})[0-9]{2}-[0-9]{6}"
-                                                       required>
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label" for="field-1">Taux de bénéfice</label>
-                                                <span class="desc"></span>
-                                                <div class="controls">
-                                                <input type="number"  name= "pourcentagebenifice"  value="{{client.Pourcentagebenifice}}" class="form-control" id="field-1">
-                                                    
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label class="form-label" for="field-6">Addresse</label>
-                                                <span class="desc"></span>
-                                                <div class="controls">
-                                                <textarea class="form-control autogrow"    name= "adresse" cols="5" id="field-6">{{client.Adresse}}</textarea>
-                                                    
-                                                </div>
-                                            </div>
-                                        
-                                           
-                                         
-                                        </div>
-
-                                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
-                                            <div class="text-left">
-                                                <button type="submit" class="btn btn-primary">Enregister</button>
-                                                <button type="button" class="btn">Annuler</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                     
-                                </div>
-
-
+                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
+                            <div class="text-left">
+                                <button type="submit" class="btn btn-primary">Enregister</button>
+                                <button type="button" class="btn">Annuler</button>
                             </div>
-                        </section></div>
+                        </div>
+                    </form>
 
-                
-                                    
-
-
+                </div>
 
 
+            </div>
+        </section>
+    </div>
 
- {% endblock %}
+
+
+
+
+
+
+
+{% endblock %}

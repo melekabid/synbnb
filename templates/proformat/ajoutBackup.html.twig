@@ -2,69 +2,68 @@
 
 {% block title %}Hello ProformatController!{% endblock %}
 
- {% block content %} 
- <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
-                        <div class="page-title">
+ {% block content %}
+     <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+         <div class="page-title">
 
-                            <div class="pull-left">
-                                <h1 class="title">Ajouter Un Profroma</h1>                            </div>
+             <div class="pull-left">
+                 <h1 class="title">Ajouter Un Profroma</h1></div>
 
-                            <div class="pull-right hidden-xs">
-                                <ol class="breadcrumb">
-                                    <li>
-                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{path('show_proformat')}}">Proformas</a>
-                                    </li>
-                                    <li class="active">
-                                        <strong>Ajouter Proforma</strong>
-                                    </li>
-                                </ol>
-                            </div>
+             <div class="pull-right hidden-xs">
+                 <ol class="breadcrumb">
+                     <li>
+                         <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
+                     </li>
+                     <li>
+                         <a href="{{ path('show_proformat') }}">Proformas</a>
+                     </li>
+                     <li class="active">
+                         <strong>Ajouter Proforma</strong>
+                     </li>
+                 </ol>
+             </div>
 
-                        </div>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
-                        <section class="box ">
-                            <header class="panel_header">
-                                <h2 class="title pull-left">products</h2>
-                                <div class="actions panel_actions pull-right">
-                                    <i class="box_toggle fa fa-chevron-down"></i>
-                                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
-                                    <i class="box_close fa fa-times"></i>
-                                </div>
-                            </header>
-                            <div class="content-body">
-                                <div class="row">
-                                    {% set i = "Qte" %}
-                                    <form action ="#" method="post">
-                                    {% for p in facture.products %}
-                                    <div class="form-group">
-                                        <label class="form-label" for="field-1">{{ p.reference }}</label>
-                                        <div class="controls">
-                                            <input type="number" value="1" name="{{i}}{{p.reference}}" if="fname"  class="form-control" id="field-1">
-                                        </div>
-                                    </div>
-                                   {% endfor %}
-                                        <button type="submit" class="btn btn-primary">Enregister</button>
+         </div>
+     </div>
+     <div class="clearfix"></div>
+     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+         <section class="box ">
+             <header class="panel_header">
+                 <h2 class="title pull-left">products</h2>
+                 <div class="actions panel_actions pull-right">
+                     <i class="box_toggle fa fa-chevron-down"></i>
+                     <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
+                     <i class="box_close fa fa-times"></i>
+                 </div>
+             </header>
+             <div class="content-body">
+                 <div class="row">
+                     {% set i = "Qte" %}
+                     <form action="#" method="post">
+                         {% for p in facture.products %}
+                             <div class="form-group">
+                                 <label class="form-label" for="field-1">{{ p.reference }}</label>
+                                 <div class="controls">
+                                     <input type="number" value="1" name="{{ i }}{{ p.reference }}" if="fname"
+                                            class="form-control" id="field-1">
+                                 </div>
+                             </div>
+                         {% endfor %}
+                         <button type="submit" class="btn btn-primary">Enregister</button>
 
-                                   </form>
-                                   
-                                    
-
-
-                                    
-                                </div>
+                     </form>
 
 
-                            </div>
-                        </section></div>
+                 </div>
 
+
+             </div>
+         </section>
+     </div>
 
 
 
-    
- 
+
+
+
  {% endblock %} 

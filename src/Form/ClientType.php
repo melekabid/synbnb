@@ -17,8 +17,7 @@ class ClientType extends AbstractType
             ->add('adresse')
             ->add('gsm')
             ->add('mail')
-            ->add('pourcentagebenifice')
-        ;
+            ->add('pourcentagebenifice');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

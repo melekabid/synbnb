@@ -9,15 +9,15 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Categories</h1>                            </div>
+                <h1 class="title">Categories</h1></div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                     </li>
                     <li>
-                        <a href="{{path('app_categorie')}}">Categories</a>
+                        <a href="{{ path('app_categorie') }}">Categories</a>
                     </li>
                     <li class="active">
                         <strong>Tous Les Categories</strong>
@@ -39,56 +39,55 @@
                     <i class="box_close fa fa-times"></i>
                 </div>
             </header>
-            <div class="content-body">    <div class="row">
+            <div class="content-body">
+                <div class="row">
 
                     <div class="col-md-12 col-sm-12 col-xs-12">
-
 
 
                         <!-- ******************************************** -->
 
 
-                        <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                        <table id="example" class="display table table-hover table-condensed" cellspacing="0"
+                               width="100%">
 
                             <thead>
                             <tr>
 
                                 <th>Nom De La Categorie</th>
                                 <th>action</th>
-                                                 </tr>
+                            </tr>
                             </thead>
 
-                                <tbody>
-                                {% for categorie in categories %}
+                            <tbody>
+                            {% for categorie in categories %}
                                 <tr>
 
 
                                     <td>
-                                        {{categorie.nomcategorie}}
+                                        {{ categorie.nomcategorie }}
                                     </td>
 
                                     <td>
 
-                                        <a href="{{path('categorie_edit',{'id': categorie.id})}}" ><i class="fa fa-pencil-square-o"></i></a>
+                                        <a href="{{ path('categorie_edit',{'id': categorie.id}) }}"><i
+                                                    class="fa fa-pencil-square-o"></i></a>
                                     </td>
 
 
-
-
                                 </tr>
-                                    {% endfor %}
-                                </tbody>
+                            {% endfor %}
+                            </tbody>
 
                         </table>
                         <!-- ******************************************** -->
 
 
-
-
                     </div>
                 </div>
             </div>
-        </section></div>
+        </section>
+    </div>
 
 
 

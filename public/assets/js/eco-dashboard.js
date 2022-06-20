@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,11 +14,11 @@ jQuery(function($) {
     /*--------------------------------
         Sparkline Chart
      --------------------------------*/
-    ULTRA_SETTINGS.dbSparklineChart = function() {
+    ULTRA_SETTINGS.dbSparklineChart = function () {
 
         if ($.isFunction($.fn.sparkline)) {
 
-            $('.db_dynamicbar').sparkline([8.4, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9,8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
+            $('.db_dynamicbar').sparkline([8.4, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9, 8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
                 type: 'bar',
                 barColor: '#1fb5ac',
                 height: '80',
@@ -52,7 +52,7 @@ jQuery(function($) {
 
 
             // Bar + line composite charts
-            $('.db_compositebar').sparkline([4, 6,  4, 6, 7, 7, 4, 3, 2, 4, 6, 7,7, 4, 3, 1, 4, 6, 5, 9], {
+            $('.db_compositebar').sparkline([4, 6, 4, 6, 7, 7, 4, 3, 2, 4, 6, 7, 7, 4, 3, 1, 4, 6, 5, 9], {
                 type: 'bar',
                 barColor: '#1fb5ac',
                 height: '80',
@@ -74,21 +74,15 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
 
 
-
-
-
-
-
     /*--------------------------------
         Morris 
      --------------------------------*/
-    ULTRA_SETTINGS.dbMorrisChart = function() {
+    ULTRA_SETTINGS.dbMorrisChart = function () {
 
 
         /*Bar Graph*/
@@ -126,28 +120,27 @@ jQuery(function($) {
             ykeys: ['y', 'z'],
             labels: ['Y', 'Z'],
             barColors: ['#9972b5', '#1fb5ac']
-        }).on('click', function(i, row) {
+        }).on('click', function (i, row) {
             console.log(i, row);
         });
-
 
 
     };
 
 
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.dbSparklineChart();
         ULTRA_SETTINGS.dbMorrisChart();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         ULTRA_SETTINGS.dbSparklineChart();
     });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

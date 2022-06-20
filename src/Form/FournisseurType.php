@@ -14,8 +14,7 @@ class FournisseurType extends AbstractType
     {
         $builder
             ->add('nomfornisseur')
-            ->add('fichefournisseur',FileType::class,['mapped' => false,'required' => false] )
-        ;
+            ->add('fichefournisseur', FileType::class, ['mapped' => false, 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

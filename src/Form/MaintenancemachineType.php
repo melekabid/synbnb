@@ -15,8 +15,7 @@ class MaintenancemachineType extends AbstractType
             ->add('nominterventaire')
             ->add('action')
             ->add('idclient')
-            ->add('idproduit')
-        ;
+            ->add('idproduit');
     }
 
     public function configureOptions(OptionsResolver $resolver): void

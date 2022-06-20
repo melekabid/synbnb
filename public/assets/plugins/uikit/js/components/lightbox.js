@@ -1,5 +1,5 @@
 /*! UIkit 2.16.2 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
-(function(addon) {
+(function (addon) {
 
     var component;
 
@@ -9,29 +9,29 @@
 
 
     if (typeof define == "function" && define.amd) { // AMD
-        define(["uikit-lightbox"], function(){
+        define(["uikit-lightbox"], function () {
             return component || addon(jQuery, UIkit);
         });
     }
 
-})(function($, UI){
+})(function ($, UI) {
 
     var modal, cache = {};
 
     UI.component('lightbox', {
 
         defaults: {
-            "group"      : false,
-            "duration"   : 400,
-            "keyboard"   : true
+            "group": false,
+            "duration": 400,
+            "keyboard": true
         },
 
-        index : 0,
-        items : false,
+        index: 0,
+        items: false,
 
-        boot: function() {
+        boot: function () {
 
-            UI.$html.on('click', UI.prefix('[data-@-lightbox]'), function(e){
+            UI.$html.on('click', UI.prefix('[data-@-lightbox]'), function (e) {
 
                 e.preventDefault();
 
@@ -45,13 +45,13 @@
             });
 
             // keyboard navigation
-            UI.$doc.on('keyup', function(e) {
+            UI.$doc.on('keyup', function (e) {
 
                 if (modal && modal.is(':visible') && modal.lightbox.options.keyboard) {
 
                     e.preventDefault();
 
-                    switch(e.keyCode) {
+                    switch (e.keyCode) {
                         case 37:
                             modal.lightbox.previous();
                             break;
@@ -63,13 +63,13 @@
             });
         },
 
-        init: function() {
+        init: function () {
 
             var $this = this;
 
-            this.siblings  = this.options.group ? UI.$([
-                '[data-@-lightbox*="'+this.options.group+'"]',
-                "[data-@-lightbox*='"+this.options.group+"']"
+            this.siblings = this.options.group ? UI.$([
+                '[data-@-lightbox*="' + this.options.group + '"]',
+                "[data-@-lightbox*='" + this.options.group + "']"
             ].join(',')) : this.element;
 
             this.index = this.siblings.index(this.element);
@@ -77,7 +77,7 @@
             this.trigger('lightbox-init', [this]);
         },
 
-        show: function(index) {
+        show: function (index) {
 
             this.modal = getModal(this);
 
@@ -90,33 +90,33 @@
             index = index || 0;
 
             // index is a jQuery object or DOM element
-            if (typeof(index) == 'object') {
+            if (typeof (index) == 'object') {
                 index = this.siblings.index(index);
             }
 
             // fix index if needed
-            if ( index < 0 ) {
+            if (index < 0) {
                 index = this.siblings.length - index;
             } else if (!this.siblings[index]) {
                 index = 0;
             }
 
-            item   = this.siblings.eq(index);
+            item = this.siblings.eq(index);
             source = item.attr('href');
-            title  = item.attr('title');
+            title = item.attr('title');
 
             data = {
-                "lightbox" : $this,
-                "source"   : source,
-                "type"     : item.data("lightboxType") || 'auto',
-                "index"    : index,
-                "promise"  : promise,
-                "title"    : title,
-                "item"     : item,
-                "meta"     : {
-                    "content" : '',
-                    "width"   : null,
-                    "height"  : null
+                "lightbox": $this,
+                "source": source,
+                "type": item.data("lightboxType") || 'auto',
+                "index": index,
+                "promise": promise,
+                "title": title,
+                "item": item,
+                "meta": {
+                    "content": '',
+                    "width": null,
+                    "height": null
                 }
             };
 
@@ -125,31 +125,31 @@
             this.modal.content.empty();
 
             if (!this.modal.is(':visible')) {
-                this.modal.content.css({width:'', height:''}).empty();
+                this.modal.content.css({width: '', height: ''}).empty();
                 this.modal.modal.show();
             }
 
             this.modal.loader.removeClass(UI.prefix('@-hidden'));
 
-            promise.promise().done(function() {
+            promise.promise().done(function () {
 
                 $this.data = data;
                 $this.fitSize(data);
 
-            }).fail(function(){
+            }).fail(function () {
                 alert('Loading resource failed!');
             });
 
             $this.trigger('show.uk.lightbox', [data]);
         },
 
-        fitSize: function() {
+        fitSize: function () {
 
-            var $this    = this,
-                data     = this.data,
-                pad      = this.modal.dialog.outerWidth() - this.modal.dialog.width(),
-                dpad     = parseInt(this.modal.dialog.css('margin-top'), 10) + parseInt(this.modal.dialog.css('margin-bottom'), 10),
-                content  = data.meta.content,
+            var $this = this,
+                data = this.data,
+                pad = this.modal.dialog.outerWidth() - this.modal.dialog.width(),
+                dpad = parseInt(this.modal.dialog.css('margin-top'), 10) + parseInt(this.modal.dialog.css('margin-bottom'), 10),
+                content = data.meta.content,
                 duration = $this.options.duration;
 
             if (this.siblings.length > 1) {
@@ -163,26 +163,26 @@
 
             // calculate width
             var tmp = $('<div>&nbsp;</div>').css({
-                'opacity'   : 0,
-                'position'  : 'absolute',
-                'top'       : 0,
-                'left'      : 0,
-                'width'     : '100%',
-                'max-width' : $this.modal.dialog.css('max-width'),
-                'padding'   : $this.modal.dialog.css('padding'),
-                'margin'    : $this.modal.dialog.css('margin')
+                'opacity': 0,
+                'position': 'absolute',
+                'top': 0,
+                'left': 0,
+                'width': '100%',
+                'max-width': $this.modal.dialog.css('max-width'),
+                'padding': $this.modal.dialog.css('padding'),
+                'margin': $this.modal.dialog.css('margin')
             }), maxwidth, maxheight, w = data.meta.width, h = data.meta.height;
 
             tmp.appendTo('body').width();
 
-            maxwidth  = tmp.width();
+            maxwidth = tmp.width();
             maxheight = window.innerHeight - (dpad * 2);
 
             tmp.remove();
 
             if (maxwidth < data.meta.width) {
 
-                h = Math.floor( h * (maxwidth / w) );
+                h = Math.floor(h * (maxwidth / w));
                 w = maxwidth;
 
             }
@@ -190,7 +190,7 @@
             if (maxheight < h) {
 
                 h = Math.floor(maxheight);
-                w = Math.ceil(data.meta.width * (maxheight/data.meta.height));
+                w = Math.ceil(data.meta.width * (maxheight / data.meta.height));
             }
 
             this.modal.content.css('opacity', 0).width(w).html(content);
@@ -198,27 +198,29 @@
             this.modal.dialog.find(UI.prefix('.@-modal-caption')).remove();
 
             if (data.title) {
-                this.modal.dialog.append(UI.prefix('<div class="@-modal-caption">')+data.title+'</div>');
+                this.modal.dialog.append(UI.prefix('<div class="@-modal-caption">') + data.title + '</div>');
             }
 
             if (data.type == 'iframe') {
                 this.modal.content.find('iframe:first').height(h);
             }
 
-            var dh   = h + pad,
-                t    = Math.floor(window.innerHeight/2 - dh/2) - dpad;
+            var dh = h + pad,
+                t = Math.floor(window.innerHeight / 2 - dh / 2) - dpad;
 
-            if (t < 0) { t = 0; }
+            if (t < 0) {
+                t = 0;
+            }
 
             this.modal.closer.addClass(UI.prefix('@-hidden'));
 
-            if ($this.modal.data('mwidth') == w &&  $this.modal.data('mheight') == h) {
+            if ($this.modal.data('mwidth') == w && $this.modal.data('mheight') == h) {
                 duration = 0;
             }
 
-            this.modal.dialog.animate({width: w + pad, height: h + pad, top: t }, duration, 'swing', function() {
+            this.modal.dialog.animate({width: w + pad, height: h + pad, top: t}, duration, 'swing', function () {
                 $this.modal.loader.addClass(UI.prefix('@-hidden'));
-                $this.modal.content.css({width:''}).animate({'opacity': 1}, function() {
+                $this.modal.content.css({width: ''}).animate({'opacity': 1}, function () {
                     $this.modal.closer.removeClass(UI.prefix('@-hidden'));
                 });
 
@@ -226,12 +228,12 @@
             });
         },
 
-        next: function() {
-            this.show(this.siblings[(this.index+1)] ? (this.index+1) : 0);
+        next: function () {
+            this.show(this.siblings[(this.index + 1)] ? (this.index + 1) : 0);
         },
 
-        previous: function() {
-            this.show(this.siblings[(this.index-1)] ? (this.index-1) : this.siblings.length-1);
+        previous: function () {
+            this.show(this.siblings[(this.index - 1)] ? (this.index - 1) : this.siblings.length - 1);
         }
     });
 
@@ -240,18 +242,18 @@
 
     UI.plugin('lightbox', 'image', {
 
-        init: function(lightbox) {
+        init: function (lightbox) {
 
-            lightbox.on("show.uk.lightbox", function(e, data){
+            lightbox.on("show.uk.lightbox", function (e, data) {
 
                 if (data.type == 'image' || data.source && data.source.match(/\.(jpg|jpeg|png|gif|svg)$/)) {
 
-                    var resolve = function(source, width, height) {
+                    var resolve = function (source, width, height) {
 
                         data.meta = {
-                            "content" : '<img class="uk-responsive-width" width="'+width+'" height="'+height+'" height="" src ="'+source+'">',
-                            "width"   : width,
-                            "height"  : height
+                            "content": '<img class="uk-responsive-width" width="' + width + '" height="' + height + '" height="" src ="' + source + '">',
+                            "width": width,
+                            "height": height
                         };
 
                         data.type = 'image';
@@ -263,11 +265,11 @@
 
                         var img = new Image();
 
-                        img.onerror = function(){
+                        img.onerror = function () {
                             data.promise.reject('Loading image failed');
                         };
 
-                        img.onload = function(){
+                        img.onload = function () {
                             cache[data.source] = {width: img.width, height: img.height};
                             resolve(data.source, cache[data.source].width, cache[data.source].height);
                         };
@@ -284,18 +286,18 @@
 
     UI.plugin("lightbox", "youtube", {
 
-        init: function(lightbox) {
+        init: function (lightbox) {
 
             var youtubeRegExp = /(\/\/.*?youtube\.[a-z]+)\/watch\?v=([^&]+)&?(.*)/,
                 youtubeRegExpShort = /youtu\.be\/(.*)/;
 
 
-            lightbox.on("show.uk.lightbox", function(e, data){
+            lightbox.on("show.uk.lightbox", function (e, data) {
 
-                var id, matches, resolve = function(id, width, height) {
+                var id, matches, resolve = function (id, width, height) {
 
                     data.meta = {
-                        'content': '<iframe src="//www.youtube.com/embed/'+id+'" width="'+width+'" height="'+height+'" style="max-width:100%;"></iframe>',
+                        'content': '<iframe src="//www.youtube.com/embed/' + id + '" width="' + width + '" height="' + height + '" style="max-width:100%;"></iframe>',
                         'width': width,
                         'height': height
                     };
@@ -315,21 +317,21 @@
 
                 if (id) {
 
-                    if(!cache[id]) {
+                    if (!cache[id]) {
 
                         var img = new Image();
 
-                        img.onerror = function(){
-                            cache[id] = {width:640, height:320};
+                        img.onerror = function () {
+                            cache[id] = {width: 640, height: 320};
                             resolve(id, cache[id].width, cache[id].height);
                         };
 
-                        img.onload = function(){
-                            cache[id] = {width:img.width, height:img.height};
+                        img.onload = function () {
+                            cache[id] = {width: img.width, height: img.height};
                             resolve(id, img.width, img.height);
                         };
 
-                        img.src = '//img.youtube.com/vi/'+id+'/0.jpg';
+                        img.src = '//img.youtube.com/vi/' + id + '/0.jpg';
 
                     } else {
                         resolve(id, cache[id].width, cache[id].height);
@@ -344,17 +346,17 @@
 
     UI.plugin("lightbox", "vimeo", {
 
-        init: function(lightbox) {
+        init: function (lightbox) {
 
             var regex = /(\/\/.*?)vimeo\.[a-z]+\/([0-9]+).*?/, matches;
 
 
-            lightbox.on("show.uk.lightbox", function(e, data){
+            lightbox.on("show.uk.lightbox", function (e, data) {
 
-                var id, resolve = function(id, width, height) {
+                var id, resolve = function (id, width, height) {
 
                     data.meta = {
-                        'content': '<iframe src="//player.vimeo.com/video/'+id+'" width="'+width+'" height="'+height+'" style="width:100%;box-sizing:border-box;"></iframe>',
+                        'content': '<iframe src="//player.vimeo.com/video/' + id + '" width="' + width + '" height="' + height + '" style="width:100%;box-sizing:border-box;"></iframe>',
                         'width': width,
                         'height': height
                     };
@@ -368,15 +370,15 @@
 
                     id = matches[2];
 
-                    if(!cache[id]) {
+                    if (!cache[id]) {
 
                         $.ajax({
-                            type     : 'GET',
-                            url      : 'http://vimeo.com/api/oembed.json?url=' + encodeURI(data.source),
-                            jsonp    : 'callback',
-                            dataType : 'jsonp',
-                            success  : function(data) {
-                                cache[id] = {width:data.width, height:data.height};
+                            type: 'GET',
+                            url: 'http://vimeo.com/api/oembed.json?url=' + encodeURI(data.source),
+                            jsonp: 'callback',
+                            dataType: 'jsonp',
+                            success: function (data) {
+                                cache[id] = {width: data.width, height: data.height};
                                 resolve(id, cache[id].width, cache[id].height);
                             }
                         });
@@ -393,14 +395,14 @@
 
     UI.plugin("lightbox", "video", {
 
-        init: function(lightbox) {
+        init: function (lightbox) {
 
-            lightbox.on("show.uk.lightbox", function(e, data){
+            lightbox.on("show.uk.lightbox", function (e, data) {
 
-                var resolve = function(source, width, height) {
+                var resolve = function (source, width, height) {
 
                     data.meta = {
-                        'content': '<video class="uk-responsive-width" src="'+source+'" width="'+width+'" height="'+height+'" controls width="'+width+'" height="'+height+'"></video>',
+                        'content': '<video class="uk-responsive-width" src="' + source + '" width="' + width + '" height="' + height + '" controls width="' + width + '" height="' + height + '"></video>',
                         'width': width,
                         'height': height
                     };
@@ -416,7 +418,7 @@
 
                         var vid = $('<video style="position:fixed;visibility:hidden;top:-10000px;"></video>').attr('src', data.source).appendTo('body');
 
-                        var idle = setInterval(function() {
+                        var idle = setInterval(function () {
 
                             if (vid[0].videoWidth) {
                                 clearInterval(idle);
@@ -446,34 +448,34 @@
         // init lightbox container
         modal = UI.$([
             '<div class="@-modal">',
-                '<div class="@-modal-dialog @-modal-dialog-lightbox @-slidenav-position" style="margin-left:auto;margin-right:auto;width:200px;height:200px;top:'+Math.abs(window.innerHeight/2 - 200)+'px;">',
-                    '<a href="#" class="@-modal-close @-close @-close-alt"></a>',
-                    '<div class="@-lightbox-content"></div>',
-                    '<div class="@-modal-spinner @-hidden"></div>',
-                '</div>',
+            '<div class="@-modal-dialog @-modal-dialog-lightbox @-slidenav-position" style="margin-left:auto;margin-right:auto;width:200px;height:200px;top:' + Math.abs(window.innerHeight / 2 - 200) + 'px;">',
+            '<a href="#" class="@-modal-close @-close @-close-alt"></a>',
+            '<div class="@-lightbox-content"></div>',
+            '<div class="@-modal-spinner @-hidden"></div>',
+            '</div>',
             '</div>'
         ].join('')).appendTo('body');
 
-        modal.dialog  = modal.find(UI.prefix('.@-modal-dialog:first'));
+        modal.dialog = modal.find(UI.prefix('.@-modal-dialog:first'));
         modal.content = modal.find(UI.prefix('.@-lightbox-content:first'));
-        modal.loader  = modal.find(UI.prefix('.@-modal-spinner:first'));
-        modal.closer  = modal.find(UI.prefix('.@-close.@-close-alt'));
-        modal.modal   = UI.modal(modal);
+        modal.loader = modal.find(UI.prefix('.@-modal-spinner:first'));
+        modal.closer = modal.find(UI.prefix('.@-close.@-close-alt'));
+        modal.modal = UI.modal(modal);
 
         // next / previous
-        modal.on("swipeRight swipeLeft", function(e) {
-            modal.lightbox[e.type=='swipeLeft' ? 'next':'previous']();
-        }).on("click", "[data-lightbox-previous], [data-lightbox-next]", function(e){
+        modal.on("swipeRight swipeLeft", function (e) {
+            modal.lightbox[e.type == 'swipeLeft' ? 'next' : 'previous']();
+        }).on("click", "[data-lightbox-previous], [data-lightbox-next]", function (e) {
             e.preventDefault();
-            modal.lightbox[$(this).is('[data-lightbox-next]') ? 'next':'previous']();
+            modal.lightbox[$(this).is('[data-lightbox-next]') ? 'next' : 'previous']();
         });
 
         // destroy content on modal hide
-        modal.on("hide.uk.modal", function(e) {
+        modal.on("hide.uk.modal", function (e) {
             modal.content.html('');
         });
 
-        UI.$win.on('load resize orientationchange', UI.Utils.debounce(function(){
+        UI.$win.on('load resize orientationchange', UI.Utils.debounce(function () {
             if (modal.is(':visible')) modal.lightbox.fitSize();
         }.bind(this), 100));
 

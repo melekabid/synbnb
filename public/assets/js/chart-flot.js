@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,7 +14,7 @@ jQuery(function($) {
     /*--------------------------------
         Flot Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartFlot = function() {
+    ULTRA_SETTINGS.chartFlot = function () {
 
 
         /*------------------ Real Time ------------------------*/
@@ -59,7 +59,7 @@ jQuery(function($) {
         // Set up the control widget
 
         var updateInterval = 30;
-        $("#updateInterval").val(updateInterval).change(function() {
+        $("#updateInterval").val(updateInterval).change(function () {
             var v = $(this).val();
             if (v && !isNaN(+v)) {
                 updateInterval = +v;
@@ -102,10 +102,6 @@ jQuery(function($) {
         }
 
         realtimeupdate();
-
-
-
-
 
 
         /*---------------------- Percentile ------------------------*/
@@ -437,63 +433,63 @@ jQuery(function($) {
         };
 
         var dataset = [{
-                label: "Female mean",
-                data: females["mean"],
-                lines: {
-                    show: true
-                },
-                color: "rgba(31,181,172,1)"
-            }, {
-                id: "f15%",
-                data: females["15%"],
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: false
-                },
-                color: "rgba(31,181,172,1)"
-            }, {
-                id: "f25%",
-                data: females["25%"],
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: 0.2
-                },
-                color: "rgba(31,181,172,1)",
-                fillBetween: "f15%"
-            }, {
-                id: "f50%",
-                data: females["50%"],
-                lines: {
-                    show: true,
-                    lineWidth: 0.5,
-                    fill: 0.4,
-                    shadowSize: 0
-                },
-                color: "rgba(31,181,172,1)",
-                fillBetween: "f25%"
-            }, {
-                id: "f75%",
-                data: females["75%"],
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: 0.4
-                },
-                color: "rgba(31,181,172,1)",
-                fillBetween: "f50%"
-            }, {
-                id: "f85%",
-                data: females["85%"],
-                lines: {
-                    show: true,
-                    lineWidth: 0,
-                    fill: 0.2
-                },
-                color: "rgba(31,181,172,1)",
-                fillBetween: "f75%"
+            label: "Female mean",
+            data: females["mean"],
+            lines: {
+                show: true
             },
+            color: "rgba(31,181,172,1)"
+        }, {
+            id: "f15%",
+            data: females["15%"],
+            lines: {
+                show: true,
+                lineWidth: 0,
+                fill: false
+            },
+            color: "rgba(31,181,172,1)"
+        }, {
+            id: "f25%",
+            data: females["25%"],
+            lines: {
+                show: true,
+                lineWidth: 0,
+                fill: 0.2
+            },
+            color: "rgba(31,181,172,1)",
+            fillBetween: "f15%"
+        }, {
+            id: "f50%",
+            data: females["50%"],
+            lines: {
+                show: true,
+                lineWidth: 0.5,
+                fill: 0.4,
+                shadowSize: 0
+            },
+            color: "rgba(31,181,172,1)",
+            fillBetween: "f25%"
+        }, {
+            id: "f75%",
+            data: females["75%"],
+            lines: {
+                show: true,
+                lineWidth: 0,
+                fill: 0.4
+            },
+            color: "rgba(31,181,172,1)",
+            fillBetween: "f50%"
+        }, {
+            id: "f85%",
+            data: females["85%"],
+            lines: {
+                show: true,
+                lineWidth: 0,
+                fill: 0.2
+            },
+            color: "rgba(31,181,172,1)",
+            fillBetween: "f75%"
+        },
 
             {
                 label: "Male mean",
@@ -560,7 +556,7 @@ jQuery(function($) {
                 tickDecimals: 0
             },
             yaxis: {
-                tickFormatter: function(v) {
+                tickFormatter: function (v) {
                     return v + " cm";
                 }
             },
@@ -575,14 +571,7 @@ jQuery(function($) {
         });
 
 
-
-
-
-
-
-
         /* -------------------- Navigate ------------------------*/
-
 
 
         // generate data set from a parametric function with a fractal look
@@ -634,12 +623,12 @@ jQuery(function($) {
 
         // show pan/zoom messages to illustrate events 
 
-        placeholder.bind("plotpan", function(event, navplot) {
+        placeholder.bind("plotpan", function (event, navplot) {
             var axes = navplot.getAxes();
             $(".message").html("Panning to x: " + axes.xaxis.min.toFixed(2) + " &ndash; " + axes.xaxis.max.toFixed(2) + " and y: " + axes.yaxis.min.toFixed(2) + " &ndash; " + axes.yaxis.max.toFixed(2));
         });
 
-        placeholder.bind("plotzoom", function(event, navplot) {
+        placeholder.bind("plotzoom", function (event, navplot) {
             var axes = navplot.getAxes();
             $(".message").html("Zooming to x: " + axes.xaxis.min.toFixed(2) + " &ndash; " + axes.xaxis.max.toFixed(2) + " and y: " + axes.yaxis.min.toFixed(2) + " &ndash; " + axes.yaxis.max.toFixed(2));
         });
@@ -648,7 +637,7 @@ jQuery(function($) {
 
         $("<div class='button' style='right:20px;top:20px'>zoom out</div>")
             .appendTo(placeholder)
-            .click(function(event) {
+            .click(function (event) {
                 event.preventDefault();
                 navplot.zoomOut();
             });
@@ -661,7 +650,7 @@ jQuery(function($) {
         function addArrow(dir, right, top, offset) {
             $("<img class='button' src='assets/plugins/flot-chart/images/arrow-" + dir + ".gif' style='right:" + right + "px;top:" + top + "px'>")
                 .appendTo(placeholder)
-                .click(function(e) {
+                .click(function (e) {
                     e.preventDefault();
                     navplot.pan(offset);
                 });
@@ -681,9 +670,7 @@ jQuery(function($) {
         });
 
 
-
         /*------------------------ Series Pie -----------------------*/
-
 
 
         var data = [],
@@ -698,7 +685,7 @@ jQuery(function($) {
 
         var placeholder = $("#placeholder");
 
-        $("#example-1").click(function() {
+        $("#example-1").click(function () {
 
             placeholder.unbind();
 
@@ -728,8 +715,6 @@ jQuery(function($) {
         /* ------------------------ FLOT PIE ---------------------*/
 
 
-
-
         var data = [],
             //series = Math.floor(Math.random() * 6) + 3;
             series = 5;
@@ -743,7 +728,7 @@ jQuery(function($) {
 
         var flotpie = $("#flotpie");
 
-        $("#pieexample-1").click(function() {
+        $("#pieexample-1").click(function () {
 
             flotpie.unbind();
 
@@ -762,7 +747,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-2").click(function() {
+        $("#pieexample-2").click(function () {
 
             flotpie.unbind();
 
@@ -785,7 +770,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-3").click(function() {
+        $("#pieexample-3").click(function () {
 
             flotpie.unbind();
 
@@ -816,7 +801,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-4").click(function() {
+        $("#pieexample-4").click(function () {
 
             flotpie.unbind();
 
@@ -847,7 +832,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-5").click(function() {
+        $("#pieexample-5").click(function () {
 
             flotpie.unbind();
 
@@ -879,7 +864,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-6").click(function() {
+        $("#pieexample-6").click(function () {
 
             flotpie.unbind();
 
@@ -911,7 +896,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-7").click(function() {
+        $("#pieexample-7").click(function () {
 
             flotpie.unbind();
 
@@ -940,7 +925,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-8").click(function() {
+        $("#pieexample-8").click(function () {
 
             flotpie.unbind();
 
@@ -966,7 +951,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-9").click(function() {
+        $("#pieexample-9").click(function () {
 
             flotpie.unbind();
 
@@ -994,7 +979,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-10").click(function() {
+        $("#pieexample-10").click(function () {
 
             flotpie.unbind();
 
@@ -1030,7 +1015,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-11").click(function() {
+        $("#pieexample-11").click(function () {
 
             flotpie.unbind();
 
@@ -1050,7 +1035,7 @@ jQuery(function($) {
 
         });
 
-        $("#pieexample-12").click(function() {
+        $("#pieexample-12").click(function () {
 
             flotpie.unbind();
 
@@ -1068,7 +1053,7 @@ jQuery(function($) {
             });
 
 
-            flotpie.bind("plothover", function(event, pos, obj) {
+            flotpie.bind("plothover", function (event, pos, obj) {
 
                 if (!obj) {
                     return;
@@ -1078,7 +1063,7 @@ jQuery(function($) {
                 $("#hover").html("<span style='font-weight:bold; color:" + obj.series.color + "'>" + obj.series.label + " (" + percent + "%)</span>");
             });
 
-            flotpie.bind("plotclick", function(event, pos, obj) {
+            flotpie.bind("plotclick", function (event, pos, obj) {
 
                 if (!obj) {
                     return;
@@ -1091,16 +1076,13 @@ jQuery(function($) {
 
         // Show the initial default chart
 
-        $("#flotpiemenu button").click(function() {
+        $("#flotpiemenu button").click(function () {
             $("#flotpiemenu button").removeClass("btn-success").addClass("btn-default");
             $(this).addClass("btn-success").removeClass("btn-default");
         });
 
 
         $("#pieexample-1").click();
-
-
-
 
 
         /*------------------ Series Toggle ---------------------*/
@@ -1280,14 +1262,14 @@ jQuery(function($) {
         // countries are turned on/off
 
         var i = 0;
-        $.each(togdatasets, function(key, val) {
+        $.each(togdatasets, function (key, val) {
             val.color = i;
             ++i;
         });
 
         // insert checkboxes 
         var choiceContainer = $("#choices");
-        $.each(togdatasets, function(key, val) {
+        $.each(togdatasets, function (key, val) {
             choiceContainer.append("<br/><input class='iCheck' type='checkbox' name='" + key +
                 "' checked='checked' id='id" + key + "'></input>" +
                 "<label class='form-label' for='id" + key + "'>" + val.label + "</label>");
@@ -1297,7 +1279,7 @@ jQuery(function($) {
         //choiceContainer.find("input").click(plotAccordingToChoices);
 
         if ($.isFunction($.fn.iCheck)) {
-            $('#choices input').on('ifChanged', function(event) {
+            $('#choices input').on('ifChanged', function (event) {
                 plotAccordingToChoices();
             });
         }
@@ -1307,7 +1289,7 @@ jQuery(function($) {
 
             var data = [];
 
-            choiceContainer.find("input:checked").each(function() {
+            choiceContainer.find("input:checked").each(function () {
                 var key = $(this).attr("name");
                 if (key && togdatasets[key]) {
                     data.push(togdatasets[key]);
@@ -1339,9 +1321,7 @@ jQuery(function($) {
         plotAccordingToChoices();
 
 
-
         /* -------------------- Series Types ------------------*/
-
 
 
         var typed1 = [];
@@ -1425,8 +1405,6 @@ jQuery(function($) {
         });
 
 
-
-
         /*------------------ Stacking -------------------------*/
 
 
@@ -1476,7 +1454,7 @@ jQuery(function($) {
 
         plotWithOptions();
 
-        $(".stackControls button").click(function(e) {
+        $(".stackControls button").click(function (e) {
             e.preventDefault();
             stack = $(this).text() == "With stacking" ? true : null;
             plotWithOptions();
@@ -1486,7 +1464,7 @@ jQuery(function($) {
 
         });
 
-        $(".graphControls button").click(function(e) {
+        $(".graphControls button").click(function (e) {
             e.preventDefault();
             bars = $(this).text().indexOf("Bars") != -1;
             lines = $(this).text().indexOf("Lines") != -1;
@@ -1499,9 +1477,7 @@ jQuery(function($) {
         });
 
 
-
         /*------------------- Tracking -------------------------*/
-
 
 
         var sin = [],
@@ -1542,7 +1518,7 @@ jQuery(function($) {
 
         var legends = $("#flot-track .legendLabel");
 
-        legends.each(function() {
+        legends.each(function () {
             // fix the widths so they don't jump around
             $(this).css('width', $(this).width());
         });
@@ -1593,19 +1569,12 @@ jQuery(function($) {
             }
         }
 
-        $("#flot-track").bind("plothover", function(event, pos, item) {
+        $("#flot-track").bind("plothover", function (event, pos, item) {
             latestPosition = pos;
             if (!updateLegendTimeout) {
                 updateLegendTimeout = setTimeout(updateLegend, 50);
             }
         });
-
-
-
-
-
-
-
 
 
         /*------------------- Visitor -------------------------*/
@@ -1793,10 +1762,10 @@ jQuery(function($) {
 
         // now connect the two
 
-        $("#flot-visitors").bind("plotselected", function(event, ranges) {
+        $("#flot-visitors").bind("plotselected", function (event, ranges) {
 
             // do the zooming
-            $.each(visitplot.getXAxes(), function(_, axis) {
+            $.each(visitplot.getXAxes(), function (_, axis) {
                 var opts = axis.options;
                 opts.min = ranges.xaxis.from;
                 opts.max = ranges.xaxis.to;
@@ -1810,14 +1779,12 @@ jQuery(function($) {
             overview.setSelection(ranges, true);
         });
 
-        $("#flot-visit-overview").bind("plotselected", function(event, ranges) {
+        $("#flot-visit-overview").bind("plotselected", function (event, ranges) {
             visitplot.setSelection(ranges);
         });
 
 
-
         /*------------------ Zoom -------------------------*/
-
 
 
         // setup plot
@@ -1902,7 +1869,7 @@ jQuery(function($) {
 
         // now connect the two
 
-        $("#flot-zoom").bind("plotselected", function(event, ranges) {
+        $("#flot-zoom").bind("plotselected", function (event, ranges) {
 
             // clamp the zooming to prevent eternal zoom
 
@@ -1934,10 +1901,9 @@ jQuery(function($) {
             zoomoverview.setSelection(ranges, true);
         });
 
-        $("#flot-zoom-overview").bind("plotselected", function(event, ranges) {
+        $("#flot-zoom-overview").bind("plotselected", function (event, ranges) {
             plot.setSelection(ranges);
         });
-
 
 
         /* ------------------ Area Chart ------------------------*/
@@ -2028,10 +1994,6 @@ jQuery(function($) {
                 position: "right" /* left or right */
             }]
         });
-
-
-
-
 
 
         /*---------------- Combined Chart --------------------*/
@@ -2204,18 +2166,17 @@ jQuery(function($) {
     }
 
 
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.chartFlot();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
     });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });

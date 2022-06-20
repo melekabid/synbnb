@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,26 +14,26 @@ jQuery(function($) {
     /*--------------------------------
         Knob Chart
      --------------------------------*/
-    ULTRA_SETTINGS.chartKnob = function() {
+    ULTRA_SETTINGS.chartKnob = function () {
 
 
         if ($.isFunction($.fn.knob)) {
 
             $(".knob").knob({
-                change: function(value) {
+                change: function (value) {
                     //console.log("change : " + value);
                 },
-                release: function(value) {
+                release: function (value) {
                     //console.log(this.$.attr('value'));
                     console.log("release : " + value);
                 },
-                cancel: function() {
+                cancel: function () {
                     console.log("cancel : ", this);
                 },
                 /*format : function (value) {
                     return value + '%';
                 },*/
-                draw: function() {
+                draw: function () {
 
                     // "tron" case
                     if (this.$.data('skin') == 'tron') {
@@ -77,12 +77,12 @@ jQuery(function($) {
                 i = 0,
                 $idir = $("div.idir"),
                 $ival = $("div.ival"),
-                incr = function() {
+                incr = function () {
                     i++;
                     $idir.show().html("+").fadeOut();
                     $ival.html(i);
                 },
-                decr = function() {
+                decr = function () {
                     i--;
                     $idir.show().html("-").fadeOut();
                     $ival.html(i);
@@ -91,7 +91,7 @@ jQuery(function($) {
                 min: 0,
                 max: 20,
                 stopper: false,
-                change: function() {
+                change: function () {
                     if (v > this.cv) {
                         if (up) {
                             decr();
@@ -122,21 +122,21 @@ jQuery(function($) {
     };
 
 
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.chartKnob();
         knob_clock();
     });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });
-
 
 
 function knob_clock() {

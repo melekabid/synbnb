@@ -14,8 +14,7 @@ class FichemachineType extends AbstractType
     {
         $builder
             ->add('nommachine')
-            ->add('fichemachine',FileType::class,['mapped' => false,'required' => false])
-        ;
+            ->add('fichemachine', FileType::class, ['mapped' => false, 'required' => false]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

@@ -17,7 +17,7 @@ function progressMessage() {
     }).run({
         errorMessage: 'Error destroying alien planet. Retrying...',
         successMessage: 'Alien planet destroyed!',
-        action: function(opts) {
+        action: function (opts) {
             if (++i < 2) {
                 return opts.error({
                     status: 500,

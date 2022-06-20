@@ -6,21 +6,19 @@ header('Content-Type: application/json');
 $errors = false;
 
 
-$resp = array(
-);
+$resp = array();
 
 # Normal Response Code
-if(function_exists('http_response_code'))
-	http_response_code(200);
-		
+if (function_exists('http_response_code'))
+    http_response_code(200);
+
 
 # On Error
-if($errors)
-{
-	if(function_exists('http_response_code'))
-		http_response_code(400);
-	
-	$resp['error'] = "Couldn't upload file, reason: ~";
+if ($errors) {
+    if (function_exists('http_response_code'))
+        http_response_code(400);
+
+    $resp['error'] = "Couldn't upload file, reason: ~";
 }
 
 echo json_encode($resp);

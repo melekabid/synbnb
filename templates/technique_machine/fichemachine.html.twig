@@ -9,15 +9,15 @@
         <div class="page-title">
 
             <div class="pull-left">
-                <h1 class="title">Fiches Technique Machines</h1>                            </div>
+                <h1 class="title">Fiches Technique Machines</h1></div>
 
             <div class="pull-right hidden-xs">
                 <ol class="breadcrumb">
                     <li>
-                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                        <a href="{{ path('app_index') }}"><i class="fa fa-home"></i>Menu</a>
                     </li>
                     <li>
-                        <a href="{{path('app_techniquemachine')}}">Fiches Technique Machines</a>
+                        <a href="{{ path('app_techniquemachine') }}">Fiches Technique Machines</a>
                     </li>
                     <li class="active">
                         <strong>Tous Les Fiches Technique Machines</strong>
@@ -39,58 +39,58 @@
                     <i class="box_close fa fa-times"></i>
                 </div>
             </header>
-            <div class="content-body">    <div class="row">
+            <div class="content-body">
+                <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
-
 
 
                         <!-- ******************************************** -->
 
 
-                        <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                        <table id="example" class="display table table-hover table-condensed" cellspacing="0"
+                               width="100%">
 
                             <thead>
                             <tr>
 
                                 <th>nom de Machine</th>
-                                <th>fiche du Machine </th>
-                                <th> Action </th>                   </tr>
+                                <th>fiche du Machine</th>
+                                <th> Action</th>
+                            </tr>
                             </thead>
 
-                                <tbody>
-                                {% for techniquemachine in techniquemachines %}
-                                <tr>
+                            <tbody>
+                            {% for techniquemachine in techniquemachines %}
+                            <tr>
 
 
-                                    <td>
-                                        {{techniquemachine.nommachine.reference}}
-                                    </td>
-                                    <td>
-                                        <a href="uploadsfile/{{techniquemachine.fichemachine}}"><i class="fa fa-file-pdf-o"></i></a>
+                                <td>
+                                    {{ techniquemachine.nommachine.reference }}
+                                </td>
+                                <td>
+                                    <a href="uploadsfile/{{ techniquemachine.fichemachine }}"><i
+                                                class="fa fa-file-pdf-o"></i></a>
 
-                                    </td>
+                                </td>
 
-                                    <td>
-                                        <a href="{{path('edit_technique',{'id': techniquemachine.id})}}"><i class="fa fa-pencil-square-o"></i></a>
-                                    </td>
-
-
-
+                                <td>
+                                    <a href="{{ path('edit_technique',{'id': techniquemachine.id}) }}"><i
+                                                class="fa fa-pencil-square-o"></i></a>
+                                </td>
 
 
-                                    {% endfor %}
-                                </tbody>
+                                {% endfor %}
+                            </tbody>
 
                         </table>
                         <!-- ******************************************** -->
 
 
-
-
                     </div>
                 </div>
             </div>
-        </section></div>
+        </section>
+    </div>
 
 
 

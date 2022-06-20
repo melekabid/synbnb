@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,8 +14,7 @@ jQuery(function($) {
     /*--------------------------------
         Chart Js Chart
      --------------------------------*/
-    ULTRA_SETTINGS.RickshawChart = function() {
-
+    ULTRA_SETTINGS.RickshawChart = function () {
 
 
         /*------------------- extensions chart - start----------------------*/
@@ -80,7 +79,7 @@ jQuery(function($) {
 
         var hoverDetail = new Rickshaw.Graph.HoverDetail({
             graph: graph,
-            xFormatter: function(x) {
+            xFormatter: function (x) {
                 return new Date(x * 1000).toString();
             }
         });
@@ -153,7 +152,7 @@ jQuery(function($) {
             "Added documentation for new methods"
         ];
 
-        setInterval(function() {
+        setInterval(function () {
             random.removeData(seriesData);
             random.addData(seriesData);
             graph.update();
@@ -168,7 +167,7 @@ jQuery(function($) {
         }
 
         addAnnotation(true);
-        setTimeout(function() {
+        setTimeout(function () {
             setInterval(addAnnotation, 6000)
         }, 6000);
 
@@ -182,9 +181,6 @@ jQuery(function($) {
 
 
         /*------------------- extensions chart - end----------------------*/
-
-
-
 
 
         /*------------------- series chart - start ----------------------*/
@@ -258,7 +254,7 @@ jQuery(function($) {
 
         var seroffset_form = document.getElementById('seroffset_form');
 
-        seroffset_form.addEventListener("change", function(e) {
+        seroffset_form.addEventListener("change", function (e) {
 
             var seroffsetMode = e.target.value;
 
@@ -277,7 +273,7 @@ jQuery(function($) {
         var tv = 1000;
         sergraph.series.setTimeInterval(tv);
 
-        setInterval(function() {
+        setInterval(function () {
             var data = {
                 Paris: 3
             };
@@ -294,10 +290,6 @@ jQuery(function($) {
         }, tv);
 
         /*------------------- series chart - end----------------------*/
-
-
-
-
 
 
         /*------------------- scatter chart - start ----------------------*/
@@ -344,8 +336,6 @@ jQuery(function($) {
 
 
         /*------------------- scatter chart - end----------------------*/
-
-
 
 
         /*------------------- milliseconds chart - start ----------------------*/
@@ -403,23 +393,19 @@ jQuery(function($) {
         /*------------------- milliseconds chart - end----------------------*/
 
 
-
-
     };
 
 
-
-
-
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {});
+    $(document).ready(function () {
+    });
 
-    $(window).resize(function() {});
+    $(window).resize(function () {
+    });
 
-    $(window).load(function() {
+    $(window).load(function () {
         ULTRA_SETTINGS.RickshawChart();
     });
 

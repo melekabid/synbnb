@@ -5,7 +5,7 @@
  */
 
 
-jQuery(function($) {
+jQuery(function ($) {
 
     'use strict';
 
@@ -14,11 +14,11 @@ jQuery(function($) {
     /*--------------------------------
         Sparkline Chart
      --------------------------------*/
-    ULTRA_SETTINGS.dbSparklineChart = function() {
+    ULTRA_SETTINGS.dbSparklineChart = function () {
 
         if ($.isFunction($.fn.sparkline)) {
 
-            $('.db_dynamicbar').sparkline([8.4, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9,8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
+            $('.db_dynamicbar').sparkline([8.4, 9, 8.4, 9, 8.8, 8, 9.5, 9.2, 9.9, 9, 9, 8, 7, 9, 9, 9.5, 8, 9.5, 9.8], {
                 type: 'bar',
                 barColor: '#9972b5',
                 height: '80',
@@ -52,7 +52,7 @@ jQuery(function($) {
 
 
             // Bar + line composite charts
-            $('.db_compositebar').sparkline([4, 6,  4, 6, 7, 7, 4, 3, 2, 4, 6, 7,7, 4, 3, 1, 4, 6, 5, 9], {
+            $('.db_compositebar').sparkline([4, 6, 4, 6, 7, 7, 4, 3, 2, 4, 6, 7, 7, 4, 3, 1, 4, 6, 5, 9], {
                 type: 'bar',
                 barColor: '#9972b5',
                 height: '80',
@@ -74,18 +74,15 @@ jQuery(function($) {
             });
 
 
-
         }
 
     };
 
 
-
-
     /*--------------------------------
         Easy PIE
      --------------------------------*/
-    ULTRA_SETTINGS.dbEasyPieChart = function() {
+    ULTRA_SETTINGS.dbEasyPieChart = function () {
 
         if ($.isFunction($.fn.easyPieChart)) {
 
@@ -97,7 +94,7 @@ jQuery(function($) {
                 lineWidth: 6,
                 size: 120,
                 animate: 2000,
-                onStep: function(from, to, percent) {
+                onStep: function (from, to, percent) {
                     $(this.el).find('.percent').text(Math.round(percent));
                 }
             });
@@ -106,12 +103,10 @@ jQuery(function($) {
     };
 
 
-
-
     /*--------------------------------
         Morris 
      --------------------------------*/
-    ULTRA_SETTINGS.dbMorrisChart = function() {
+    ULTRA_SETTINGS.dbMorrisChart = function () {
 
 
         /*Area Graph*/
@@ -150,7 +145,7 @@ jQuery(function($) {
             labels: ['Y', 'Z'],
             lineColors: ['#9972b5', '#1fb5ac'],
             pointFillColors: ['#fa8564']
-        }).on('click', function(i, row) {
+        }).on('click', function (i, row) {
             console.log(i, row);
         });
 
@@ -211,17 +206,13 @@ jQuery(function($) {
         });
 
 
-
-
     };
-
 
 
     /*--------------------------------
         Rickshaw charts
      --------------------------------*/
-    ULTRA_SETTINGS.dbRickshawChart = function() {
-
+    ULTRA_SETTINGS.dbRickshawChart = function () {
 
 
         /*------------------- extensions chart - start----------------------*/
@@ -278,7 +269,7 @@ jQuery(function($) {
 
         var hoverDetail = new Rickshaw.Graph.HoverDetail({
             graph: graph,
-            xFormatter: function(x) {
+            xFormatter: function (x) {
                 return new Date(x * 1000).toString();
             }
         });
@@ -351,7 +342,7 @@ jQuery(function($) {
             "Added documentation for new methods"
         ];
 
-        setInterval(function() {
+        setInterval(function () {
             random.removeData(seriesData);
             random.addData(seriesData);
             graph.update();
@@ -366,7 +357,7 @@ jQuery(function($) {
         }
 
         addAnnotation(true);
-        setTimeout(function() {
+        setTimeout(function () {
             setInterval(addAnnotation, 6000)
         }, 6000);
 
@@ -382,17 +373,13 @@ jQuery(function($) {
         /*------------------- extensions chart - end----------------------*/
 
 
-
     };
-
-
-
 
 
     /*--------------------------------
          gauge meter
      --------------------------------*/
-    ULTRA_SETTINGS.dbGaugemeter = function() {
+    ULTRA_SETTINGS.dbGaugemeter = function () {
 
         if ($("#gauge-meter").length) {
             var opts = {
@@ -422,7 +409,7 @@ jQuery(function($) {
         }
 
         function randomGauge() {
-            setTimeout(function() {
+            setTimeout(function () {
                 var val = Math.random() * 99;
                 gauge.set(val); // set actual va{lue
                 AnimationUpdater.run();
@@ -433,11 +420,10 @@ jQuery(function($) {
     };
 
 
-
     /******************************
-     initialize respective scripts 
+     initialize respective scripts
      *****************************/
-    $(document).ready(function() {
+    $(document).ready(function () {
         ULTRA_SETTINGS.dbSparklineChart();
         //ULTRA_SETTINGS.dbEasyPieChart();
         //ULTRA_SETTINGS.dbMorrisChart();
@@ -445,10 +431,11 @@ jQuery(function($) {
         //ULTRA_SETTINGS.dbGaugemeter();
     });
 
-    $(window).resize(function() {
+    $(window).resize(function () {
         ULTRA_SETTINGS.dbSparklineChart();
     });
 
-    $(window).load(function() {});
+    $(window).load(function () {
+    });
 
 });
