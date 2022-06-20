@@ -1,0 +1,158 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+
+        <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                        <div class="page-title">
+
+                            <div class="pull-left">
+                                <h1 class="title">Ajouter Une Machine</h1>                            </div>
+
+                            <div class="pull-right hidden-xs">
+                                <ol class="breadcrumb">
+
+                                    <li>
+                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{path('app_produit')}}">Machines</a>
+                                    </li>
+                                    <li class="active">
+                                        <strong>Ajouter Machine</strong>
+                                    </li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Ajouter Une Machine</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i class="box_toggle fa fa-chevron-down"></i>
+                                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
+                                    <i class="box_close fa fa-times"></i>
+                                </div>
+                            </header>
+                            <div class="content-body">
+                                <div class="row">
+                                  {{ form_start(formProduits)}}
+                                        <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12">
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-1">Référence Machine</label>
+                                                <span class="desc"></span>
+                                                <div class="controls">
+                                                    {{form_widget(formProduits.reference, {'attr': {'placeholder': "La reference De La Machine", 'type':"text",'class':"form-control", 'id':"field-1" }})}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-1">Image Machine</label>
+                                                <span class="desc"></span>
+                                                <div class="controls">
+                                                    {{form_widget(formProduits.img, {'attr': {'placeholder': "L'image De La Machine", 'type':"file",'class':"form-control", 'id':"field-1" }})}}
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-1">Categorie De la Machine</label>
+                                                <span class="desc"></span>
+                                                {{form_widget(formProduits.idcategorie, {'attr': {'placeholder': "Categorie de la Machine", 'type':"text",'class':"form-control", 'id':"field-1" }})}}
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-1">Taux TVA</label>
+                                                {{form_widget(formProduits.tva, {'attr': {'placeholder': "tva de la machine", 'type':"number",'class':"form-control", 'id':"field-1" }})}}
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-6">Description De la Machine</label>
+                                                <div class="controls">
+                                                    {{form_widget(formProduits.description, {'attr': {'placeholder': "Description de la Machine", 'type':"textarea",'class':"form-control autogrow", 'id':"field-6" }})}}
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexdinar" >
+                                                    <label class="form-check-label" for="flexCheckChecked">
+                                                          prix en dinar
+                                                    </label>
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexdollar">
+                                                    <label class="form-check-label" for="flexCheckDefault">
+                                                         prix en dollar
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-6">Prix en dinar</label>
+                                                <div class="controls">
+
+                                                    {{form_widget(formProduits.prixdinar, {'attr': {'placeholder': "prix en dinar de la Machine", 'type':"number",'class':"form-control", 'id':"dinars" , 'name':"dinar" }})}}
+
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-6">Prix en dollar</label>
+                                                <div class="controls">
+                                                    {{form_widget(formProduits.prixdollar, {'attr': {'placeholder': "prix en dollar de la Machine", 'type':"number",'class':"form-control", 'id':"dollars" }})}}
+
+                                                </div>
+                                            </div>
+
+                                            <script>
+                                            ( function(){
+                                                var dinarCheck = document.getElementById('flexdinar');
+                                                var dollarCheck = document.getElementById('flexdollar');
+                                                var dinarInput = document.getElementById('produit_prixdinar');
+                                                var dollarInput = document.getElementById('produit_prixdollar');
+                                                dinarCheck.addEventListener('click', function(){
+                                                    if(this.checked){
+                                                        dollarInput.disabled = 'false';
+                                                    }
+                                                    else{
+                                                        dollarInput.disabled = '';
+                                                    }
+                                                });
+                                                dollarCheck.addEventListener('click', function(){
+                                                    if(this.checked){
+                                                        dinarInput.disabled = 'false';
+                                                    }
+                                                    else{
+                                                        dinarInput.disabled = '';
+                                                    }
+                                                });
+                                            })();
+                                            
+                                            </script>
+                                            <div class="form-group">
+                                                <label class="form-label" for="field-6">taux d'echange</label>
+                                                <div class="controls">
+                                                    {{form_widget(formProduits.tauxdechange, {'attr': {'placeholder': "taux d'echange", 'type':"number",'class':"form-control", 'id':"field-1" }})}}
+
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 padding-bottom-30">
+                                        <div class="text-left">
+                                            <button type="submit" class="btn btn-primary">Enregister</button>
+                                            <button type="button" class="btn">Annuler</button>
+                                        </div>
+                                    </div>
+
+                                    {{ form_end(formProduits)}}
+                                </div>
+                            </div>
+
+                        </section>
+                    </div>
+
+
+
+
+
+
+ {% endblock %}
+

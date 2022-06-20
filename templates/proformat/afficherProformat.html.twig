@@ -1,0 +1,172 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProformatController!{% endblock %}
+
+ {% block content %} 
+ <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                        <div class="page-title">
+
+                            <div class="pull-left">
+                                <h1 class="title">Proformas</h1>                            </div>
+
+                            <div class="pull-right hidden-xs">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('show_proformat')}}">Proformas</a>
+                                    </li>
+                                    <li class="active">
+                                        <strong>Tous Les Proformas</strong>
+                                    </li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-12">
+                        <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Tous Les Proformas</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i class="box_toggle fa fa-chevron-down"></i>
+                                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
+                                    <i class="box_close fa fa-times"></i>
+                                </div>
+                            </header>
+                            <div class="content-body">    <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+
+                                        <!-- ******************************************** -->
+
+
+                                        <table id="example" class="display table table-hover table-condensed" cellspacing="0" width="100%">
+                                            
+                                            <thead>
+                                                <tr>
+                                                  <th> Titre De La Facture</th>
+                                                    <th>Client</th>
+                                                    <th> Date </th>  
+                                                  <th> prix total </th>
+                                                    <th> Validite De l'offre </th>
+                                                    <th>offre acheve</th>
+                                                    <th>Afficher Proformat</th>
+
+                                                    <th> Action </th>                   </tr>
+                                            </thead>
+
+                                            <tbody>
+                                             {% for facture in factures %}
+                                                <tr>
+                                                    <td>
+                                                        {{ facture.titre }}
+                                                    </td>
+                                                    <td>
+                                                     {{ facture.idclient }}
+                                                    </td>
+                                                    <td>
+                                                      {{ facture.date|date('d-m-y') }}
+
+                                                    </td>
+                                                    {% if facture.choix == 1 %}
+                                                    <td>
+                                                      {{ facture.prixtotalht }} TND HT
+                                                    </td>
+                                                    {% elseif facture.choix == 2 or facture.choix == 5   %}
+                                                    <td>
+                                                        {{ facture.prixtotal }} TND TTC
+                                                    </td>
+                                                    {% else %}
+                                                        <td>
+                                                            {{ facture.prixtotal }}$
+                                                        </td>
+
+                                                  {% endif %}
+                                                   {% set date1 = facture.date|date_modify('+'~facture.validite~'month')%}
+                                                    {% if date1 >= datedeaujourdhui %}
+                                                    <td>
+                                                        <h3 style="color: #1b7e5a"> Facture est encore  Valide </h3>
+
+                                                    </td>
+
+                                                        <td>
+                                                            <input type='checkbox' onchange='eatTheCookie({{facture.id}}, $(this))' class="form-check-input"  value="" {% if facture.checked %}checked{% endif %}>
+
+                                                        </td>
+
+                                                    {% else%}
+                                                    <td>
+                                                        <h3 style="color: #9c3328" id="nvalide" > Facture n'est pas Valid </h3>
+                                                    </td>
+                                                        <td>
+                                                            <input class="form-check-input" type="hidden" value="1" id="check"  >
+
+                                                        </td>
+                                                        {%endif %}
+
+
+                                                        <td>
+                                                         <a href="{{path('app_proformat',{'id': facture.id})}}" ><i class="fa fa-list"></i></a>
+                                                        </td>
+                                                        <td>
+
+                                                      <a href="{{path('edit_allo',{'id': facture.id})}}" ><i class="fa fa-pencil-square-o"></i></a>
+                                                        </td>
+                                                </tr>
+
+                                                {% endfor %}
+
+                                             <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+                                                   <script>
+                                                       function eatTheCookie(facture, ob)
+                                                       {
+                                                           if (ob.prop('checked'))
+                                                               checked = 1;
+                                                           else
+                                                               checked = 0;
+
+
+                                                           $.ajax({
+
+                                                               type: 'POST',
+                                                               url: "{{ path('cheque') }}",
+                                                               dataType: "json",
+                                                               data: {
+                                                                   facture_id: facture,
+                                                                   checked: checked
+                                                               },
+                                                                   success: function (data) {
+                                                                       console.log('data : ');
+                                                                       console.log(checked);
+                                                                   }
+                                                           }
+                                                           )
+
+
+
+
+                                                       }
+                                                   </script>
+
+                                                          
+                                            </tbody>
+                                            
+                                        </table>
+                                        <!-- ******************************************** -->
+
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section></div>
+
+
+ 
+ {% endblock %} 

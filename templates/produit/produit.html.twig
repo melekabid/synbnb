@@ -1,0 +1,135 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                        <div class="page-title">
+
+                            <div class="pull-left">
+                                <h1 class="title">Machines</h1>                            </div>
+
+                            <div class="pull-right hidden-xs">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="{{path('app_produit')}}">Machines</a>
+                                    </li>
+                                    <li class="active">
+                                        <strong>Tous les Machines</strong>
+                                    </li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-12">
+                        <section class="box nobox">
+                            <div class="content-body">    <div class="row">
+
+                                    <div class="col-md-9 col-sm-12 col-xs-12">
+
+                                        <div class="input-group primary"  href="{{ path('add_produit') }}">
+                                            <span class="input-group-addon" href="{{ path('add_produit') }}">
+                                                <span class="arrow"></span>
+                                                <i  class="fa fa-search"  ></i>
+                                            </span>
+                                            <input class="form-control" id="myInput" type="text" placeholder="Search..">
+                                        </div><br>
+                                    </div>
+
+
+                                    <div class="clearfix"></div><br>
+
+                                    <div class="col-md-12 col-sm-12 col-xs-12 ecommerce_product_search search_data">
+
+
+
+
+                                        <ul class="nav nav-tabs vertical col-md-2 col-lg-2 col-sm-3 col-xs-3 left-aligned">
+                                            <li class="active">
+                                                <a href="{{ path('app_produit') }}" >
+                                                    <i class="fa fa-home"></i> Tous les Machines
+                                                </a>
+                                            </li>
+                                            {% for categorie in Categories %}
+                                            <li>
+                                                <a href="{{path('categorie_produit',{'idcategorie': categorie.id})}}" class="">{{categorie.nomcategorie}}</a>
+                                            </li>
+                                           {% endfor%}
+
+                                        </ul>
+
+                                        <div class="tab-content vertical col-md-10 col-lg-10 col-sm-9 col-xs-9 left-aligned">
+
+                                            <div class="tab-pane fade in active" id="web-1">
+
+                                                <div class="row">
+
+                                                    {% for produit in produits %}
+                                                    <div class="col-lg-3 col-sm-6 col-md-4 ecommerce_product" id="myTable" width="50" height="50">
+                                                        <div class="team-member ">
+                                                            <div class="team-img thumb " width="50" height="50">
+                                                                <img class="img-responsive"style="width:350px;height:350px;"  src="uploads/{{produit.img}}" alt="">
+                                                                <div class="overlay">
+                                                                    <a href="{{path('edit_produit',{'id': produit.id})}}"><i class="fa fa-pencil-square-o"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="team-info">
+                                                                <h4><a>{{produit.reference}}</a></h4>
+                                                                <span>{{produit.prixdinar}}TND</span>
+                                                                <span>{{produit.prixdollar}}$</span>
+
+                                                            </div>
+
+                                                            <p>
+                                                        </div>
+                                                    </div>
+                                                    {%endfor%}
+                                                </div>
+                                            </div>
+
+                                            <div class="tab-pane fade" id="images-1">
+
+                                                <p class="col-md-12">Images Search Results</p>
+
+                                            </div>
+                                            <div class="tab-pane fade" id="contacts-1">
+
+                                                <p>Contacts Search Results</p>
+
+
+                                            </div>
+
+                                            <div class="tab-pane fade" id="projects-1">
+                                                <p>Projects Search Results</p>
+
+                                            </div>
+
+                                            <div class="tab-pane fade" id="map-1">
+                                                <p>Location and Maps Search Results</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="videos-1">
+                                                <p>Videos Search Results</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="messages-1">
+                                                <p>Messages Search Results</p>
+                                            </div>
+                                            <div class="tab-pane fade" id="profile-1">
+                                                <p>Profile Search Results</p>
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section></div>
+
+
+{% endblock %}

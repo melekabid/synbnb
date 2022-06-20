@@ -1,0 +1,299 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ProformatController!{% endblock %}
+
+ {% block content %} 
+ 
+
+                    <div class='col-lg-12 col-md-12 col-sm-12 col-xs-12'>
+                        <div class="page-title">
+
+                            <div class="pull-left">
+                                <h1 class="title">Proforma</h1>                            </div>
+
+                            <div class="pull-right hidden-xs">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <a href="{{path('app_index')}}"><i class="fa fa-home"></i>Menu</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{path('show_proformat')}}">Proformas</a>
+                                    </li>
+                                    <li class="active">
+                                        <strong>proforma </strong>
+                                    </li>
+                                </ol>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="col-lg-12">
+                        <section class="box ">
+                            <header class="panel_header">
+                                <h2 class="title pull-left">Proforma</h2>
+                                <div class="actions panel_actions pull-right">
+                                    <i class="box_toggle fa fa-chevron-down"></i>
+                                    <i class="box_setting fa fa-cog" data-toggle="modal" href="#section-settings"></i>
+                                    <i class="box_close fa fa-times"></i>
+                                </div>
+                            </header>
+                            <div class="content-body">    <div class="row">
+                                    <div class="col-md-12 col-sm-12 col-xs-12">
+
+
+
+                                        <!-- start -->
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <div class="invoice-head">
+                                                    <div class="col-md-2 col-sm-12 col-xs-12 invoice-title">
+                                                        <h2 class="text-center bg-primary ">Proforma</h2>
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-12 col-xs-12 invoice-head-info">
+
+                                                    </div>
+                                                    <div class="col-md-3 col-sm-12 col-xs-12 invoice-head-info"><span class='text-muted'>proforma # {{facture.id}}<br>{{facture.date|date('d/m/Y')}}</span></div>
+                                                    <div class="col-md-3 col-sm-12 col-xs-12 invoice-logo col-md-offset-1">
+                                                        <img src="data/invoice/saco.png" class="img-reponsive">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="clearfix"></div><br>
+
+                                            <div class="col-xs-6 invoice-infoblock pull-left">
+                                                <h4> Proforma Pour:</h4>
+                                                <address>
+                                                    <h3>{{facture.idclient.societe}}</h3>
+                                                    <span class='text-muted'> MATricule fiscale/CIN : {{facture.idclient.codematricule}}<br>Adresse : {{facture.idclient.adresse}}<br>GSM: {{facture.idclient.gsm}}<br>
+                                                       Email: {{facture.idclient.mail}} </span>
+                                                </address>
+
+                                            </div>
+
+                                            <div class="col-xs-6 invoice-infoblock text-right">
+                                                <h4>DELAI DE LIVRAISON: </h4>
+                                                 <h6>{{facture.delaidelivraison}} JRS APRES RECEPTION DU BON DE COMMANDE</h6>
+                                                <h4> GARANTIE {{facture.garantie}}</h4>
+                                                <address>
+                                                    <h3>MODALITE DE PAIEMENT</h3>
+                                                    <span class='text-muted'>{{facture.modalite}}</span><br>
+                                                    <h4>VALIDITE DE L'OFFRE {{facture.validite}} MOIS </h4>
+                                                </address>
+                                                {% if(facture.choix == 1) or (facture.choix == 5 ) %}
+                                                <div class="invoice-due">
+                                                    <h3 class="text-muted">Montant Total :</h3> &nbsp; <h2 class="text-primary"> {{facture.prixtotalht|number_format(3)}} TND </h2>
+                                                </div>
+                                                {% elseif(facture.choix == 2)%}
+                                                <div class="invoice-due">
+                                                    <h3 class="text-muted">Montant Total :</h3> &nbsp; <h2 class="text-primary"> {{facture.prixtotal|number_format(3)}} TND </h2>
+                                                </div>
+                                                {% elseif (facture.choix == 3)  %}
+                                                <div class="invoice-due">
+                                                    <h3 class="text-muted">Montant Total :</h3> &nbsp; <h2 class="text-primary"> {{facture.prixtotal|number_format(3)}} $ CIF </h2>
+                                                </div>
+                                                {% elseif (facture.choix == 4 )  %}
+                                                    <div class="invoice-due">
+                                                        <h3 class="text-muted">Montant Total :</h3> &nbsp; <h2 class="text-primary"> {{facture.prixtotal|number_format(3)}} $ FOB </h2>
+                                                    </div>
+                                                {% endif %}
+
+                                            </div>
+
+
+                                            <div class="clearfix"></div><br>
+
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <h3>Récapitulatif de la commande</h3><br>
+                                                <div class="table-responsive">
+                                                    <table class="table table-hover invoice-table">
+                                                        <thead>
+                                                            <tr>
+                                                                {% if facture.choix == 5  %}
+                                                                <td><h4>Moules</h4></td>
+                                                                {% else%}
+                                                                <td><h4>Machines</h4></td>
+                                                                {% endif %}
+                                                                 <td class="text-center"><h4>Description</h4></td>
+
+                                                                {% if (facture.choix == 3) or (facture.choix == 4)%}
+                                                                    <td class="text-center"><h4>Prix Unitaire  </h4></td>
+                                                                    <td class="text-center"><h4>Quantity</h4></td>
+                                                                    <td class="text-center"><h4>Prix Total </h4></td>
+                                                                {% else%}
+                                                                    <td class="text-center"><h4>Prix Unitaire  HT </h4></td>
+                                                                    <td class="text-center"><h4>Quantity</h4></td>
+                                                                    <td class="text-center"><h4>Prix Total  HT </h4></td>
+                                                                {% endif%}
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <!-- foreach ($order->lineItems as $line) or some such thing here -->
+                                                            {% for liste in list %}
+                                                            <tr>
+                                                                {% if facture.choix == 5  %}
+                                                                <td><img class="img-responsive" src="uploads/{{liste.idProduit.img}}" alt="" height= "150" width="150" >   </td>
+                                                               {% else%}
+                                                                <td>{{ liste.idProduit.reference }}</td>
+                                                                {% endif %}
+                                                                <td class="text-center">{{ liste.idProduit.description }}</td>
+                                                                {% if (facture.choix == 3) or (facture.choix == 4)%}
+                                                                    <td class="text-center">{{ liste.PrixTotalHt|number_format(3) }} $</td>
+                                                                    <td class="text-center">{{ liste.quantity }}</td>
+                                                                    <td class="text-center">{{ liste.PrixTotal|number_format(3) }} $</td>
+                                                            {% else%}
+                                                                <td class="text-center">{{ liste.PrixTotalHt }} TND</td>
+                                                                <td class="text-center">{{ liste.quantity }}</td>
+                                                                
+                                                                <td class="text-center">{{ liste.prixTotal }} TND</td>
+
+                                                                {% endif%}
+
+                                                            </tr>
+                                                            {% endfor %}
+
+                                                            {% if facture.choix == 1 %}
+                                                                <tr>
+                                                                <td class="no-line"></td>
+                                                                <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                <td class="no-line text-center">
+                                                                <h4> Prix HT</h4></td>
+                                                                <td class="no-line text-right">
+                                                                <h4 style="margin:0px;" class="text-primary">{{facture.prixtotalht|number_format(3)}}TND</h4></td>
+                                                                </tr>
+                                                            {% elseif (facture.choix == 2) or (facture.choix == 5)  %}
+                                                                <tr>
+                                                                    <td class="thick-line"></td>
+                                                                    <td class="thick-line"></td>
+                                                                    <td class="thick-line"></td>
+                                                                    <td class="thick-line text-center">
+                                                                        <h4> Prix HT</h4></td>
+                                                                    <td class="thick-line text-right">
+                                                                        <h4>{{facture.prixtotalht}}TND</h4></td>
+                                                                </tr>
+                                                            <tr>
+
+                                                                    {% if  sum19 == 0 %}
+                                                                        <tr>
+                                                                        <td class="no-line"></td>
+                                                                            <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line text-center">
+                                                                    <h4> TVA 7% </h4></td>
+                                                                <td class="no-line text-right">
+                                                                    <h4 style="margin:0px;" class="text-primary">{{sum7}}TND</h4></td>
+                                                                        </tr>
+                                                                {% elseif  sum7==0 %}
+                                                                    <tr>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                    <td class="no-line text-center">
+                                                                    <h4> TVA 19% </h4></td>
+                                                                    <td class="no-line text-right">
+                                                                        <h4 style="margin:0px;" class="text-primary">{{sum19|number_format(3)}}TND</h4></td>
+                                                                    </tr>
+                                                                {% else %}
+                                                                    <tr>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                    <td class="no-line text-center">
+                                                                    <h4> TVA7%: </h4></td>
+                                                                    <td class="no-line text-right">
+                                                                        <h4 style="margin:0px;" class="text-primary">{{sum7|number_format(3)}}TND</h4></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                    <td class="no-line text-center">
+                                                                    <h4> TVA19%: </h4></td>
+                                                                    <td class="no-line text-right">
+                                                                        <h4 style="margin:0px;" class="text-primary">{{sum19|number_format(3)}}TND</h4></td>
+                                                                    </tr>
+                                                                {% endif %}
+
+                                                                <tr>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line"></td>
+                                                                    <td class="no-line text-center">
+                                                                        <h4> Timbre </h4></td>
+                                                                    <td class="no-line text-right">
+                                                                        <h4 style="margin:0px;" class="text-primary">0,600TND</h4></td>
+                                                                </tr>
+                                                            <tr>
+                                                                <td class="no-line"></td>
+                                                                <td class="no-line"></td>
+                                                                <td class="no-line"></td>
+                                                                <td class="no-line text-center">
+                                                                    <h4> Prix TTC</h4></td>
+                                                                <td class="no-line text-right">
+                                                                    <h4 style="margin:0px;" class="text-primary">{{facture.prixTotal}}TND</h4></td>
+                                                            </tr>
+                                                                {% elseif(facture.choix == 3) %}
+                                                                    <tr>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line text-center">
+                                                                            <h4> Prix en Dollar</h4></td>
+                                                                        <td class="no-line text-right">
+                                                                            <h4 style="margin:0px;" class="text-primary">{{facture.prixTotal|number_format(3)}}$ CIF</h4></td>
+                                                                    </tr>
+                                                                {% elseif(facture.choix == 4) %}
+                                                                    <tr>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line"></td>
+                                                                        <td class="no-line text-center">
+                                                                            <h4> Prix en Dollar</h4></td>
+                                                                        <td class="no-line text-right">
+                                                                            <h4 style="margin:0px;" class="text-primary">{{facture.prixTotal|number_format(3)}}$ FOB</h4></td>
+                                                                    </tr>
+                                                            {% endif %}
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="clearfix"></div><br>
+
+                                        <div class="row">
+                                            <div class="col-md-12 col-sm-12 col-xs-12 text-right">
+                                                <a id="impression" name="impression"  href="{{path('pdf',{'id': facture.id})}}" class="btn btn-purple btn-md"><i class="fa fa-print"></i> &nbsp; Print </a>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- end -->
+
+
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+
+
+     <script type="text/javascript">
+         function imprimer_page(){
+             window.focus();
+             window.print();
+             window.onafterprint = function(){ window.close()};
+         }
+     </script>
+ 
+ {% endblock %} 

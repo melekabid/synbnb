@@ -1,0 +1,127 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" referrerpolicy="no-referrer" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.css" integrity="sha512-/zs32ZEJh+/EO2N1b0PEdoA10JkdC3zJ8L5FTiQu82LR9S/rOQNfQN7U59U9BC12swNeRAz3HSzIL2vpp4fv3w==" crossorigin="anonymous" referrerpolicy="no-referrer" />       
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    {% for categorie in categories %}
+    <div class="col-md-3 col-sm-6 col-xs-12" >
+        <div class="r4_counter db_box">
+            <a href="{{path('categorie_produit',{'idcategorie': categorie.id})}}">
+            <i class='pull-left fa fa-list-alt icon-md icon-rounded icon-primary'></i>
+            <div class="stats">
+                <h5><strong> {{categorie.nomcategorie}}</strong></h5>
+                <span>Voir Plus</span>
+            </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+    <div class="row">
+                <h2> Les 5 Produits Les Plus Vendus </h2>
+               <canvas id="mychart" width="400" height="100" ></canvas>
+
+
+
+            <div class="tile-counter bg-primary">
+                <div class="content">
+                    <h2 class="number_counter" >{{sum}}</h2>
+                    <div class="clearfix"></div>
+                    <span>Chiffre D'affaire en dinar</span>
+                </div>
+            </div>
+        <div class="tile-counter bg-primary">
+            <div class="content">
+                <h2 class="number_counter" >{{sumdolaar}}</h2>
+                <div class="clearfix"></div>
+                <span>Chiffre D'affaire en dollar</span>
+            </div>
+        </div>
+    </div>
+<div class="row">
+    <div class="col-lg-6">
+        <section class="box ">
+            <header class="panel_header">
+                <h2 class="title pull-left">Les Clients plus Fidéles</h2>
+                <div class="actions panel_actions pull-right">
+                    <i class="box_toggle fa fa-chevron-down"></i>
+
+                </div>
+            </header>
+            <div class="content-body">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th style="width:60%">Name</th>
+                        <th style="width:30%">Progress</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+
+                    <tr>
+
+                        <td>{{client.societe}}</td>
+                        {% set myval = 0 %}
+                        {% for pro in proformas %}
+                            {% if pro.idclient.societe == client.societe %}
+                              {% set  myval = myval +1 %}
+                            {% endif %}
+                        {% endfor %}
+                        <td><span> {{ myval }} </span></td>
+                    </tr>
+
+
+
+
+                  {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+
+</div>
+{# {{ dump() }} #}
+ 
+
+
+ {% endblock %}
+ 
+ {% block javascripts %}
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js" integrity="sha512-d9xgZrVZpmmQlfonhQUvTR7lMPtO7NkZMkA0ABN3PHCbKA5nqylQ/yWlFAyY6hYgdF1Qh6nYiuADWwKB4C2WSw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script>
+            let stat = document.querySelector("#mychart")
+            var myBarChart = new Chart(stat, {
+                        type: 'bar',
+                        data: {
+                            labels: {{ finalproducts | raw  }},
+                            datasets: [{
+                                label: "Nombre de produits achetés",
+                                data: {{ finalNumber | raw }},
+                                backgroundColor: {{ color | raw }},
+                                borderColor: {{ bordercolor | raw }},
+                                borderWidth: 1,
+                                order: 0
+                            }]
+                        },
+                        options: {
+        scales: {
+            xAxes: [{
+                stacked: true
+            }],
+            yAxes: [{
+                stacked: true
+            }]
+        }
+    }
+                        
+});
+      </script>   
+ {% endblock %}
